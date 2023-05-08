@@ -56,12 +56,14 @@
   cursor: pointer;
 }
 
+
 .chat-body {
   max-height: 300px; /* atur tinggi maksimum chatbox */
   overflow-y: scroll; /* tambahkan scrollbar ketika isi pesan melebihi ukuran elemen */
   padding: 10px;
   flex-grow: 1;
 }
+
 
 .chat-message {
   display: flex;
@@ -87,6 +89,9 @@
   padding: 10px;
   margin-right: 10px;
 }
+.chatbot-message li:hover{
+    color: orange;
+}
 
                 .chat-button {
   position: fixed;
@@ -102,6 +107,9 @@
   font-size: 24px;
   cursor: pointer;
 }
+.chat-button:hover{
+    color: orange;
+}
 
 .chat-container {
   display: none;
@@ -114,6 +122,7 @@
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   z-index: 9999;
+  margin-left: 40px;
 }
 
         </style>
