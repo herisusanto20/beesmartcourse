@@ -1,0 +1,1083 @@
+:root {
+  --primary: #1e90ff;
+  --bg: #fffff0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins";
+  background-color: var(--bg);
+  color: black;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%;
+  background-color: rgba(6, 126, 246, 0.8);
+  border-bottom: 1px solid var(--primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fffff0;
+}
+
+.navbar .navbar-logo span {
+  color: orange;
+}
+
+.navbar .navbar-nav a {
+  color: white;
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+}
+
+.navbar .navbar-nav span {
+  color: orange;
+}
+
+.navbar .navbar-nav a:hover {
+  color: orange;
+}
+
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid orange;
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar .navbar-extra a {
+  color: white;
+  margin: 0 2rem;
+}
+
+.navbar-extras a {
+  color: var(--primary);
+  width: 5rem;
+  margin: 0 8rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: orange;
+}
+
+#hamburger-menu {
+  display: none;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../img/beesmart.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hero-1 {
+  width: 100%;
+  height: 20rem;
+  align-items: center;
+  background-image: url("../img/study.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+.hero-2 {
+  width: 100%;
+  height: 28rem;
+  background-image: url("../img/study2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+.hero-3 {
+  width: 100%;
+  height: 28rem;
+  background-image: url("../img/banner.png");
+  margin-top: 2rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 2rem;
+  /* background-repeat: no-repeat; */
+}
+
+.hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgb(253, 194, 84) 5%,
+    rgba(255, 255, 255, 0) 25%
+  );
+}
+
+.hero .content {
+  padding: 1.4rem 7%;
+  max-width: 60rem;
+}
+
+.hero .content h1 {
+  font-size: 5rem;
+  color: var(--bg);
+  text-shadow: 1px 1px 2px black;
+  line-height: 1.2;
+}
+.hero-1 .content h1,
+.hero-2 .content h1,
+.hero-3 .content {
+  margin-left: 3rem;
+  font-size: 3rem;
+  color: var(--bg);
+  text-shadow: 1px 1px 2px black;
+  line-height: 1.2;
+}
+.hero-2 .content h1 {
+  text-align: center;
+}
+.hero-1 .content h2 {
+  margin-left: 3rem;
+  font-size: 2rem;
+  color: orange;
+  text-shadow: 1px 1px 1px blue;
+}
+
+.hero .content h1 span {
+  color: orange;
+}
+
+.hero .content p {
+  color: #fffff0;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: 100;
+  text-shadow: 1px 1px 2px black;
+  mix-blend-mode: difference;
+}
+
+.hero .content .cta {
+  color: #fffff0;
+  margin-top: 5rem;
+  margin: 0.5rem;
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  background-color: orange;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px black;
+}
+
+.hero .content .cta:hover,
+.tambah:hover {
+  background-color: rgba(6, 126, 246, 0.8);
+  transform: scale(1.2, 1.2);
+  transition: 0.2s;
+}
+
+/* About Session */
+.about,
+.tutor,
+.course,
+.contact,
+.matematika,
+.data-kategori-h2,
+.sections {
+  padding: 8rem 7% 1.4rem;
+}
+
+/* laporan h3 */
+.data-kategori-h3,
+.row .col-1g-3 {
+  font-style: normal;
+  padding: 0.5rem 7% 1.4rem;
+}
+
+.about h2,
+.tutor h2,
+.course h2,
+.contact h2,
+.matematika h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+}
+.katego {
+  text-align: center;
+  font-size: 2.6rem;
+}
+
+.h2data {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+  margin-top: 7rem;
+}
+.about1 h3 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-top: 1rem;
+}
+
+.about h2 span,
+.tutor h2 span,
+.contact h2 span,
+.about1 h3 {
+  color: var(--primary);
+}
+
+.hero-2 .content h1 span {
+  color: orange;
+}
+.hero-1 .content h1 span {
+  color: var(--primary);
+}
+
+.about .row {
+  display: flex;
+}
+
+.about .row .about-img {
+  flex: 1 1 45rem;
+}
+
+.about .row .about-img img {
+  width: 100%;
+}
+.about .row .about-img .img1 img {
+  width: 20%;
+  height: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.about .row .content {
+  flex: 1 1 35rem;
+  padding: 0 1rem;
+  text-align: justify;
+}
+.about .row .content .img2 img {
+  width: 30%;
+  height: 30%;
+}
+
+.about .row .content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  color: var(--primary);
+}
+
+.about.row .content p {
+  font-size: 1.4rem;
+  font-weight: 100;
+  line-height: 1.6;
+}
+/* tutor */
+.bodyy {
+  overflow-x: scroll;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide-container {
+  max-width: 1120px;
+  width: 100%;
+  background-color: var(--bg);
+  padding: 0 40px 0;
+}
+.slide-content {
+  margin: 0 40px;
+}
+.card {
+  width: 700px;
+  border-radius: 25px;
+  background-color: var(--primary);
+}
+.image-content,
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 5px;
+}
+
+.image-content {
+  row-gap: 5px;
+  position: relative;
+  padding: 25px 0;
+}
+.overlay {
+  border-radius: 25px 25px 25px 25px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border: 4px solid var(--primary);
+}
+
+.card-image {
+  position: relative;
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
+  background: white;
+  padding: 3px;
+}
+.card-image .card-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--primary);
+}
+.name {
+  font-size: 300px;
+  font-weight: 400;
+  color: white;
+}
+.description {
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+.button {
+  border: none;
+  font-size: 16px;
+  color: white;
+  padding: 8px 16px;
+  background-color: orange;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: orangered;
+  transition: 1.1s;
+}
+/* /* Menu Session */
+.course {
+  background-color: var(--primary);
+}
+.course h2,
+.contact h2 {
+  margin-bottom: 1rem;
+  color: white;
+}
+.course p {
+  color: white;
+  text-align: center;
+  max-width: 40rem;
+  text-align: justify;
+  margin: auto;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.contact p,
+.content p {
+  text-align: center;
+  max-width: 40rem;
+  text-align: justify;
+  margin: auto;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.course .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  justify-content: center;
+}
+/* kategori course */
+.rows .card-c {
+  align-items: center;
+  display: inline-flex;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.katego:hover {
+  box-shadow: 0 5px 10px #1e90ff;
+  background-color: orange;
+}
+
+.rows .card-c p {
+  margin-right: 3rem;
+  margin-left: 3rem;
+  align-items: center;
+  font-family: "Poppins" solid;
+  font-size: 20px;
+  color: white;
+  background-color: var(--primary);
+  width: 8rem;
+  height: 3rem;
+  text-align: center;
+  border-radius: 10%;
+  justify-items: center;
+}
+.katego {
+  color: var(--primary);
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+/* end */
+
+.course .row .course-card {
+  text-align: center;
+  padding-bottom: 4rem;
+}
+.course .row .course-card-img {
+  border-radius: 10%;
+  width: 80%;
+}
+
+.course .row .course-card:hover {
+  transform: scale(1.2, 1.2);
+  transition: 0.2s;
+}
+
+.course .row .course-card-title {
+  margin-top: 1rem;
+  color: white;
+}
+.course .row .course-card-title:hover {
+  color: orange;
+}
+/* Kontak Kami */
+.contact .row {
+  display: flex;
+  margin-top: 2rem;
+  background-color: rgb(219, 222, 224);
+}
+.contact .row .map {
+  flex: 1 1 45rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.contact .row .h4 {
+  cursor: pointer;
+  flex: 1 1 45rem;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.contact .marquee {
+  color: red;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+}
+/* .contact .row form {
+  flex: 1 1 45rem;
+  padding: 5rem 2rem;
+  text-align: center;
+} */
+
+.contact .row .h4 .input-h4 {
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: var(--bg);
+  border: 1px solid gray;
+  border-radius: 10px;
+  color: blue;
+}
+
+.contact .row .h4 .input-h4 p {
+  font-size: 1.7rem;
+}
+
+/* .contact .row form .input-group input {
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.7rem;
+  background: none;
+} */
+.contact .row .h4 .btn .logo {
+  height: 2rem;
+  width: auto;
+  align-items: center;
+  display: inline-block;
+}
+.contact .row .h4 .btn {
+  text-align: center;
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  background-color: orange;
+  cursor: pointer;
+  color: white;
+  border-radius: 1.5rem;
+}
+
+.contact .row .h4 .btn:hover {
+  background-color: rgba(6, 126, 246, 0.8);
+  transform: scale(1.2, 1.2);
+  transition: 0.2s;
+}
+
+.contact .row .h4 .btn a:hover {
+  color: white;
+}
+
+footer {
+  background-color: var(--primary);
+  text-align: 1rem 0;
+  padding: 1 rem 0 3rem;
+  margin-top: 3rem;
+  margin-bottom: 0;
+  color: white;
+}
+
+footer .socials {
+  padding: 1rem 0;
+  text-align: center;
+}
+footer .socials a {
+  color: white;
+  margin: 1rem;
+}
+
+footer .socials a:hover,
+footer .links a:hover {
+  color: orange;
+}
+
+footer .links {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+footer .links a {
+  color: white;
+  padding: 0.7rem 1rem;
+}
+
+footer .credits {
+  font-size: 0.8rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+footer .credits a {
+  font-weight: 700;
+  color: orange;
+}
+
+/* DASBOARD */
+.section {
+  margin: 5.8rem 0 0.3rem;
+  padding: 0;
+  width: 100%;
+  height: 25px;
+  background-color: orange;
+  color: #fff;
+  text-align: center;
+}
+.h4 {
+  margin: 0.5rem 0.5rem;
+  text-align: center;
+  color: orange;
+}
+
+/* data kategori */
+.tambah {
+  margin-left: 7rem;
+  color: #fffff0;
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: orange;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px black;
+}
+.tabel {
+  /* padding: 1rem 7% 1rem; */
+  align-content: center;
+  width: 100%;
+  border: 15px;
+  text-align: center;
+  background-color: orange;
+  position: relative;
+  margin-right: 0%;
+  color: white;
+}
+.tabel tr {
+  height: 30px;
+}
+
+/* media yang digunakan */
+
+/* leptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* tablet */
+@media (max-width: 758px) {
+  html {
+    font-size: 62.5%;
+  }
+  #hamburger-menu {
+    display: inline-block;
+  }
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: var(--primary);
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+  }
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+  .navbar .navbar-nav a {
+    color: var(--bg);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+  .navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+  }
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+  .about .row {
+    flex-wrap: wrap;
+  }
+  .about .row .about-img img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+  .about .row .content {
+    padding: 0;
+  }
+
+  .about .row .content h3 {
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: var(--bg);
+  }
+
+  .about .row .content p {
+    font-size: 1.2rem;
+  }
+  .course p {
+    font-size: 1.2rem;
+  }
+  .contact .row {
+    flex-wrap: wrap;
+  }
+  .contact .row .map {
+    height: 30rem;
+  }
+  .contact .row form {
+    padding-top: 0;
+  }
+}
+/* mobile */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+  .navbar .navbar-nav a {
+    color: var(--bg);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+}
+
+/* CSS FORM DAFTAR */
+
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+
+/* REGISTRASI */
+.sections {
+  padding-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+.boxsss {
+  text-align: center;
+  margin-top: 1rem;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    var(--primary) 35%,
+    var(--primary) 70%,
+    white 100%
+  );
+  padding: 15px;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+}
+.input-controll {
+  margin-top: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+}
+.btn {
+  margin-top: 1rem;
+  padding: 8px 15px;
+  background-color: orange;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: red;
+  transform: scale(1.2, 1.2);
+  transition: 0.2s;
+}
+
+/* tutor lanjut */
+.boxss {
+  background-image: radial-gradient(
+    circle at 37.08% 1.78%,
+    #d1ffff 0,
+    #b3f4fe 12.5%,
+    #8fe5f8 25%,
+    #63d4f2 37.5%,
+    #0cc1ed 50%,
+    #00aee9 62.5%,
+    #009ce6 75%,
+    #008be3 87.5%,
+    #007bdf 100%
+  );
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 15px;
+}
+.boxs {
+  border-radius: 15px 15px 0 0;
+  background-color: orange;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.content h3 {
+  color: white;
+  text-align: center;
+  max-width: 40rem;
+  margin: auto;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+/* Tabel */
+
+table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin: 0.5rem 1rem 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  text-shadow: 1px 1px 0px #fff;
+}
+table th {
+  padding: 2px 2px;
+  border-left: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  background: var(--primary);
+  white-space: nowrap;
+}
+table tr {
+  text-align: center;
+  padding-left: 20px;
+}
+table td:first-child {
+  text-align: left;
+  padding-left: 10px;
+  border-left: 0;
+}
+
+table td {
+  padding: 15px 20px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  background: #fafafa;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fbfbfb),
+    to(#fafafa)
+  );
+  background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+  white-space: nowrap;
+}
+
+/* Menambahkan overflow-x: auto agar tabel dapat di-scroll horizontal */
+
+.p-data-reg {
+  padding: 1rem 7% 0;
+}
+
+/* card kursus */
+.aboutz {
+  align-items: center;
+}
+.cardd {
+  width: 400px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  margin: 1rem;
+}
+
+.card-imgg {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.card-textt {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-textt h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.card-textt p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.btnn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btnn:hover {
+  background-color: #0062cc;
+}
+
+/* row card */
+.aboutz {
+  display: flex;
+  padding: 8rem 7% 1.4rem;
+}
+/* pilih data sma smp dll */
+.pilih .cta1 {
+  color: #fffff0;
+  margin-top: 5rem;
+  margin: 1rem;
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: orange;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px black;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  margin-top: 7rem;
+}
+
+.pilih .cta1:hover {
+  background-color: rgba(6, 126, 246, 0.8);
+  transform: scale(1.2, 1.2);
+  transition: 0.2s;
+}
+
+/* background data registrasi */
+/* .body_kategori {
+  background-image: url("../img/dataregis.jpg");
+  background-size: 98%;
+} */
+.pilih {
+  display: flex;
+  justify-content: center;
+  margin-top: 9rem;
+}

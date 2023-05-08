@@ -1,0 +1,44 @@
+/* styling untuk label */
+label {
+  display: block;
+  font-weight: bold;
+}
+
+/* body */
+body {
+  margin: 5rem;
+}
+
+/* styling untuk input */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* styling untuk tombol daftar */
+input[type="submit"] {
+  background-color: blue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* styling untuk tombol daftar ketika dihover */
+input[type="submit"]:hover {
+  background-color: orange;
+}
+
+/* level */
+.level {
+  font-size: 2rem;
+}
