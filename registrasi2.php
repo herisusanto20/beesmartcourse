@@ -1,3 +1,73 @@
+<?php
+// Koneksi ke database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registrasi";
+
+// Membuat koneksi
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if (!$connection) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Memeriksa apakah formulir dikirim
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil data yang diisi oleh pengguna
+    $kursus = $_POST['kursussmp'];
+    
+    // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
+    if ($kursus == 'Matematika' && $jeniskursussmp == 'Reguler' && $sisaKuotaMatematika > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaMatematika--;
+        }
+    }elseif ($kursus == 'Matematika' && $jeniskursussmp == 'Privat' && $sisaKuotaMatematika1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaMatematika1--;
+        }
+    } elseif ($kursus == 'IPA'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIPA > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaIPA--;
+        }
+    }elseif ($kursus == 'IPA'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIPA1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaIPA1--;
+        }
+    } elseif ($kursus == 'Desain Grafis' && $sisaKuotaDesain > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaDesain--;
+        }
+    }
+}
+?>
+
 
 
 <!DOCTYPE html>
@@ -66,8 +136,6 @@
                             <option>Pemrograman</option>
                             <option>Bahasa Inggris</option>
                             <option>IPA</option>
-                            <option>Calistung</option>
-                            <option>Tematik</option>
                         </optgroup>
                         </select >
                         <select  name="jeniskursussmp" class="input-controll" required>
@@ -111,13 +179,14 @@
                                     } else {
                                                 echo "Data gagal disimpan ke database: " . mysqli_error($connection);
                                             }
+                                            echo "<meta http-equiv=refresh content=0.1;URL='kuotasmp.php'>";
                         }
                         ?>
                 </div>
             </div>
         </section>
             
-
+        
         <script>
             feather.replace()
           </script>

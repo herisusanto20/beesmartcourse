@@ -117,7 +117,31 @@
                 </div>
             </div>
         </section>
-            
+                <?php
+                // Mengecek apakah formulir telah dikirim
+                if (isset($_POST['proses'])) {
+                    // Kode koneksi ke database
+                    
+                    // Kode penyimpanan data formulir ke tabel tb_sd
+                    
+                    // Mengurangi kuota
+                    $query = "SELECT COUNT(*) AS total FROM tb_sd";
+                    $result = mysqli_query($connection, $query);
+                
+                    if ($result) {
+                        $row = mysqli_fetch_assoc($result);
+                        $sisaKuota = 5 - $row['total']; // Menghitung sisa kuota
+                
+                        // Mengurangi kuota jika masih ada sisa
+                        if ($sisaKuota > 0) {
+                            $query = "UPDATE tb_kuota SET sisa_kuota = sisa_kuota - 1";
+                            mysqli_query($connection, $query);
+                        }
+                    }
+                }
+                
+                mysqli_close($connection);
+                ?>
 
         <script>
             feather.replace()

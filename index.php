@@ -154,9 +154,9 @@
             <main class="content">
                 <h1>Mari Belajar <span>Bee Smart </span>Course</h1>
                 <p>Pintar Meraih Kesuksesan </p>
-                <a href="registrasi4.php" class="cta">Kelas TK/PAUD</a>
-                <a href="registrasi3.php" class="cta">Kelas SD</a>
-                <a href="registrasi2.php" class="cta">Kelas SMP</a>
+                <a href="kuotatk.php" class="cta">Kelas TK/PAUD</a>
+                <a href="kuotasd.php" class="cta">Kelas SD</a>
+                <a href="kuotasmp.php" class="cta">Kelas SMP</a>
                 <a href="registrasi.php" class="cta">Kelas SMA</a>
                 
                 

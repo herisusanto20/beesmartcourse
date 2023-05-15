@@ -12,6 +12,17 @@
         <script src="https://unpkg.com/feather-icons"></script>
 		
 	<style>
+    .laporan{
+      align-items: center;
+      background-color: orange;
+      font-family: "Poppins", sans-serif;
+      border-radius: 10px;
+      color: white;
+      margin-left: 80%;
+    }
+    .laporan:hover{
+      background-color: rgba(6, 126, 246, 0.8);
+    }
 		/* Navbar */
 .navbar {
   display: flex;
@@ -213,6 +224,7 @@
 		<label for="keyword">Tutor ID:</label>
 		<input type="text" id="keyword" name="keyword">
 		<input type="submit" value="Cari">
+    
 	</form>
 
 	<table border="1">
@@ -279,13 +291,14 @@
     // Menutup koneksi database
     mysqli_close($conn);
 ?>
-  <a href="laporangaji.php?keyword=<?php echo $keyword; ?>">
-  <button>Laporan Gaji</button>
-</a>
+  
 
 
 		</tbody>
 	</table>
+  <a href="laporangaji.php?keyword=<?php echo $keyword; ?>">
+  <button class="laporan">Laporan Gaji</button>
+</a>
         <!-- Feather -->
         <script>
             feather.replace()

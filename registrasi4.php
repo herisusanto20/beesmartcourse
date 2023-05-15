@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,20 +50,12 @@
                         <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required> <br>
                         <p>Tanggal Pendaftaran</p>
                         <input type="date" name="tanggaltk" placeholder="Tanggal" class="input-controll" required> <br>
-                        <select name="kelastk" class="input-controll" required>
-                        <optgroup label="Kelas">
-                            <option>TK KB</option>
-                            <option>TK A</option>
-                            <option>TK B</option>
-                        </optgroup>
-                        </select>
                         <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required>
                         <input type="text" name="nohandphonetk" placeholder="No Handphone, contoh : 62819157788649" class="input-controll" required>
                         <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required>
                         <input type="text" name="statustk" placeholder="Keterangan" class="input-controll" required>
                         <select  name="kursustk" class="input-controll" required>
                         <optgroup label="Kursus">
-                            <option>Matematika</option>
                             <option>Calistung</option>
                             <option>Tematik</option>
                         </optgroup>
@@ -92,7 +85,6 @@ $connection = mysqli_connect($servername, $username, $password, $dbname);
 if (isset($_POST['proses'])) {
     $namatk = $_POST['namatk'];
     $tanggaltk = $_POST['tanggaltk'];
-    $kelastk = $_POST['kelastk'];
     $namaortutk = $_POST['namaortutk'];
     $nohandphonetk = $_POST['nohandphonetk'];
     $alamattk = $_POST['alamattk'];
@@ -100,8 +92,8 @@ if (isset($_POST['proses'])) {
     $statustk = $_POST['statustk'];
     $jeniskursustk = $_POST['jeniskursustk'];
 
-    $query = "INSERT INTO tb_tk (namatk, tanggaltk, kelastk, namaortutk, nohandphonetk, alamattk, kursustk, statustk, jeniskursustk) 
-              VALUES ('$namatk', '$tanggaltk', '$kelastk', '$namaortutk', '$nohandphonetk', '$alamattk', '$kursustk', '$statustk', '$jeniskursustk')";
+    $query = "INSERT INTO tb_tk (namatk, tanggaltk, namaortutk, nohandphonetk, alamattk, kursustk, statustk, jeniskursustk) 
+              VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$kursustk', '$statustk', '$jeniskursustk')";
 
     if(mysqli_query($connection, $query)) {
         echo "Data berhasil disimpan ke database.";
@@ -110,10 +102,37 @@ if (isset($_POST['proses'])) {
     }
 }
 ?>
+<!-- kuota -->
+<?php
+// Mengecek apakah formulir telah dikirim
+if (isset($_POST['proses'])) {
+    // Kode koneksi ke database
+    
+    // Kode penyimpanan data formulir ke tabel tb_tk
+    
+    // Mengurangi kuota
+    $query = "SELECT COUNT(*) AS total FROM tb_tk";
+    $result = mysqli_query($connection, $query);
+
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        $sisaKuota = 5 - $row['total']; // Menghitung sisa kuota
+
+        // Mengurangi kuota jika masih ada sisa
+        if ($sisaKuota > 0) {
+            $query = "UPDATE tb_kuota SET sisa_kuota = sisa_kuota - 1";
+            mysqli_query($connection, $query);
+        }
+    }
+}
+
+mysqli_close($connection);
+?>
 
                 </div>
             </div>
         </section>
+        
             
 
         <script>
