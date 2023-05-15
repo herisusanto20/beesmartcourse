@@ -183,7 +183,7 @@
 	</style>
 
 </head>
-<>
+
 	    <!-- Navbar Start -->
 <nav class="navbar">
             <a href="dasboard.php" class="navbar-logo"><span>Bee Smart </span>Course</a>
@@ -210,7 +210,7 @@
 	<h1>Data Kelas Tutor BEE SMART COURSE</h1>
 
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-		<label for="keyword">Silakam ketik disini:</label>
+		<label for="keyword">Tutor ID:</label>
 		<input type="text" id="keyword" name="keyword">
 		<input type="submit" value="Cari">
 	</form>
@@ -237,7 +237,8 @@
     if (isset($_POST['keyword'])) {
         $keyword = $_POST['keyword'];
         // Query untuk mencari data pertemuan berdasarkan keyword pada semua kolom
-        $sql = "SELECT * FROM pertemuan WHERE tutor_id LIKE '%$keyword%' OR course_id LIKE '%$keyword%' OR tanggal_pertemuan LIKE '%$keyword%' OR namasiswa LIKE '%$keyword%' OR meeting_type LIKE '%$keyword%' OR meeting_fee LIKE '%$keyword%' OR total_fee LIKE '%$keyword%'";
+        $sql = "SELECT * FROM pertemuan WHERE tutor_id LIKE '%$keyword%'";
+        // OR course_id LIKE '%$keyword%' OR tanggal_pertemuan LIKE '%$keyword%' OR namasiswa LIKE '%$keyword%' OR meeting_type LIKE '%$keyword%' OR meeting_fee LIKE '%$keyword%' OR total_fee LIKE '%$keyword%'
         
     } else {
         // Query untuk mengambil semua data dari tabel pertemuan
@@ -262,6 +263,7 @@
             echo "<td>" . $row["meeting_type"] . "</td>";
             echo "<td>" . $row["meeting_fee"] . "</td>";
             echo "<td>" . $row["total_fee"] . "</td>";
+
             echo "</tr>";
 
             // Menambahkan nilai meeting_fee pada variabel total
@@ -277,6 +279,10 @@
     // Menutup koneksi database
     mysqli_close($conn);
 ?>
+  <a href="laporangaji.php?keyword=<?php echo $keyword; ?>">
+  <button>Laporan Gaji</button>
+</a>
+
 
 		</tbody>
 	</table>

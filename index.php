@@ -506,11 +506,11 @@
             <div class="chat-button" onclick="showChat()">
             <i data-feather="message-circle"></i></div>
 
-<div class="chat-container" id="chat-container">
-  <div class="chat-header">
-    <h4>Chatbot Bee Smart Course</h4>
-    <button class="close-button" onclick="hideChat()">X</button>
-  </div>
+            <div class="chat-container" id="chat-container">
+            <div class="chat-header">
+                 <h4>Chatbot Bee Smart Course</h4>
+             <button class="close-button" onclick="hideChat()">X</button>
+             </div>
   <div class="chat-body" id="chat-body">
     <div class="chat-message">
       <div class="chatbot-message">
@@ -518,16 +518,18 @@
         <ul class="ulchatbot">
           <li onclick="selectOption('register')">Bagaimana melakukan pendaftaran di Bee Smart Course?</li>
           <li onclick="selectOption('course')">Apa saja kursus yang ditawarkan oleh Bee Smart Course?</li>
+          <li onclick="selectOption('study')">Dari kelas berapa bisa daftar di Bee Smart Course?</li>
+          <li onclick="selectOption('location')">Lokasi offlinenya dimana?</li>
           <li onclick="selectOption('help')">Saya memerlukan bantuan, bagaimana cara menghubungi Bee Smart Course?</li>
         </ul>
-      </div>
-    </div>
-  </div>
+                  </div>
+                </div>
+            </div>
   <!-- <div class="chat-footer">
     <input type="text" placeholder="Ketik pesan anda..." id="input-message" onkeydown="handleKeyDown(event)">
     <button onclick="sendMessage()">Kirim</button>
   </div> -->
-</div>
+            </div>
 
         <!-- Footer Start -->
         <footer>
@@ -586,6 +588,12 @@ function hideChat() {
     case 'course':
       showAnswer('Kami menawarkan berbagai kursus mulai dari bahasa Inggris, programming, design. Silakan cek website kami untuk informasi lebih lengkap.');
       break;
+    case 'study':
+      showAnswer('Kami memiliki kelas belajar mulai dari kelas TK hingga kelas 3 SMA');
+      break;
+      case 'location':
+      showAnswer('Bee Smart Course berlokasi di Sokaraja, Purwokerto. Untuk lokasi akurat silakan klik maps di bagian kontak pada website ini');
+      break; 
     case 'help':
       showAnswer('Tentu, kami siap membantu anda. Silakan menghubungi customer service kami melalui email atau nomor telepon yang tertera di website kami.');
       break;
