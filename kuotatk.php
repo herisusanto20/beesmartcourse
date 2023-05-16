@@ -269,7 +269,7 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaTem == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaTem1 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaTem1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi4.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div>

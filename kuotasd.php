@@ -295,7 +295,7 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaBing == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaBing1 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaBing1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
@@ -306,7 +306,7 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaIP == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaIP1 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaIP1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div>

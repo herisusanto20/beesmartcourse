@@ -37,7 +37,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Mengurangi sisa kuota Matematika
             $sisaKuotaMatematika3--;
         }
-    } elseif ($kursus == 'IPA'  && $jenis_kursus == 'Reguler' && $sisaKuotaIPA2 > 0) {
+    }elseif ($kursus == 'Matematika' && $jenis_kursus == 'Online' && $sisaKuotaMatematika4 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaMatematika4--;
+        }
+    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Reguler' && $sisaKuotaIPA2 > 0) {
         // Memasukkan data pengguna ke dalam tabel
         $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
@@ -46,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Mengurangi sisa kuota IPA
             $sisaKuotaIPA2--;
         }
-    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Reguler' && $sisaKuotaIPA3 > 0) {
+    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Privat' && $sisaKuotaIPA3 > 0) {
         // Memasukkan data pengguna ke dalam tabel
         $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
@@ -54,6 +63,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result) {
             // Mengurangi sisa kuota IPA
             $sisaKuotaIPA3--;
+        }
+    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Online' && $sisaKuotaIPA4 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaIPA4--;
         }
     } elseif ($kursus == 'Desain Grafis'   && $jenis_kursus == 'Reguler' && $sisaKuotaDesain2 > 0) {
         // Memasukkan data pengguna ke dalam tabel
@@ -73,6 +91,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Mengurangi sisa kuota IPA
             $sisaKuotaDesain3--;
         }    
+}elseif ($kursus == 'Desain Grafis'  && $jenis_kursus == 'Online' && $sisaKuotaDesain4 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaDesain4--;
+    }    
 }elseif ($kursus == 'Pemrograman'  && $jenis_kursus == 'Reguler' && $sisaKuotaPem2 > 0) {
     // Memasukkan data pengguna ke dalam tabel
     $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
@@ -91,6 +118,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Mengurangi sisa kuota IPA
         $sisaKuotaPem3--;
     }    
+}elseif ($kursus == 'Pemrograman'  && $jenis_kursus == 'Online' && $sisaKuotaPem4 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaPem4--;
+    }    
 }elseif ($kursus == 'Bahasa Inggris'  && $jenis_kursus == 'Reguler' && $sisaKuotaIng2 > 0) {
     // Memasukkan data pengguna ke dalam tabel
     $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
@@ -108,6 +144,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result) {
         // Mengurangi sisa kuota IPA
         $sisaKuotaIng3--;
+    }    
+}elseif ($kursus == 'Bahasa Inggris'  && $jenis_kursus == 'Online' && $sisaKuotaIng4 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaIng4--;
     }    
 }
 }

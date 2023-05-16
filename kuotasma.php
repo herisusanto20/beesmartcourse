@@ -32,6 +32,16 @@ if ($resultMatematika3) {
 } else {
     $sisaKuotaMatematika3 = 3; // Jika terjadi kesalahan, mengatur sisa kuota Matematika menjadi 5
 }
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Matematika
+$queryMatematika4 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Matematika' AND jenis_kursus = 'Online'";
+$resultMatematika4 = mysqli_query($connection, $queryMatematika4);
+
+if ($resultMatematika4) {
+    $rowMatematika4 = mysqli_fetch_assoc($resultMatematika4);
+    $sisaKuotaMatematika4 = 5 - $rowMatematika4['total']; // Menghitung sisa kuota Matematika
+} else {
+    $sisaKuotaMatematika4 = 5; // Jika terjadi kesalahan, mengatur sisa kuota Matematika menjadi 5
+}
 
 // Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus IPA reguler
 $queryIPA2 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'IPA' AND jenis_kursus = 'Reguler'";
@@ -53,6 +63,16 @@ if ($resultIPA3) {
 } else {
     $sisaKuotaIPA3 = 3; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
 }
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus IPA reguler
+$queryIPA4 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'IPA' AND jenis_kursus = 'Online'";
+$resultIPA4 = mysqli_query($connection, $queryIPA4);
+
+if ($resultIPA4) {
+    $rowIPA4 = mysqli_fetch_assoc($resultIPA4);
+    $sisaKuotaIPA4 = 5 - $rowIPA4['total']; // Menghitung sisa kuota IPA
+} else {
+    $sisaKuotaIPA4 = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
+}
 // Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
 $queryDesain2 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Desain Grafis' AND jenis_kursus = 'Reguler'";
 $resultDesain2 = mysqli_query($connection, $queryDesain2);
@@ -73,37 +93,58 @@ if ($resultDesain3) {
 } else {
     $sisaKuotaDesain3 = 3; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
 }
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Pem reguler
+$queryDesain4 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Desain Grafis' AND jenis_kursus = 'Online'";
+$resultDesain4 = mysqli_query($connection, $queryDesain4);
+
+if ($resultDesain4) {
+    $rowDesain4 = mysqli_fetch_assoc($resultDesain4);
+    $sisaKuotaDesain4 = 5 - $rowDesain4['total']; // Menghitung sisa kuota Desain reguler
+} else {
+    $sisaKuotaDesain4 = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
+}
 // Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
 $queryPem2 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Pemrograman' AND jenis_kursus = 'Reguler'";
 $resultPem2 = mysqli_query($connection, $queryPem2);
 
 if ($resultPem2) {
     $rowPem2 = mysqli_fetch_assoc($resultPem2);
-    $sisaKuotaPem2 = 5 - $rowPem2['total']; // Menghitung sisa kuota Desain reguler
+    $sisaKuotaPem2 = 5 - $rowPem2['total']; // Menghitung sisa kuota 
 } else {
-    $sisaKuotaPem2 = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
+    $sisaKuotaPem2 = 5; // Jika terjadi kesalahan, mengatur sisa kuota 
 }
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus 
 $queryPem3 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Pemrograman' AND jenis_kursus = 'Privat'";
 $resultPem3 = mysqli_query($connection, $queryPem3);
 
 if ($resultPem3) {
     $rowPem3 = mysqli_fetch_assoc($resultPem3);
-    $sisaKuotaPem3 = 3 - $rowPem3['total']; // Menghitung sisa kuota Desain reguler
+    $sisaKuotaPem3 = 3 - $rowPem3['total']; // Menghitung sisa kuota 
 } else {
     $sisaKuotaPem3 = 3; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
 }
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus 
+$queryPem4 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Pemrograman' AND jenis_kursus = 'Online'";
+$resultPem4 = mysqli_query($connection, $queryPem4);
+
+if ($resultPem4) {
+    $rowPem4 = mysqli_fetch_assoc($resultPem4);
+    $sisaKuotaPem4 = 5 - $rowPem4['total']; // Menghitung sisa kuota 
+} else {
+    $sisaKuotaPem4 = 5; // Jika terjadi kesalahan, mengatur sisa kuota 
+}
+
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus 
 $queryIng2 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Bahasa Inggris' AND jenis_kursus = 'Reguler'";
 $resultIng2 = mysqli_query($connection, $queryIng2);
 
 if ($resultIng2) {
     $rowIng2 = mysqli_fetch_assoc($resultIng2);
-    $sisaKuotaIng2 = 5 - $rowIng2['total']; // Menghitung sisa kuota Desain reguler
+    $sisaKuotaIng2 = 5 - $rowIng2['total']; // Menghitung sisa kuota 
 } else {
-    $sisaKuotaIng2 = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
+    $sisaKuotaIng2 = 5; // Jika terjadi kesalahan,
 }
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus inggris privat
 $queryIng3 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Bahasa Inggris' AND jenis_kursus = 'Privat'";
 $resultIng3 = mysqli_query($connection, $queryIng3);
 
@@ -113,44 +154,69 @@ if ($resultIng3) {
 } else {
     $sisaKuotaIng3 = 3; // Jika terjadi kesalahan, mengatur sisa kuota Inggris
 }
+// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus 
+$queryIng4 = "SELECT COUNT(*) AS total FROM tb_data WHERE kursus = 'Bahasa Inggris' AND jenis_kursus = 'Online'";
+$resultIng4 = mysqli_query($connection, $queryIng4);
+
+if ($resultIng4) {
+    $rowIng4 = mysqli_fetch_assoc($resultIng4);
+    $sisaKuotaIng4 = 5 - $rowIng4['total']; // Menghitung sisa kuota 
+} else {
+    $sisaKuotaIng4 = 5; // Jika terjadi kesalahan, 
+}
 
 $sisaKuotaMatematika2 = isset($sisaKuotaMatematika2) ? $sisaKuotaMatematika2 : 5;
 $sisaKuotaMatematika3 = isset($sisaKuotaMatematika3) ? $sisaKuotaMatematika3 : 3;
+$sisaKuotaMatematika4 = isset($sisaKuotaMatematika4) ? $sisaKuotaMatematika4 : 5;
 $sisaKuotaIPA2 = isset($sisaKuotaIPA2) ? $sisaKuotaIPA2 : 5;
 $sisaKuotaIPA3 = isset($sisaKuotaIPA3) ? $sisaKuotaIPA3 : 3;
+$sisaKuotaIPA3 = isset($sisaKuotaIPA4) ? $sisaKuotaIPA4 : 5;
 $sisaKuotaDesain2 = isset($sisaKuotaDesain2) ? $sisaKuotaDesain2 : 5;
 $sisaKuotaDesain3 = isset($sisaKuotaDesain3) ? $sisaKuotaDesain3 : 3;
+$sisaKuotaDesain4 = isset($sisaKuotaDesain4) ? $sisaKuotaDesain4 : 5;
 $sisaKuotaPem2 = isset($sisaKuotaPem2) ? $sisaKuotaPem2 : 5;
 $sisaKuotaPem3 = isset($sisaKuotaPem3) ? $sisaKuotaPem3 : 3;
+$sisaKuotaPem3 = isset($sisaKuotaPem4) ? $sisaKuotaPem4 : 5;
 $sisaKuotaIng2 = isset($sisaKuotaIng2) ? $sisaKuotaIng2 : 5;
 $sisaKuotaIng3 = isset($sisaKuotaIng3) ? $sisaKuotaIng3 : 3;
+$sisaKuotaIng3 = isset($sisaKuotaIng3) ? $sisaKuotaIng3 : 5;
 
 
 session_start();
 $_SESSION['sisaKuotaMatematika2'] = $sisaKuotaMatematika2;
 $_SESSION['sisaKuotaMatematika3'] = $sisaKuotaMatematika3;
+$_SESSION['sisaKuotaMatematika4'] = $sisaKuotaMatematika4;
 $_SESSION['sisaKuotaIPA2'] = $sisaKuotaIPA2;
 $_SESSION['sisaKuotaIPA3'] = $sisaKuotaIPA3;
+$_SESSION['sisaKuotaIPA4'] = $sisaKuotaIPA4;
 $_SESSION['sisaKuotaDesain2'] = $sisaKuotaDesain2;
 $_SESSION['sisaKuotaDesain3'] = $sisaKuotaDesain3;
+$_SESSION['sisaKuotaDesain4'] = $sisaKuotaDesain4;
 $_SESSION['sisaKuotaDesain2'] = $sisaKuotaPem2;
 $_SESSION['sisaKuotaDesain3'] = $sisaKuotaPem3;
+$_SESSION['sisaKuotaDesain4'] = $sisaKuotaPem4;
 $_SESSION['sisaKuotaIng2'] = $sisaKuotaIng2;
 $_SESSION['sisaKuotaIng3'] = $sisaKuotaIng3;
+$_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
 
 ?>
 <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabledMatematika2 = $sisaKuotaMatematika2 == 0 ? 'disabled' : '';
         $isDisabledMatematika3 = $sisaKuotaMatematika3 == 0 ? 'disabled' : '';
+        $isDisabledMatematika4 = $sisaKuotaMatematika4 == 0 ? 'disabled' : '';
         $isDisabledIPA2 = $sisaKuotaIPA2 == 0 ? 'disabled' : '';
         $isDisabledIPA3 = $sisaKuotaIPA3 == 0 ? 'disabled' : '';
+        $isDisabledIPA4 = $sisaKuotaIPA4 == 0 ? 'disabled' : '';
         $isDisabledDesain2 = $sisaKuotaDesain2 == 0 ? 'disabled' : '';
         $isDisabledDesain3 = $sisaKuotaDesain3 == 0 ? 'disabled' : '';
+        $isDisabledDesain4 = $sisaKuotaDesain4 == 0 ? 'disabled' : '';
         $isDisabledPem2 = $sisaKuotaPem2 == 0 ? 'disabled' : '';
         $isDisabledPem3 = $sisaKuotaPem3 == 0 ? 'disabled' : '';
-        // $sisaKuotaIng = $sisaKuotaIng == 0 ? 'disabled' : '';
-        // $sisaKuotaIng1 = $sisaKuotaIng1 == 0 ? 'disabled' : '';
+        $isDisabledPem4 = $sisaKuotaPem4 == 0 ? 'disabled' : '';
+        // $sisaKuotaIng2 = $sisaKuotaIng2 == 0 ? 'disabled' : '';
+        // $sisaKuotaIng3 = $sisaKuotaIng3 == 0 ? 'disabled' : '';
+        // $sisaKuotaIng4 = $sisaKuotaIng4 == 0 ? 'disabled' : '';
     ?>
 
 
@@ -332,56 +398,72 @@ $_SESSION['sisaKuotaIng3'] = $sisaKuotaIng3;
 <br>
 <p>
     Kuota Reguler: <?php echo ($sisaKuotaMatematika2 <= 0) ? 'Tidak tersedia' : $sisaKuotaMatematika2 . ' orang'; ?><br>
-    Kuota Privat: <?php echo ($sisaKuotaMatematika3 <= 0) ? 'Tidak tersedia' : $sisaKuotaMatematika3 . ' orang'; ?>
+    Kuota Privat: <?php echo ($sisaKuotaMatematika3 <= 0) ? 'Tidak tersedia' : $sisaKuotaMatematika3 . ' orang'; ?> <br>
+    Kuota Online: <?php echo ($sisaKuotaMatematika4 <= 0) ? 'Tidak tersedia' : $sisaKuotaMatematika4 . ' orang'; ?> <br>
 </p>
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaMatematika2 == 0 ? 'disabled' : '';
         $isDisabled = $sisaKuotaMatematika3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaMatematika4 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
 <div class="container">
     <h2>Keterangan Kuota IPA</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaIPA2 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA2 . ' orang'; ?><br>
-    Kuota Privat: <?php echo ($sisaKuotaIPA3 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA3 . ' orang'; ?></p>
+    Kuota Privat: <?php echo ($sisaKuotaIPA3 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA3 . ' orang'; ?> <br>
+    Kuota Online: <?php echo ($sisaKuotaIPA4 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA4 . ' orang'; ?> <br>
+</p>
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaIPA2 == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaIPA3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaIPA3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaIPA4 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
 <div class="container">
     <h2>Keterangan Kuota Desain Grafis</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaDesain2 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain2 . ' orang'; ?><br>
-    Kuota Privat: <?php echo ($sisaKuotaDesain3 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain3 . ' orang'; ?></p>
+    Kuota Privat: <?php echo ($sisaKuotaDesain3 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain3 . ' orang'; ?> <br>
+    Kuota Online: <?php echo ($sisaKuotaDesain4 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain4 . ' orang'; ?>
+</p>
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaDesain2 == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaDesain3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaDesain3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaDesain4 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
 <div class="container">
     <h2>Keterangan Kuota Pemrograman</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaPem2 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem2 . ' orang'; ?><br>
-    Kuota Privat: <?php echo ($sisaKuotaPem3 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem3 . ' orang'; ?></p>
+    Kuota Privat: <?php echo ($sisaKuotaPem3 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem3 . ' orang'; ?> <br>
+    Kuota Online: <?php echo ($sisaKuotaPem4 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem4 . ' orang'; ?>
+
+</p>
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaPem2 == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaPem3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaPem3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaPem4 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
 <div class="container">
     <h2>Keterangan Kuota Bahasa Inggris</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaIng2 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng2 . ' orang'; ?><br>
-    Kuota Privat: <?php echo ($sisaKuotaIng3 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng3 . ' orang'; ?></p>
+    Kuota Privat: <?php echo ($sisaKuotaIng3 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng3 . ' orang'; ?> <br>
+    Kuota Privat: <?php echo ($sisaKuotaIng4 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng4 . ' orang'; ?> <br>
+
+</p>
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaIng2 == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaIng3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaIng3 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaIng4 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> 

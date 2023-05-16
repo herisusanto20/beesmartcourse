@@ -348,7 +348,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaIPA == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaIPA1 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaIPA1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi2.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
@@ -359,7 +359,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaDesain == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaDesain1 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaDesain1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi2.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
@@ -370,7 +370,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaPem == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaPem1 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaPem1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi2.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> <br> <br>
@@ -381,7 +381,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaIng == 0 ? 'disabled' : '';
-        $isDisabled1 = $sisaKuotaIng1 == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaIng1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi2.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div> 
