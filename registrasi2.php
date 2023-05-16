@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Mengurangi sisa kuota IPA
             $sisaKuotaIPA1--;
         }
-    } elseif ($kursus == 'Desain Grafis' && $sisaKuotaDesain > 0) {
+    } elseif ($kursus == 'Desain Grafis'   && $jeniskursussmp == 'Reguler' && $sisaKuotaDesain > 0) {
         // Memasukkan data pengguna ke dalam tabel
         $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
@@ -64,7 +64,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Mengurangi sisa kuota IPA
             $sisaKuotaDesain--;
         }
-    }
+    }elseif ($kursus == 'Desain Grafis'  && $jeniskursussmp == 'Privat' && $sisaKuotaDesain1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaDesain1--;
+        }    
+}elseif ($kursus == 'Pemrograman'  && $jeniskursussmp == 'Reguler' && $sisaKuotaPem > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaPem--;
+    }    
+}elseif ($kursus == 'Pemrograman'  && $jeniskursussmp == 'Privat' && $sisaKuotaPem > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaPem--;
+    }    
+}elseif ($kursus == 'Bahasa Inggris'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIng > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaIng--;
+    }    
+}elseif ($kursus == 'Bahasa Inggris'  && $jeniskursussmp == 'Privat' && $sisaKuotaIng1 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaIng1--;
+    }    
+}
 }
 ?>
 
@@ -138,14 +183,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <option>IPA</option>
                         </optgroup>
                         </select >
-                        <select  name="jeniskursussmp" class="input-controll" required>
-                        <optgroup label="Jenis Kursus">
-                            <!-- <option>--Jenis Kursus---</option> -->
-                            <option>Reguler</option>
-                            <option>Privat</option>
-                            <option>Online</option>
-                        </optgroup>
-                        </select >
+                        <?php
+// Inisialisasi variabel sisa kuota
+$sisaKuotaMatematika = 5; // Contoh nilai awal, bisa diganti sesuai kebutuhan
+$sisaKuotaMatematika1 = 3; // Contoh nilai awal, bisa diganti sesuai kebutuhan
+
+// ...
+?>
+                        <select name="jeniskursussmp" class="input-controll" required>
+    <optgroup label="Jenis Kursus">
+        <option <?php echo ($sisaKuotaMatematika > 5) ? 'disabled' : ''; ?>>Reguler</option>
+        <option <?php echo ($sisaKuotaMatematika1 > 3) ? 'disabled' : ''; ?>>Privat</option>
+    </optgroup>
+</select>
+
                         <!-- <p>Tanggal Masuk</p>
                         <input type="date" name="tanggalmasuk" placeholder="Tanggalmasuk" class="input-controll" required> <br> -->
                         <!-- <input type="text" name="jenis_kursus" placeholder="Jenis Kursus" class="input-controll" required> -->
@@ -193,5 +244,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <!-- Script buat hamburger -->
           <script src="js/script.js"></script>
 </body>
-
 </html>

@@ -1,4 +1,117 @@
+<?php
+// Koneksi ke database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registrasi";
 
+// Membuat koneksi
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if (!$connection) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Memeriksa apakah formulir dikirim
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil data yang diisi oleh pengguna
+    $kursus = $_POST['kursus'];
+    
+    // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
+    if ($kursus == 'Matematika' && $jenis_kursus == 'Reguler' && $sisaKuotaMatematika2 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaMatematika2--;
+        }
+    }elseif ($kursus == 'Matematika' && $jenis_kursus == 'Privat' && $sisaKuotaMatematika3 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaMatematika3--;
+        }
+    } elseif ($kursus == 'IPA'  && $jenis_kursus == 'Reguler' && $sisaKuotaIPA2 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaIPA2--;
+        }
+    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Reguler' && $sisaKuotaIPA3 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaIPA3--;
+        }
+    } elseif ($kursus == 'Desain Grafis'   && $jenis_kursus == 'Reguler' && $sisaKuotaDesain2 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaDesain2--;
+        }
+    }elseif ($kursus == 'Desain Grafis'  && $jenis_kursus == 'Privat' && $sisaKuotaDesain3 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota IPA
+            $sisaKuotaDesain3--;
+        }    
+}elseif ($kursus == 'Pemrograman'  && $jenis_kursus == 'Reguler' && $sisaKuotaPem2 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaPem2--;
+    }    
+}elseif ($kursus == 'Pemrograman'  && $jenis_kursus == 'Privat' && $sisaKuotaPem3 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaPem3--;
+    }    
+}elseif ($kursus == 'Bahasa Inggris'  && $jenis_kursus == 'Reguler' && $sisaKuotaIng2 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaIng2--;
+    }    
+}elseif ($kursus == 'Bahasa Inggris'  && $jenis_kursus == 'Privat' && $sisaKuotaIng3 > 0) {
+    // Memasukkan data pengguna ke dalam tabel
+    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
+    $result = mysqli_query($connection, $query);
+    
+    if ($result) {
+        // Mengurangi sisa kuota IPA
+        $sisaKuotaIng3--;
+    }    
+}
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,6 +222,7 @@
                                     } else {
                                                 echo "Data gagal disimpan ke database: " . mysqli_error($connection);
                                             }
+                                            echo "<meta http-equiv=refresh content=0.1;URL='kuotasma.php'>";
                         }
                         ?>
                 </div>

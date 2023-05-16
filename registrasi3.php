@@ -1,4 +1,82 @@
+<?php
+// Koneksi ke database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registrasi";
 
+// Membuat koneksi
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if (!$connection) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Memeriksa apakah formulir dikirim
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil data yang diisi oleh pengguna
+    $kursus = $_POST['kursussd'];
+    
+    // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
+    if ($kursus == 'Matematika' && $jeniskursussd == 'Reguler' && $sisaKuotaMat > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaMat--;
+        }
+    }elseif ($kursus == 'Matematika' && $jeniskursussd == 'Privat' && $sisaKuotaMat1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaMat1--;
+        }
+    }elseif ($kursus == 'Bahasa Inggris' && $jeniskursussd == 'Reguler' && $sisaKuotaBing > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaBing--;
+        }
+    }elseif ($kursus == 'Bahasa Inggris' && $jeniskursussd == 'Privat' && $sisaKuotaBing1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaBing1--;
+        }
+    }elseif ($kursus == 'IPA' && $jeniskursussd == 'Reguler' && $sisaKuotaIP > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaIP--;
+        }
+    }
+    elseif ($kursus == 'IPA' && $jeniskursussd == 'Privat' && $sisaKuotaIP1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaIP1--;
+        }
+    }
+}
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,8 +145,6 @@
                             <option>Matematika</option>
                             <option>Bahasa Inggris</option>
                             <option>IPA</option>
-                            <option>Calistung</option>
-                            <option>Tematik</option>
                         </optgroup>
                         </select >
                         <select  name="jeniskursussd" class="input-controll" required>
@@ -76,7 +152,6 @@
                             <!-- <option>--Jenis Kursus---</option> -->
                             <option>Reguler</option>
                             <option>Privat</option>
-                            <option>Online</option>
                         </optgroup>
                         </select >
                         <!-- <p>Tanggal Masuk</p>
@@ -112,6 +187,7 @@
                                     } else {
                                                 echo "Data gagal disimpan ke database: " . mysqli_error($connection);
                                             }
+                                            echo "<meta http-equiv=refresh content=0.1;URL='kuotasd.php'>";
                         }
                         ?>
                 </div>

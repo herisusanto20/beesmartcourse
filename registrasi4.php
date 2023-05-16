@@ -1,4 +1,64 @@
+<!-- kuota -->
+<?php
+// Koneksi ke database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registrasi";
 
+// Membuat koneksi
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if (!$connection) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Memeriksa apakah formulir dikirim
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil data yang diisi oleh pengguna
+    $kursus = $_POST['kursustk'];
+    
+    // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
+    if ($kursus == 'Calistung' && $jeniskursustk == 'Reguler' && $sisaKuotaCal > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_tk (kursustk) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaCal--;
+        }
+    }elseif ($kursus == 'Calistung' && $jeniskursustk == 'Privat' && $sisaKuotaCal1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_tk (kursustk) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaCal1--;
+        }
+    }elseif ($kursus == 'Tematik' && $jeniskursustk == 'Reguler' && $sisaKuotaTem > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_tk (kursustk) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaTem--;
+        }
+    }elseif ($kursus == 'Tematik' && $jeniskursustk == 'Privat' && $sisaKuotaTem1 > 0) {
+        // Memasukkan data pengguna ke dalam tabel
+        $query = "INSERT INTO tb_tk (kursustk) VALUES ('$kursus')";
+        $result = mysqli_query($connection, $query);
+        
+        if ($result) {
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaTem1--;
+        }
+    }
+}
+    ?>
 
 
 <!DOCTYPE html>
@@ -100,34 +160,10 @@ if (isset($_POST['proses'])) {
     } else {
         echo "Data gagal disimpan ke database: " . mysqli_error($connection);
     }
+    echo "<meta http-equiv=refresh content=0.1;URL='kuotatk.php'>";
 }
 ?>
-<!-- kuota -->
-<?php
-// Mengecek apakah formulir telah dikirim
-if (isset($_POST['proses'])) {
-    // Kode koneksi ke database
-    
-    // Kode penyimpanan data formulir ke tabel tb_tk
-    
-    // Mengurangi kuota
-    $query = "SELECT COUNT(*) AS total FROM tb_tk";
-    $result = mysqli_query($connection, $query);
 
-    if ($result) {
-        $row = mysqli_fetch_assoc($result);
-        $sisaKuota = 5 - $row['total']; // Menghitung sisa kuota
-
-        // Mengurangi kuota jika masih ada sisa
-        if ($sisaKuota > 0) {
-            $query = "UPDATE tb_kuota SET sisa_kuota = sisa_kuota - 1";
-            mysqli_query($connection, $query);
-        }
-    }
-}
-
-mysqli_close($connection);
-?>
 
                 </div>
             </div>

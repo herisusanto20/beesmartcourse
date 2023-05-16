@@ -12,20 +12,94 @@ $connection = mysqli_connect($servername, $username, $password, $dbname);
 if (!$connection) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
+// Menghitung jumlah baris yang terisi dalam tabel tb_tk untuk kursus matematika Reguler
+$queryMat = "SELECT COUNT(*) AS total FROM tb_sd WHERE kursussd = 'Matematika' AND jeniskursussd = 'Reguler'";
+$resultMat = mysqli_query($connection, $queryMat);
 
-// Menghitung jumlah baris yang terisi dalam tabel tb_sd
-$query = "SELECT COUNT(*) AS total FROM tb_sd";
-$result = mysqli_query($connection, $query);
-
-if ($result) {
-    $row = mysqli_fetch_assoc($result);
-    $sisaKuota = 5 - $row['total']; // Menghitung sisa kuota
+if ($resultMat) {
+    $rowMat = mysqli_fetch_assoc($resultMat);
+    $sisaKuotaMat = 5 - $rowMat['total']; // Menghitung sisa kuota Matematika
 } else {
-    $sisaKuota = 5; // Jika terjadi kesalahan, mengatur sisa kuota menjadi 5
+    $sisaKuotaMat = 5; // Jika terjadi kesalahan, mengatur sisa kuota Matematika menjadi 5
+}
+// Menghitung jumlah baris yang terisi dalam tabel tb_tk untuk kursus Calistung Reguler
+$queryMat1 = "SELECT COUNT(*) AS total FROM tb_sd WHERE kursussd = 'Matematika' AND jeniskursussd = 'Privat'";
+$resultMat1 = mysqli_query($connection, $queryMat1);
+
+if ($resultMat1) {
+    $rowMat1 = mysqli_fetch_assoc($resultMat1);
+    $sisaKuotaMat1 = 3 - $rowMat1['total']; // Menghitung sisa kuota Matematika
+} else {
+    $sisaKuotaMat1 = 3; // Jika terjadi kesalahan, mengatur sisa kuota Matematika menjadi 5
+}
+// Menghitung jumlah baris yang terisi dalam tabel tb_tk untuk kursus INGGRIS SD Reguler
+$queryBing = "SELECT COUNT(*) AS total FROM tb_sd WHERE kursussd = 'Bahasa Inggris' AND jeniskursussd = 'Reguler'";
+$resultBing = mysqli_query($connection, $queryBing);
+
+if ($resultBing) {
+    $rowBing = mysqli_fetch_assoc($resultBing);
+    $sisaKuotaBing = 5 - $rowBing['total']; // Menghitung sisa kuota 
+} else {
+    $sisaKuotaBing = 5; // Jika terjadi kesalahan, 
+}
+// Menghitung jumlah baris yang terisi dalam tabel tb_tk untuk kursus INGGRIS SD Reguler
+$queryBing1 = "SELECT COUNT(*) AS total FROM tb_sd WHERE kursussd = 'Bahasa Inggris' AND jeniskursussd = 'Privat'";
+$resultBing1 = mysqli_query($connection, $queryBing1);
+
+if ($resultBing1) {
+    $rowBing1 = mysqli_fetch_assoc($resultBing1);
+    $sisaKuotaBing1 = 3 - $rowBing1['total']; // Menghitung sisa kuota 
+} else {
+    $sisaKuotaBing1 = 3; // Jika terjadi kesalahan, 
+}
+// Menghitung jumlah baris yang terisi dalam tabel tb_tk untuk kursus IPA Reguler
+$queryIP = "SELECT COUNT(*) AS total FROM tb_sd WHERE kursussd = 'IPA' AND jeniskursussd = 'Reguler'";
+$resultIP = mysqli_query($connection, $queryIP);
+
+if ($resultIP) {
+    $rowIP = mysqli_fetch_assoc($resultIP);
+    $sisaKuotaIP = 5 - $rowIP['total']; // Menghitung sisa kuota 
+} else {
+    $sisaKuotaIP = 5; // Jika terjadi kesalahan, mengatur sisa kuota 
+}
+// Menghitung jumlah baris yang terisi dalam tabel tb_tk untuk kursus IPA Privat
+$queryIP1 = "SELECT COUNT(*) AS total FROM tb_sd WHERE kursussd = 'IPA' AND jeniskursussd = 'Privat'";
+$resultIP1 = mysqli_query($connection, $queryIP1);
+
+if ($resultIP1) {
+    $rowIP1 = mysqli_fetch_assoc($resultIP1);
+    $sisaKuotaIP1 = 3 - $rowIP1['total']; // Menghitung sisa kuota 
+} else {
+    $sisaKuotaIP1 = 3; // Jika terjadi kesalahan, mengatur sisa kuota 
 }
 
-mysqli_close($connection);
+
+
+$sisaKuotaMat = isset($sisaKuotaMat) ? $sisaKuotaMat : 5;
+$sisaKuotaMat1 = isset($sisaKuotaMat1) ? $sisaKuotaMat1 : 3;
+$sisaKuotaBing = isset($sisaKuotaBing) ? $sisaKuotaBing : 5;
+$sisaKuotaBing1 = isset($sisaKuotaBing1) ? $sisaKuotaBing1 : 3;
+$sisaKuotaIP = isset($sisaKuotaIP) ? $sisaKuotaIP : 5;
+$sisaKuotaIP1 = isset($sisaKuotaIP1) ? $sisaKuotaIP1 : 3;
+
+session_start();
+$_SESSION['sisaKuotaMat'] = $sisaKuotaMat;
+$_SESSION['sisaKuotaMat1'] = $sisaKuotaMat1;
+$_SESSION['sisaKuotaBing'] = $sisaKuotaBing;
+$_SESSION['sisaKuotaBing1'] = $sisaKuotaBing1;
+$_SESSION['sisaKuotaIP'] = $sisaKuotaIP;
+$_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
+
 ?>
+<?php
+        // Menentukan apakah tombol harus dinonaktifkan
+        $isDisabledMat = $sisaKuotaMat == 0 ? 'disabled' : '';
+        $isDisabledMat1 = $sisaKuotaMat1 == 0 ? 'disabled' : '';
+        $isDisabledBing = $sisaKuotaBing == 0 ? 'disabled' : '';
+        $isDisabledBing1 = $sisaKuotaBing1 == 0 ? 'disabled' : '';
+        $isDisabledIP = $sisaKuotaIP == 0 ? 'disabled' : '';
+        $isDisabledIP1 = $sisaKuotaIP1 == 0 ? 'disabled' : '';
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -200,15 +274,44 @@ mysqli_close($connection);
             </div>
         </nav>
         <!-- Navbar End -->
-<div class="container">
-    <h2>Keterangan Kuota</h2>
-    <p>Sisa kuota: <?php echo $sisaKuota; ?> orang</p>
+        <div class="container">
+<h2>Keterangan Kuota Matematika</h2>
+<br>
+<p>
+    Kuota Reguler: <?php echo ($sisaKuotaMat <= 0) ? 'Tidak tersedia' : $sisaKuotaMat . ' orang'; ?><br>
+    Kuota Privat: <?php echo ($sisaKuotaMat1 <= 0) ? 'Tidak tersedia' : $sisaKuotaMat1 . ' orang'; ?>
+</p>
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
-        $isDisabled = $sisaKuota == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaMat == 0 ? 'disabled' : '';
+        $isDisabled = $sisaKuotaMat1 == 0 ? 'disabled' : '';
+    ?>
+    <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+</div> <br> <br>
+<div class="container">
+    <h2>Keterangan Kuota Bahasa Inggris</h2> <br>
+    <p>Kuota Reguler: <?php echo ($sisaKuotaBing <= 0) ? 'Tidak tersedia' : $sisaKuotaBing . ' orang'; ?><br>
+    Kuota Privat: <?php echo ($sisaKuotaBing1 <= 0) ? 'Tidak tersedia' : $sisaKuotaBing1 . ' orang'; ?></p>
+    <?php
+        // Menentukan apakah tombol harus dinonaktifkan
+        $isDisabled = $sisaKuotaBing == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaBing1 == 0 ? 'disabled' : '';
+    ?>
+    <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+</div> <br> <br>
+<div class="container">
+    <h2>Keterangan Kuota IPA</h2> <br>
+    <p>Kuota Reguler: <?php echo ($sisaKuotaIP <= 0) ? 'Tidak tersedia' : $sisaKuotaIP . ' orang'; ?><br>
+    Kuota Privat: <?php echo ($sisaKuotaIP1 <= 0) ? 'Tidak tersedia' : $sisaKuotaIP1 . ' orang'; ?></p>
+    <?php
+        // Menentukan apakah tombol harus dinonaktifkan
+        $isDisabled = $sisaKuotaIP == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaIP1 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
 </div>
+
+
         <!-- chatbot start -->
                 <!-- chatbot -->
                 <div class="chat-button" onclick="showChat()">
