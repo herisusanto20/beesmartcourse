@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran SD</title>
+    <title>Pendaftaran Matematika Reguler</title>
                 <!-- Fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,8 +125,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                        <form action="" method="POST" enctype="multipart/form-data">
                         <!-- <input type="text" name="data_id" placeholder="ID Anda" class="input-controll" required> <br> -->
                         <input type="text" name="namasd" placeholder="Nama Lengkap" class="input-controll" required> <br>
-                        <p>Tanggal Pendaftaran</p>
-                        <input type="date" name="tanggalsd" placeholder="Tanggal" class="input-controll" required> <br>
+                        
+                        <script>
+    function setTodayDate() {
+        var today = new Date();
+        var day = String(today.getDate()).padStart(2, '0');
+        var month = String(today.getMonth() + 1).padStart(2, '0');
+        var year = today.getFullYear();
+        var todayDate = year + '-' + month + '-' + day;
+
+        document.getElementById("tanggalsd").setAttribute("value", todayDate);
+    }
+</script>
+
+<p>Tanggal Pendaftaran</p>
+<input type="date" name="tanggalsd" id="tanggalsd" placeholder="Tanggal" class="input-controll" readonly required> <br>
+
+<script>
+    setTodayDate();
+</script>
                         <select name="kelassd" class="input-controll" required>
                         <optgroup label="Kelas">
                             <option>1</option>
@@ -137,21 +154,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <option>6</option>
                         </optgroup>
                         </select>
-                        <input type="text" name="nohandphonesd" placeholder="No Handphone, contoh : 62819157788649" class="input-controll" required>
+                        <input type="text" name="nohandphonesd" id="nohandphonesd" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
+<span id="error-message" class="error-message"></span>
+
+<script>
+   var input = document.getElementById('nohandphonesd');
+var errorMessage = document.getElementById('error-message');
+
+input.addEventListener('input', function() {
+  var pattern = /^[0-9]{10,14}$/;
+  var isValid = pattern.test(input.value);
+
+  if (!isValid) {
+    errorMessage.textContent = 'Nomor handphone harus terdiri dari 10 hingga 14 digit angka';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+});
+
+</script>
                         <input type="text" name="alamatsd" placeholder="Alamat" class="input-controll" required>
-                        <input type="text" name="statussd" placeholder="Keterangan" class="input-controll" required>
+                        <input type="hidden" name="statussd" placeholder="Keterangan" class="input-controll" required>
                         <select  name="kursussd" class="input-controll" required>
                         <optgroup label="Kursus">
                             <option>Matematika</option>
-                            <option>Bahasa Inggris</option>
-                            <option>IPA</option>
                         </optgroup>
                         </select >
                         <select  name="jeniskursussd" class="input-controll" required>
                         <optgroup label="Jenis Kursus">
                             <!-- <option>--Jenis Kursus---</option> -->
                             <option>Reguler</option>
-                            <option>Privat</option>
                         </optgroup>
                         </select >
                         <!-- <p>Tanggal Masuk</p>

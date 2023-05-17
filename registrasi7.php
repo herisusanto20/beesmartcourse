@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <section>
         <div class="sections">
                 <div class="containers">
-                    <h3>Pendaftaran TK/PAUD</h3>
+                    <h3>Pendaftaran TK</h3>
                     <div class="boxsss">
                        <form action="" method="POST" enctype="multipart/form-data">
                         <!-- <input type="text" name="data_id" placeholder="ID Anda" class="input-controll" required> <br> -->

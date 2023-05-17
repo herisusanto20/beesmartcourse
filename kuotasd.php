@@ -122,25 +122,59 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
         <link rel="stylesheet" href="css/style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin-top: 7rem;
-        }
+    font-family: "Poppins", sans-serif;
+    background-color: #f5f5f5;
+    margin-top: 7rem;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
-        .container {
-            
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.container {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tampilan untuk handphone */
+@media (max-width: 767px) {
+    body {
+        margin-top: 3rem;
+        flex-direction: column;
+    }
+
+    .container {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+}
+
+/* Tampilan untuk tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        margin-top: 5rem;
+    }
+}
+
+/* Tampilan untuk komputer */
+@media (min-width: 992px) {
+    body {
+        margin-top: 7rem;
+    }
+}
+
 
         h2 {
+            font-size: 20px;
             margin-top: 0;
         }
 
         p {
+            font-size: 15px;
             margin-bottom: 20px;
         }
 
@@ -286,7 +320,8 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
         $isDisabled = $sisaKuotaMat == 0 ? 'disabled' : '';
         $isDisabled = $sisaKuotaMat1 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasi3_.php" class="button <?php echo $isDisabled; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
     <h2>Keterangan Kuota Bahasa Inggris</h2> <br>
@@ -297,7 +332,8 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
         $isDisabled = $sisaKuotaBing == 0 ? 'disabled' : '';
         $isDisabled = $sisaKuotaBing1 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasi3__.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasi3___.php" class="button <?php echo $isDisabled; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
     <h2>Keterangan Kuota IPA</h2> <br>
@@ -308,7 +344,8 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
         $isDisabled = $sisaKuotaIP == 0 ? 'disabled' : '';
         $isDisabled = $sisaKuotaIP1 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi3.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasi3____.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasi3_____.php" class="button <?php echo $isDisabled; ?>">Daftar Privat</a>
 </div>
 
 

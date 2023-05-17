@@ -16,104 +16,67 @@ if (!$connection) {
 // Memeriksa apakah formulir dikirim
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mengambil data yang diisi oleh pengguna
-    $kursus = $_POST['kursussmp'];
+    $kursus = $_POST['kursussd'];
     
     // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
-    if ($kursus == 'Matematika' && $jeniskursussmp == 'Reguler' && $sisaKuotaMatematika > 0) {
+    if ($kursus == 'Matematika' && $jeniskursussd == 'Reguler' && $sisaKuotaMat > 0) {
         // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
         
         if ($result) {
             // Mengurangi sisa kuota Matematika
-            $sisaKuotaMatematika--;
+            $sisaKuotaMat--;
         }
-    }elseif ($kursus == 'Matematika' && $jeniskursussmp == 'Privat' && $sisaKuotaMatematika1 > 0) {
+    }elseif ($kursus == 'Matematika' && $jeniskursussd == 'Privat' && $sisaKuotaMat1 > 0) {
         // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
         
         if ($result) {
             // Mengurangi sisa kuota Matematika
-            $sisaKuotaMatematika1--;
+            $sisaKuotaMat1--;
         }
-    } elseif ($kursus == 'IPA'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIPA > 0) {
+    }elseif ($kursus == 'Bahasa Inggris' && $jeniskursussd == 'Reguler' && $sisaKuotaBing > 0) {
         // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
         
         if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaIPA--;
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaBing--;
         }
-    }elseif ($kursus == 'IPA'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIPA1 > 0) {
+    }elseif ($kursus == 'Bahasa Inggris' && $jeniskursussd == 'Privat' && $sisaKuotaBing1 > 0) {
         // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
         
         if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaIPA1--;
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaBing1--;
         }
-    } elseif ($kursus == 'Desain Grafis'   && $jeniskursussmp == 'Reguler' && $sisaKuotaDesain > 0) {
+    }elseif ($kursus == 'IPA' && $jeniskursussd == 'Reguler' && $sisaKuotaIP > 0) {
         // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
         
         if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaDesain--;
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaIP--;
         }
-    }elseif ($kursus == 'Desain Grafis'  && $jeniskursussmp == 'Privat' && $sisaKuotaDesain1 > 0) {
+    }
+    elseif ($kursus == 'IPA' && $jeniskursussd == 'Privat' && $sisaKuotaIP1 > 0) {
         // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
+        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
         $result = mysqli_query($connection, $query);
         
         if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaDesain1--;
-        }    
-}elseif ($kursus == 'Pemrograman'  && $jeniskursussmp == 'Reguler' && $sisaKuotaPem > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaPem--;
-    }    
-}elseif ($kursus == 'Pemrograman'  && $jeniskursussmp == 'Privat' && $sisaKuotaPem > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaPem--;
-    }    
-}elseif ($kursus == 'Bahasa Inggris'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIng > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaIng--;
-    }    
-}elseif ($kursus == 'Bahasa Inggris'  && $jeniskursussmp == 'Privat' && $sisaKuotaIng1 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaIng1--;
-    }    
+            // Mengurangi sisa kuota Matematika
+            $sisaKuotaIP1--;
+        }
+    }
 }
-}
-?>
-
-
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -121,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Matematika Reguler</title>
+    <title>Pendaftaran IPA Privat</title>
                 <!-- Fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,11 +120,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <section>
         <div class="sections">
                 <div class="containers">
-                    <h3>Pendaftaran SMP</h3>
+                    <h3>Pendaftaran SD</h3>
                     <div class="boxsss">
                        <form action="" method="POST" enctype="multipart/form-data">
                         <!-- <input type="text" name="data_id" placeholder="ID Anda" class="input-controll" required> <br> -->
-                        <input type="text" name="namasmp" placeholder="Nama Lengkap" class="input-controll" required> <br>
+                        <input type="text" name="namasd" placeholder="Nama Lengkap" class="input-controll" required> <br>
+                        
                         <script>
     function setTodayDate() {
         var today = new Date();
@@ -170,28 +134,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var year = today.getFullYear();
         var todayDate = year + '-' + month + '-' + day;
 
-        document.getElementById("tanggalsmp").setAttribute("value", todayDate);
+        document.getElementById("tanggalsd").setAttribute("value", todayDate);
     }
 </script>
 
 <p>Tanggal Pendaftaran</p>
-<input type="date" name="tanggalsmp" id="tanggalsmp" placeholder="Tanggal" class="input-controll" readonly required> <br>
+<input type="date" name="tanggalsd" id="tanggalsd" placeholder="Tanggal" class="input-controll" readonly required> <br>
 
 <script>
     setTodayDate();
 </script>
-                        <select name="kelassmp" class="input-controll" required>
+                        <select name="kelassd" class="input-controll" required>
                         <optgroup label="Kelas">
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
                         </optgroup>
                         </select>
-                        <input type="text" name="nohandphonesmp" id="nohandphonesmp" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
+                        <input type="text" name="nohandphonesd" id="nohandphonesd" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
 <span id="error-message" class="error-message"></span>
 
 <script>
-   var input = document.getElementById('nohandphonesmp');
+   var input = document.getElementById('nohandphonesd');
 var errorMessage = document.getElementById('error-message');
 
 input.addEventListener('input', function() {
@@ -208,26 +175,19 @@ input.addEventListener('input', function() {
 });
 
 </script>
-                        <input type="text" name="alamatsmp" placeholder="Alamat" class="input-controll" required>
-                        <input type="hidden" name="statussmp" placeholder="Keterangan Tambahan" class="input-controll" required>
-                        <select  name="kursussmp" class="input-controll" required>
+                        <input type="text" name="alamatsd" placeholder="Alamat" class="input-controll" required>
+                        <input type="hidden" name="statussd" placeholder="Keterangan" class="input-controll" required>
+                        <select  name="kursussd" class="input-controll" required>
                         <optgroup label="Kursus">
-                            <option>Matematika</option>
+                            <option>IPA</option>
                         </optgroup>
                         </select >
-                        <?php
-// Inisialisasi variabel sisa kuota
-$sisaKuotaMatematika = 5; // Contoh nilai awal, bisa diganti sesuai kebutuhan
-$sisaKuotaMatematika1 = 3; // Contoh nilai awal, bisa diganti sesuai kebutuhan
-
-// ...
-?>
-                        <select name="jeniskursussmp" class="input-controll" required>
-    <optgroup label="Jenis Kursus">
-        <option <?php echo ($sisaKuotaMatematika > 5) ? 'disabled' : ''; ?>>Reguler</option>
-    </optgroup>
-</select>
-
+                        <select  name="jeniskursussd" class="input-controll" required>
+                        <optgroup label="Jenis Kursus">
+                            <!-- <option>--Jenis Kursus---</option> -->
+                            <option>Privat</option>
+                        </optgroup>
+                        </select >
                         <!-- <p>Tanggal Masuk</p>
                         <input type="date" name="tanggalmasuk" placeholder="Tanggalmasuk" class="input-controll" required> <br> -->
                         <!-- <input type="text" name="jenis_kursus" placeholder="Jenis Kursus" class="input-controll" required> -->
@@ -244,35 +204,60 @@ $sisaKuotaMatematika1 = 3; // Contoh nilai awal, bisa diganti sesuai kebutuhan
                         // membuat koneksi
                         $connection = mysqli_connect($servername, $username, $password, $dbname);
                         if (isset($_POST['proses'])) {
-                             $namasmp = $_POST['namasmp'];
-                             $tanggalsmp = $_POST['tanggalsmp'];
-                             $kelassmp = $_POST['kelassmp'];
-                             $nohandphonesmp = $_POST['nohandphonesmp'];
-                             $alamatsmp = $_POST['alamatsmp'];
-                             $statussmp = $_POST['statussmp'];
-                             $kursussmp = $_POST['kursussmp'];
-                             $jeniskursussmp = $_POST['jeniskursussmp'];
+                             $namasd = $_POST['namasd'];
+                             $tanggalsd = $_POST['tanggalsd'];
+                             $kelassd = $_POST['kelassd'];
+                             $nohandphonesd = $_POST['nohandphonesd'];
+                             $alamatsd = $_POST['alamatsd'];
+                             $statussd = $_POST['statussd'];
+                             $kursussd = $_POST['kursussd'];
+                             $jeniskursussd = $_POST['jeniskursussd'];
                     
-                            $query = "INSERT INTO tb_smp (namasmp, tanggalsmp, kelassmp, nohandphonesmp, alamatsmp, statussmp, kursussmp, jeniskursussmp) 
-                            VALUES ('$namasmp', '$tanggalsmp', '$kelassmp', '$nohandphonesmp', '$alamatsmp', '$statussmp', '$kursussmp', '$jeniskursussmp')";
+                            $query = "INSERT INTO tb_sd (namasd, tanggalsd, kelassd, nohandphonesd, alamatsd, statussd, kursussd, jeniskursussd) 
+                            VALUES ('$namasd', '$tanggalsd', '$kelassd', '$nohandphonesd', '$alamatsd', '$statussd', '$kursussd', '$jeniskursussd')";
 
                             if(mysqli_query($connection, $query)) {
-                                echo "Data berhasil disimpan. Terima kasih sudah mendaftar sobat BEE SMART COURSE";
+                                echo "Data berhasil disimpan ke database.";
                                     } else {
                                                 echo "Data gagal disimpan ke database: " . mysqli_error($connection);
                                             }
-                                            echo "<meta http-equiv=refresh content=0.1;URL='kuotasmp.php'>";
+                                            echo "<meta http-equiv=refresh content=0.1;URL='kuotasd.php'>";
                         }
                         ?>
                 </div>
             </div>
         </section>
-            
-        
+                <?php
+                // Mengecek apakah formulir telah dikirim
+                if (isset($_POST['proses'])) {
+                    // Kode koneksi ke database
+                    
+                    // Kode penyimpanan data formulir ke tabel tb_sd
+                    
+                    // Mengurangi kuota
+                    $query = "SELECT COUNT(*) AS total FROM tb_sd";
+                    $result = mysqli_query($connection, $query);
+                
+                    if ($result) {
+                        $row = mysqli_fetch_assoc($result);
+                        $sisaKuota = 5 - $row['total']; // Menghitung sisa kuota
+                
+                        // Mengurangi kuota jika masih ada sisa
+                        if ($sisaKuota > 0) {
+                            $query = "UPDATE tb_kuota SET sisa_kuota = sisa_kuota - 1";
+                            mysqli_query($connection, $query);
+                        }
+                    }
+                }
+                
+                mysqli_close($connection);
+                ?>
+
         <script>
             feather.replace()
           </script>
           <!-- Script buat hamburger -->
           <script src="js/script.js"></script>
 </body>
+
 </html>

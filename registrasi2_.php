@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Matematika Reguler</title>
+    <title>Pendaftaran Matematika Privat</title>
                 <!-- Fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -224,7 +224,7 @@ $sisaKuotaMatematika1 = 3; // Contoh nilai awal, bisa diganti sesuai kebutuhan
 ?>
                         <select name="jeniskursussmp" class="input-controll" required>
     <optgroup label="Jenis Kursus">
-        <option <?php echo ($sisaKuotaMatematika > 5) ? 'disabled' : ''; ?>>Reguler</option>
+        <option <?php echo ($sisaKuotaMatematika1 > 3) ? 'disabled' : ''; ?>>Privat</option>
     </optgroup>
 </select>
 

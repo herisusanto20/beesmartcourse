@@ -41,7 +41,7 @@
 
         <!-- Navbar End -->
         <section class="pilih">
-        <a href="laporan_datatk.php" class="cta1">Kelas TK/PAUD</a>
+        <a href="laporan_datatk.php" class="cta1">Kelas TK</a>
                 <a href="laporan_datasd.php" class="cta1">Kelas SD</a>
                 <a href="laporan_datasmp.php" class="cta1">Kelas SMP</a>
                 <a href="laporan_data.php" class="cta1">Kelas SMA</a>

@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Laporan Data Registrasi TK/PAUD</title>
+    <title>Laporan Data Registrasi TK</title>
     <link rel="stylesheet" href="css/stylelaporan.css">
     <!-- bootstrap cdn  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h1 class="h1laporan">Laporan Data Registrasi TK/PAUD</h1>
+    <h1 class="h1laporan">Laporan Data Registrasi TK</h1>
 <?php
     $hostname = 'localhost';
     $username = 'root';
