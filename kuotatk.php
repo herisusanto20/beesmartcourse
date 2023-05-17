@@ -81,7 +81,7 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keterangan Kuota</title>
+    <title>Kuota</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -287,7 +287,7 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
         </nav>
         <!-- Navbar End -->
         <div class="container">
-<h2>Keterangan Kuota Calistung</h2>
+<h2>Kuota Calistung</h2>
 <br>
 <p>
     Kuota Reguler: <?php echo ($sisaKuotaCal <= 0) ? 'Tidak tersedia' : $sisaKuotaCal . ' orang'; ?><br>
@@ -302,7 +302,7 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
     <a href="registrasi5.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Tematik</h2> <br>
+    <h2>Kuota Tematik</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaTem <= 0) ? 'Tidak tersedia' : $sisaKuotaTem . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaTem1 <= 0) ? 'Tidak tersedia' : $sisaKuotaTem1 . ' orang'; ?></p>
     <?php

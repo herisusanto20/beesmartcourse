@@ -160,7 +160,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keterangan Kuota</title>
+    <title>Kuota</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -364,7 +364,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
         </nav>
         <!-- Navbar End -->
 <div class="container">
-<h2>Keterangan Kuota Matematika</h2>
+<h2>Kuota Matematika</h2>
 <br>
 <p>
     Kuota Reguler: <?php echo ($sisaKuotaMatematika <= 0) ? 'Tidak tersedia' : $sisaKuotaMatematika . ' orang'; ?><br>
@@ -379,7 +379,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <a href="registrasi2_.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota IPA</h2> <br>
+    <h2>Kuota IPA</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaIPA <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaIPA1 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA1 . ' orang'; ?></p>
     <?php
@@ -391,7 +391,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <a href="registrasi2___.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Desain Grafis</h2> <br>
+    <h2>Kuota Desain Grafis</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaDesain <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaDesain1 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain1 . ' orang'; ?></p>
     <?php
@@ -403,7 +403,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <a href="registrasi2Des1.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Pemrograman</h2> <br>
+    <h2>Kuota Pemrograman</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaPem <= 0) ? 'Tidak tersedia' : $sisaKuotaPem . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaPem1 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem1 . ' orang'; ?></p>
     <?php
@@ -415,7 +415,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
     <a href="registrasi2Pem1.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Bahasa Inggris</h2> <br>
+    <h2>Kuota Bahasa Inggris</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaIng <= 0) ? 'Tidak tersedia' : $sisaKuotaIng . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaIng1 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng1 . ' orang'; ?></p>
     <?php

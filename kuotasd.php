@@ -107,7 +107,7 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keterangan Kuota</title>
+    <title>Kuota</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -309,7 +309,7 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
         </nav>
         <!-- Navbar End -->
         <div class="container">
-<h2>Keterangan Kuota Matematika</h2>
+<h2>Kuota Matematika</h2>
 <br>
 <p>
     Kuota Reguler: <?php echo ($sisaKuotaMat <= 0) ? 'Tidak tersedia' : $sisaKuotaMat . ' orang'; ?><br>
@@ -324,7 +324,7 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
     <a href="registrasi3_.php" class="button <?php echo $isDisabled; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Bahasa Inggris</h2> <br>
+    <h2>Kuota Bahasa Inggris</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaBing <= 0) ? 'Tidak tersedia' : $sisaKuotaBing . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaBing1 <= 0) ? 'Tidak tersedia' : $sisaKuotaBing1 . ' orang'; ?></p>
     <?php
@@ -336,7 +336,7 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
     <a href="registrasi3___.php" class="button <?php echo $isDisabled; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota IPA</h2> <br>
+    <h2>Kuota IPA</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaIP <= 0) ? 'Tidak tersedia' : $sisaKuotaIP . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaIP1 <= 0) ? 'Tidak tersedia' : $sisaKuotaIP1 . ' orang'; ?></p>
     <?php

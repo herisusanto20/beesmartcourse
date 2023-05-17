@@ -170,7 +170,7 @@ $sisaKuotaMatematika3 = isset($sisaKuotaMatematika3) ? $sisaKuotaMatematika3 : 3
 $sisaKuotaMatematika4 = isset($sisaKuotaMatematika4) ? $sisaKuotaMatematika4 : 5;
 $sisaKuotaIPA2 = isset($sisaKuotaIPA2) ? $sisaKuotaIPA2 : 5;
 $sisaKuotaIPA3 = isset($sisaKuotaIPA3) ? $sisaKuotaIPA3 : 3;
-$sisaKuotaIPA3 = isset($sisaKuotaIPA4) ? $sisaKuotaIPA4 : 5;
+$sisaKuotaIPA4 = isset($sisaKuotaIPA4) ? $sisaKuotaIPA4 : 5;
 $sisaKuotaDesain2 = isset($sisaKuotaDesain2) ? $sisaKuotaDesain2 : 5;
 $sisaKuotaDesain3 = isset($sisaKuotaDesain3) ? $sisaKuotaDesain3 : 3;
 $sisaKuotaDesain4 = isset($sisaKuotaDesain4) ? $sisaKuotaDesain4 : 5;
@@ -226,7 +226,7 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keterangan Kuota</title>
+    <title>Kuota</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -426,7 +426,7 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
         </nav>
         <!-- Navbar End -->
 <div class="container">
-<h2>Keterangan Kuota Matematika</h2>
+<h2>Kuota Matematika</h2>
 <br>
 <p>
     Kuota Reguler: <?php echo ($sisaKuotaMatematika2 <= 0) ? 'Tidak tersedia' : $sisaKuotaMatematika2 . ' orang'; ?><br>
@@ -436,13 +436,15 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaMatematika2 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaMatematika3 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaMatematika4 == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaMatematika3 == 0 ? 'disabled' : '';
+        $isDisabled2 = $sisaKuotaMatematika4 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasiMat.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
+    <a href="registrasiMat1.php" class="button <?php echo $isDisabled2; ?>">Daftar Online</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota IPA</h2> <br>
+    <h2>Kuota IPA</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaIPA2 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA2 . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaIPA3 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA3 . ' orang'; ?> <br>
     Kuota Online: <?php echo ($sisaKuotaIPA4 <= 0) ? 'Tidak tersedia' : $sisaKuotaIPA4 . ' orang'; ?> <br>
@@ -450,13 +452,15 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaIPA2 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaIPA3 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaIPA4 == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaIPA3 == 0 ? 'disabled' : '';
+        $isDisabled2 = $sisaKuotaIPA4 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasiIP.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasiIP1.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
+    <a href="registrasiIP2.php" class="button <?php echo $isDisabled2; ?>">Daftar Online</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Desain Grafis</h2> <br>
+    <h2>Kuota Desain Grafis</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaDesain2 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain2 . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaDesain3 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain3 . ' orang'; ?> <br>
     Kuota Online: <?php echo ($sisaKuotaDesain4 <= 0) ? 'Tidak tersedia' : $sisaKuotaDesain4 . ' orang'; ?>
@@ -464,13 +468,15 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaDesain2 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaDesain3 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaDesain4 == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaDesain3 == 0 ? 'disabled' : '';
+        $isDisabled2 = $sisaKuotaDesain4 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasiDes.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasiDes1.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
+    <a href="registrasiDes2.php" class="button <?php echo $isDisabled2; ?>">Daftar Online</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Pemrograman</h2> <br>
+    <h2>Kuota Pemrograman</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaPem2 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem2 . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaPem3 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem3 . ' orang'; ?> <br>
     Kuota Online: <?php echo ($sisaKuotaPem4 <= 0) ? 'Tidak tersedia' : $sisaKuotaPem4 . ' orang'; ?>
@@ -479,13 +485,15 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaPem2 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaPem3 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaPem4 == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaPem3 == 0 ? 'disabled' : '';
+        $isDisabled2 = $sisaKuotaPem4 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasiPem.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasiPem1.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
+    <a href="registrasiPem2.php" class="button <?php echo $isDisabled2; ?>">Daftar Online</a>
 </div> <br> <br>
 <div class="container">
-    <h2>Keterangan Kuota Bahasa Inggris</h2> <br>
+    <h2>Kuota Bahasa Inggris</h2> <br>
     <p>Kuota Reguler: <?php echo ($sisaKuotaIng2 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng2 . ' orang'; ?><br>
     Kuota Privat: <?php echo ($sisaKuotaIng3 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng3 . ' orang'; ?> <br>
     Kuota Privat: <?php echo ($sisaKuotaIng4 <= 0) ? 'Tidak tersedia' : $sisaKuotaIng4 . ' orang'; ?> <br>
@@ -494,10 +502,12 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaIng2 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaIng3 == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaIng4 == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaIng3 == 0 ? 'disabled' : '';
+        $isDisabled2 = $sisaKuotaIng4 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasiIng.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasiIng1.php" class="button <?php echo $isDisabled; ?>">Daftar Privat</a>
+    <a href="registrasiIng2.php" class="button <?php echo $isDisabled; ?>">Daftar Online</a>
 </div> 
         <!-- chatbot start -->
                 <!-- chatbot -->

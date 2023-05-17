@@ -261,7 +261,7 @@ input.addEventListener('input', function() {
                         <select  name="jenis_kursus" class="input-controll" required>
                         <optgroup label="Jenis Kursus">
                             <!-- <option>--Jenis Kursus---</option> -->
-                            <option>Reguler</option>
+                            <option>Online</option>
                         </optgroup>
                         </select >
                         <!-- <p>Tanggal Masuk</p>

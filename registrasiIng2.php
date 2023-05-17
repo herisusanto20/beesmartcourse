@@ -255,13 +255,13 @@ input.addEventListener('input', function() {
                         <input type="hidden" name="statussma" placeholder="Keterangan Tambahan" class="input-controll" required>
                         <select  name="kursus" class="input-controll" required>
                         <optgroup label="Kursus">
-                            <option>Matematika</option>
+                            <option>Bahasa Inggris</option>
                         </optgroup>
                         </select >
                         <select  name="jenis_kursus" class="input-controll" required>
                         <optgroup label="Jenis Kursus">
                             <!-- <option>--Jenis Kursus---</option> -->
-                            <option>Reguler</option>
+                            <option>Online</option>
                         </optgroup>
                         </select >
                         <!-- <p>Tanggal Masuk</p>

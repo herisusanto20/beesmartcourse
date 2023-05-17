@@ -255,7 +255,7 @@ input.addEventListener('input', function() {
                         <input type="hidden" name="statussma" placeholder="Keterangan Tambahan" class="input-controll" required>
                         <select  name="kursus" class="input-controll" required>
                         <optgroup label="Kursus">
-                            <option>Matematika</option>
+                            <option>Desain Grafis</option>
                         </optgroup>
                         </select >
                         <select  name="jenis_kursus" class="input-controll" required>
