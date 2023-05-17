@@ -274,8 +274,8 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
         $isDisabled = $sisaKuotaTem == 0 ? 'disabled' : '';
         $isDisabled1 = $sisaKuotaTem1 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi4.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
-    <a href="registrasi5.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
+    <a href="registrasi6.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasi7.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div>
 
 

@@ -1081,3 +1081,11 @@ table td {
   justify-content: center;
   margin-top: 9rem;
 }
+/* input form */
+.input-controll .error {
+  border-color: red;
+}
+
+.error-message {
+  color: white;
+}
