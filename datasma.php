@@ -82,9 +82,9 @@
         <option value="Bahasa Inggris" <?php if ($kursus == 'Bahasa Inggris') echo 'selected'; ?>>Bahasa Inggris</option>
         <option value="IPA" <?php if ($kursus == 'IPA') echo 'selected'; ?>>IPA</option>
     </select>
-    <input type="submit" value="Filter">
+    <input type="submit" value="Filter" id="filter">
 </form>
-
+<br>
 <!-- Filtering off -->
     <thead>
     <tbody>
@@ -97,7 +97,7 @@
             <th>Kursus</th>
             <th>Jenis Kursus</th>
             <th>Status</th>
-            <th colspan="2">Tambahan</th>
+            <th colspan="3">Tambahan</th>
         </tr>
     </thead>
     
@@ -113,6 +113,7 @@
                 echo "<td>".$row['jenis_kursus']."</td>";
                 echo "<td>".$row['statussma']."</td>";
                 echo "<td><a href='editdaftarsma.php?nama=".$row['nama']."'>Edit</a></td>";
+                echo "<td><a href='hapusdaftarsma.php?nama=".$row['nama']."'>Hapus</a></td>";
                 echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['no_handphone']."'>Hubungi Siswa</a></td>";
                 echo "</tr>";
             }

@@ -86,7 +86,6 @@ if(isset($_GET['cetak'])) {
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $d['namatk']; ?></td>
                         <td><?php echo $d['tanggaltk']; ?></td>
-                        <td><?php echo $d['kelastk']; ?></td>
                         <td><?php echo $d['namaortutk']; ?></td>
                         <td><?php echo $d['nohandphonetk']; ?></td>
                         <td><?php echo $d['alamattk']; ?></td>

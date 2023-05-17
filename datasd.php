@@ -82,8 +82,9 @@
         <option value="Calistung" <?php if ($kursussd == 'Calistung') echo 'selected'; ?>>Calistung</option>
         <option value="Tematik" <?php if ($kursussd == 'Tematik') echo 'selected'; ?>>Tematik</option>
     </select>
-    <input type="submit" value="Filter">
-</form>
+    <input type="submit" value="Filter" id="filter">
+
+</form> <br> 
 
 <!-- Filtering off -->
     <thead>
@@ -97,7 +98,7 @@
             <th>Kursus</th>
             <th>Jenis Kursus</th>
             <th>Status</th>
-            <th colspan="2">Tambahan</th>
+            <th colspan="3">Tambahan</th>
         </tr>
     </thead>
     
@@ -113,6 +114,7 @@
                 echo "<td>".$row['jeniskursussd']."</td>";
                 echo "<td>".$row['statussd']."</td>";
                 echo "<td><a href='editdaftarsd.php?namasd=".$row['namasd']."'>Edit</a></td>";
+                echo "<td><a href='hapusdaftarsd.php?namasd=".$row['namasd']."'>Hapus</a></td>";
                 echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['nohandphonesd']."'>Hubungi Siswa</a></td>";
                 echo "</tr>";
             }

@@ -97,7 +97,6 @@
                 echo "<tr>";
                 echo "<td>".$row['namatk']."</td>";
                 echo "<td>".$row['tanggaltk']."</td>";
-                echo "<td>".$row['kelastk']."</td>";
                 echo "<td>".$row['namaortutk']."</td>";
                 echo "<td>".$row['nohandphonetk']."</td>";
                 echo "<td>".$row['alamattk']."</td>";
