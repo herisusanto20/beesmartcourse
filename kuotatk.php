@@ -96,7 +96,7 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
         <link rel="stylesheet" href="css/style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
             background-color: #f5f5f5;
             margin-top: 7rem;
         }
@@ -112,9 +112,11 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
 
         h2 {
             margin-top: 0;
+            font-size: 20px;
         }
 
         p {
+            font-size: 15px;
             margin-bottom: 20px;
         }
 
@@ -258,9 +260,10 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaCal == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaCal1 == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaCal1 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi4.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasi4.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasi5.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div> <br> <br>
 <div class="container">
     <h2>Keterangan Kuota Tematik</h2> <br>
@@ -269,9 +272,10 @@ $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
     <?php
         // Menentukan apakah tombol harus dinonaktifkan
         $isDisabled = $sisaKuotaTem == 0 ? 'disabled' : '';
-        $isDisabled = $sisaKuotaTem1 == 0 ? 'disabled' : '';
+        $isDisabled1 = $sisaKuotaTem1 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi4.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
+    <a href="registrasi4.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasi5.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div>
 
 
