@@ -49,17 +49,13 @@
                     <img src="img/mtk2.jpg" alt="Matematika">
                 </div>
                 <div class="content">
-                    <h3>Metode Pembelajaran :</h3>
-                    <p>
-                Bee Smart menggunakan metode pembelajaran yang variatif dan disesuaikan dengan kebutuhan setiap siswa, antara lain:
-            1.	Pembelajaran berbasis proyek
-            2.	Diskusi kelompok
-            3.	Kuis interaktif
-            4.	Praktikum
-            5.	Simulasi ujian
-            6.	Latihan soal
+                    <ul>
+                        <li>Dalam program bimbingan belajar kami, kami fokus pada pemahaman konsep matematika dasar dan kemudian memperluasnya ke tingkat yang lebih tinggi sesuai dengan tingkat pendidikan siswa mulai dari SD hingga SMA. Kami menggunakan pendekatan yang interaktif dan melibatkan siswa secara aktif dalam proses pembelajaran. Kami menyediakan materi pembelajaran yang disesuaikan dengan kurikulum terbaru dan menggunakan metode yang efektif untuk menjelaskan konsep-konsep yang kompleks dengan cara yang mudah dipahami. <br></li>
+                        <li>Kami juga menyediakan latihan-latihan praktis yang dirancang untuk membantu siswa meningkatkan keterampilan pemecahan masalah dan menerapkan konsep-konsep matematika dalam konteks yang nyata. Tutor kami yang berkualifikasi dan berpengalaman siap membantu siswa mengatasi kesulitan dan menjawab pertanyaan mereka dengan sabar dan penuh perhatian.</li>
+                        <li>Di Bee Smart Course, kami berkomitmen untuk membantu siswa kami mencapai prestasi maksimal dalam matematika. Kami percaya bahwa dengan pendekatan yang terarah, lingkungan belajar yang mendukung, dan upaya yang konsisten, setiap siswa dapat meraih kesuksesan dalam studi matematika mereka</li>
+                    </ul>
 
-                    </p>
+
                 </div>
             </div>
         </section>

@@ -49,9 +49,12 @@
                     <img src="img/programming.jpg" alt="Pemrograman">
                 </div>
                 <div class="content">
-                    <h3>Pemrograman</h3>
-                    <p>Kami menyediakan kursus Pemrograman mulai Basic Class hingga Expert.
-                    </p>
+                    <ul>
+                        <li>Dalam program bimbingan belajar Pemrograman untuk SMP dan SMA di Bee Smart Course, kami berkomitmen untuk membantu siswa mengembangkan pemahaman dan keterampilan yang kuat dalam pemrograman komputer. Kami menyadari pentingnya pemrograman dalam era teknologi yang terus berkembang, dan kami ingin mempersiapkan siswa untuk menjadi ahli pemrograman yang terampil dan kreatif.</li>
+                        <li>Program kami dirancang untuk mencakup berbagai bahasa pemrograman yang relevan dan populer. Kami mengajarkan siswa tentang logika pemrograman, struktur data, algoritma, dan konsep dasar lainnya yang menjadi dasar dalam pemrograman. Kami memulai dengan konsep dasar yang mudah dipahami oleh siswa SMP dan secara bertahap memperluasnya ke konsep yang lebih kompleks sesuai dengan tingkat SMA.</li>
+                        <li>Kami juga mendorong siswa untuk mengembangkan proyek-proyek kreatif mereka sendiri, seperti pengembangan aplikasi sederhana atau pengembangan website. Ini memberikan kesempatan bagi siswa untuk mengaplikasikan konsep-konsep yang telah mereka pelajari dan meningkatkan keterampilan pemrograman mereka secara nyata.</li>
+                        <li>Dalam Bee Smart Course, kami percaya bahwa pemrograman bukan hanya tentang menguasai bahasa pemrograman, tetapi juga tentang mengembangkan pemikiran logis, kreativitas, dan pemecahan masalah. Kami berusaha menciptakan lingkungan belajar yang mendukung siswa kami dalam mengembangkan keterampilan tersebut. Dengan dukungan kami, siswa akan memperoleh dasar yang kokoh dalam pemrograman dan siap menghadapi tantangan dunia teknologi yang terus berkembang.</li>
+                    </ul>
                 </div>
             </div>
         </section>

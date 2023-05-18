@@ -49,9 +49,11 @@
                     <img src="img/calistung.jpg" alt="Calistung">
                 </div>
                 <div class="content">
-                    <h3>Calistung</h3>
-                    <p>Kami menyediakan kursus Calistung (Membaca, Menulis, Menghitung) mulai dari kelas 1 Sekolah Dasar sampai 3 SMP
-                    </p>
+                    <ul>
+                        <li>Dalam program bimbingan belajar Calistung (membaca, menulis, dan menghitung) untuk TK di Bee Smart Course, kami memiliki pendekatan yang menyenangkan dan interaktif untuk membantu anak-anak memperoleh dasar-dasar penting dalam calistung. Kami mengakui pentingnya kemampuan membaca, menulis, dan menghitung dalam perkembangan akademik anak-anak dan kami berusaha mempersiapkan mereka dengan baik untuk melangkah ke jenjang pendidikan selanjutnya.</li>
+                        <li>Program calistung kami dirancang khusus untuk anak-anak TK, dengan menggunakan metode pembelajaran yang bermain dan menarik bagi mereka. Kami mengintegrasikan aktivitas sensorik, permainan, lagu, dan cerita untuk mengembangkan minat anak-anak dalam belajar. Kami memiliki tutor yang berpengalaman dalam mengajar anak-anak TK dan memahami kebutuhan serta tingkat perkembangan mereka. Tutor kami menciptakan lingkungan belajar yang menyenangkan dan mendukung di mana anak-anak merasa nyaman untuk berpartisipasi aktif dan belajar dengan gembira. Mereka memberikan bimbingan individual kepada setiap anak, memberikan umpan balik positif, dan memberikan dorongan untuk meningkatkan kemampuan mereka dalam calistung.</li>
+                        <li>Di Bee Smart Course, tujuan kami adalah membantu anak-anak TK mengembangkan dasar-dasar calistung yang kuat, menumbuhkan minat mereka dalam belajar, dan mempersiapkan mereka dengan baik untuk memasuki jenjang pendidikan berikutnya. Kami percaya bahwa melalui pendekatan yang interaktif dan bermain, anak-anak akan mengembangkan keterampilan yang diperlukan untuk meraih kesuksesan akademik dan menggapai potensi mereka secara penuh.</li>
+                    </ul>
                 </div>
             </div>
         </section>

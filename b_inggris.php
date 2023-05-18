@@ -48,9 +48,11 @@
                     <img src="img/inggris.jpg" alt="Bahasa Inggris">
                 </div>
                 <div class="content">
-                    <h3>Bahasa Inggris Grafis</h3>
-                    <p>Kami menyediakan kursus Bahasa Inggris mulai dari Basic hingga Professional
-                    </p>
+                    <ul>
+                        <li>Dalam program bimbingan belajar Bahasa Inggris untuk SD hingga SMA di Bee Smart Course, kami memiliki pendekatan komprehensif untuk membantu siswa mengembangkan keterampilan mendengarkan, berbicara, membaca, dan menulis dalam Bahasa Inggris. Kami menyadari bahwa Bahasa Inggris adalah bahasa internasional yang penting untuk berkomunikasi di era globalisasi, dan kami ingin mempersiapkan siswa untuk menjadi mahir dalam menggunakan Bahasa Inggris dalam berbagai situasi.</li>
+                        <li>Program kami disesuaikan dengan tingkat pendidikan siswa, mulai dari pemula hingga tingkat lanjutan. Kami menggunakan metode pengajaran yang interaktif dan melibatkan siswa secara aktif dalam proses pembelajaran. Kami menyediakan materi pembelajaran yang beragam, termasuk teks bacaan, dialog, rekaman audio, dan materi multimedia yang menarik. Materi kami didesain untuk memperluas kosakata siswa, meningkatkan pemahaman tata bahasa, dan meningkatkan kemampuan komunikasi mereka dalam Bahasa Inggris.</li>
+                        <li>Di Bee Smart Course, tujuan kami adalah membantu siswa merasa percaya diri dalam menggunakan Bahasa Inggris, meningkatkan kemampuan komunikasi mereka, dan membuka peluang baru dalam studi dan karir mereka di masa depan.</li>
+                    </ul>
                 </div>
             </div>
         </section>

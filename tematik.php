@@ -49,9 +49,11 @@
                     <img src="img/tematik.jpg" alt="Tematik">
                 </div>
                 <div class="content">
-                    <h3>Tematik</h3>
-                    <p>Kami menyediakan kursus Tematik mulai dari kelas 1 Sekolah Dasar sampai 3 SMP
-                    </p>
+                    <ul>
+                        <li>Dalam program bimbingan belajar Tematik untuk TK di Bee Smart Course, kami menyediakan pendekatan pembelajaran yang holistik dan terintegrasi. Kami memahami pentingnya pembelajaran tematik dalam mengembangkan pemahaman yang menyeluruh dan keterkaitan antara berbagai konsep.</li>
+                        <li>Dalam program kami, anak-anak akan terlibat dalam kegiatan eksplorasi, observasi, percobaan, seni kreatif, cerita, dan permainan terkait dengan tema yang sedang dipelajari. Kami mendorong mereka untuk mengajukan pertanyaan, menyelidiki, berpikir kritis, dan mengungkapkan ide-ide mereka melalui berbagai media. Selain itu, kami juga melibatkan interaksi sosial dan kerjasama antara anak-anak dalam kegiatan kelompok, yang membantu mereka mengembangkan keterampilan sosial dan kemampuan berkomunikasi.</li>
+                        <li>Di Bee Smart Course, tujuan kami adalah membantu anak-anak TK mengembangkan pemahaman yang luas tentang dunia di sekitar mereka, mengasah keterampilan kognitif dan kreatif, serta mempersiapkan mereka untuk transisi yang mulus ke jenjang pendidikan berikutnya. Kami percaya bahwa melalui pembelajaran tematik yang terintegrasi, anak-anak dapat mengembangkan minat belajar yang tinggi, pemikiran kritis, kolaborasi, dan kemandirian dalam eksplorasi pengetahuan.</li>
+                    </ul>
                 </div>
             </div>
         </section>
