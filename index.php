@@ -434,21 +434,20 @@
             <h2 class="katego">BEE SMART COURSE MEMILIKI 3 KATEGORI KELAS</h2>
             <center>
             <div class="rows">
-                <a href="reguler.php">
-                    <div class="card-c">
-                    <p>Reguler</p> <br>
-                    </div>
-                
+            <a href="reguler.php">
+            <button class="btn-c">
+                <p>Reguler</p>
+            </button>
                 </a>
-                <a href="privat.php">
-                <div class="card-c">
-                    <p>Privat</p> <br>
-                </div>
+            <a href="privat.php">
+            <button class="btn-c">
+                <p>Privat</p>
+            </button>
                 </a>
                 <a href="online.php">
-                <div class="card-c">
-                    <p>Online</p>
-                </div>
+            <button class="btn-c">
+                <p>Online</p>
+            </button>
                 </a>
                 </div>
             </center>
