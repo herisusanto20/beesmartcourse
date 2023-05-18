@@ -191,15 +191,34 @@
         <!-- About Session Start -->
         <section id="about" class="about">
             <h2><span>Tentang</span> Kami</h2>
-
-            <div class="row">
-                <div class="about-img">
-                    <img src="img/beesmart.png" alt="Tentang Kami">
-                </div>
                 <div class="content">
                     <h3>Bee Smart Course</h3>
-                    <p>Kami adalah sebuah lembaga bimbingan belajar yang berfokus pada pendidikan non-formal. Alamat di Perumahan Green
-                        Lake House Sokaraja, Banyumas, Jawa Tengah. Mari bergabung dengan kelas yang ada di BEE SMART COURSE</p>
+                    <div class="branding-container">
+
+    <div class="kelas-section">
+      <h3><i class="fas fa-chalkboard-teacher"></i> Temukan Kelas yang Tepat untuk Anda</h3>
+      <p>Di Bee Smart Course, kami menawarkan beragam kelas yang dirancang khusus untuk memenuhi kebutuhan belajar Anda.</p>
+      <p>Kami memiliki tutor yang berpengalaman dan berkomitmen untuk membantu Anda mencapai kesuksesan akademik dan mengembangkan potensi Anda secara maksimal.</p>
+    </div>
+
+    <div class="experience-section">
+      <h3><i class="fas fa-lightbulb"></i> Temukan Pengalaman Belajar yang Menyenangkan</h3>
+      <p>Bergabunglah dengan kami di Bee Smart Course dan temukan pengalaman belajar yang menyenangkan dan interaktif.</p>
+      <p>Dengan pendekatan yang inovatif, materi pembelajaran yang disesuaikan, dan lingkungan belajar yang kondusif, kami siap membantu Anda meraih prestasi yang gemilang.</p>
+    </div>
+
+    <div class="address-section">
+      <h3><i class="fas fa-map-marker-alt"></i> Kunjungi Kami</h3>
+      <p>Kami berlokasi di Perumahan Green Lake House Sokaraja, Banyumas, Jawa Tengah.</p>
+      <p>Kami memiliki fasilitas yang lengkap dan nyaman untuk mendukung proses pembelajaran Anda.</p>
+    </div>
+
+    <div class="join-section">
+      <h3><i class="fas fa-users"></i> Bergabunglah dengan Kami</h3>
+      <p>Jangan lewatkan kesempatan untuk bergabung dengan Bee Smart Course dan raih kesuksesan akademik serta potensi terbaik Anda.</p>
+      <p>Hubungi kami sekarang dan jadilah bagian dari komunitas belajar yang inspiratif dan penuh prestasi di Bee Smart Course!</p>
+    </div>
+  </div>
                 </div>
             </div>
         </section>

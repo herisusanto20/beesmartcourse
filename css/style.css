@@ -273,47 +273,75 @@ body {
   color: var(--primary);
 }
 
-.about .row {
-  display: flex;
+/* tentang kami */
+.branding-container {
+  font-family: "Poppins", sans-serif;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--bg);
+  color: #fff;
+}
+.kelas-section,
+.experience-section,
+.address-section,
+.join-section {
+  font-size: 10px;
+  background-color: var(--primary);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
-.about .row .about-img {
-  flex: 1 1 45rem;
+.kelas-section h3,
+.experience-section h3,
+.address-section h3,
+.join-section h3 {
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
-.about .row .about-img img {
-  width: 100%;
+.kelas-section p,
+.experience-section p {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
-.about .row .about-img .img1 img {
-  width: 20%;
-  height: 20%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.about .row .content {
-  flex: 1 1 35rem;
-  padding: 0 1rem;
-  text-align: justify;
-}
-.about .row .content .img2 img {
-  width: 30%;
-  height: 30%;
+.address-section p,
+.join-section p {
+  font-size: 16px;
 }
 
-.about .row .content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  color: var(--primary);
+i {
+  margin-right: 5px;
 }
 
-.about.row .content p {
-  font-size: 1.4rem;
-  font-weight: 100;
-  line-height: 1.6;
+/* Media Queries */
+
+@media screen and (min-width: 768px) {
+  .branding-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .kelas-section,
+  .experience-section,
+  .address-section,
+  .join-section {
+    width: calc(50% - 20px);
+  }
 }
+
+@media screen and (min-width: 1200px) {
+  .kelas-section,
+  .experience-section,
+  .address-section,
+  .join-section {
+    width: calc(50% - 20px);
+  }
+}
+
 /* tutor */
 .bodyy {
   overflow-x: scroll;
