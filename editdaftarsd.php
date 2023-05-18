@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+    echo "<meta http-equiv=refresh content=1;URL='datasd.php'>";
 
     // Tutup koneksi
     mysqli_close($conn);
