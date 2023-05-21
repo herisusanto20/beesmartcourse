@@ -17,66 +17,36 @@ if (!$connection) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mengambil data yang diisi oleh pengguna
     $kursus = $_POST['kursussd'];
-    
-    // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
-    if ($kursus == 'Matematika' && $jeniskursussd == 'Reguler' && $sisaKuotaMat > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaMat--;
-        }
-    }elseif ($kursus == 'Matematika' && $jeniskursussd == 'Privat' && $sisaKuotaMat1 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaMat1--;
-        }
-    }elseif ($kursus == 'Bahasa Inggris' && $jeniskursussd == 'Reguler' && $sisaKuotaBing > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaBing--;
-        }
-    }elseif ($kursus == 'Bahasa Inggris' && $jeniskursussd == 'Privat' && $sisaKuotaBing1 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaBing1--;
-        }
-    }elseif ($kursus == 'IPA' && $jeniskursussd == 'Reguler' && $sisaKuotaIP > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaIP--;
-        }
-    }
-    elseif ($kursus == 'IPA' && $jeniskursussd == 'Privat' && $sisaKuotaIP1 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_sd (kursussd) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaIP1--;
-        }
+    $jeniskursus = $_POST['jeniskursussd'];
+
+    // Mengupdate nilai kuota pada tabel tb_kuota
+    $query = "UPDATE tb_kuota SET kuota = kuota - 1 WHERE tabel = 'tb_sd' AND kursus = '$kursus' AND jenis_kursus = '$jeniskursus'";
+    mysqli_query($connection, $query);
+}
+
+// Fungsi untuk mendapatkan nilai kuota
+function getKuota($kursus, $jenis) {
+    global $connection;
+    $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_sd' AND kursus = '$kursus' AND jenis_kursus = '$jenis'";
+    $result = mysqli_query($connection, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['kuota'];
+    } else {
+        return 0;
     }
 }
-    ?>
+
+// Mengambil nilai kuota dan menyimpannya ke dalam session
+session_start();
+$sisaKuotaMat = getKuota('Matematika', 'Reguler');
+$sisaKuotaMat1 = getKuota('Matematika', 'Privat');
+$sisaKuotaBing = getKuota('Bahasa Inggris', 'Reguler');
+$sisaKuotaBing1 = getKuota('Bahasa Inggris', 'Privat');
+$sisaKuotaIP = getKuota('IPA', 'Reguler');
+$sisaKuotaIP1 = getKuota('IPA', 'Privat');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran IPA Privat</title>
+    <title>Pendaftaran Matematika Reguler</title>
                 <!-- Fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
