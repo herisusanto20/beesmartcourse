@@ -23,7 +23,7 @@
             <a href="dasboard.php" class="navbar-logo"><span>Bee Smart </span>Course</a>
             <div class="navbar-nav">
                 <a href="datasiswa.php">Data Siswa</a>
-                <a href="gaji.php">Penggajian</a>
+                <!-- <a href="gaji.php">Penggajian</a> -->
                 <a href="presensi.php">Presensi</a>
             </div>
             <div class="navbar-extra">
