@@ -10,6 +10,12 @@ if (!$connection) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
+$kursustk = isset($_POST['kursustk']) ? $_POST['kursustk'] : '';
+$jeniskursustk = isset($_POST['jeniskursustk']) ? $_POST['jeniskursustk'] : '';
+
+$query = "UPDATE tb_kuota SET kuota = kuota - 1 WHERE tabel = 'tb_tk' AND kursus = '$kursustk' AND jenis_kursus = '$jeniskursustk'";
+mysqli_query($connection, $query);
+
 function getKuota($kursus, $jenis) {
     global $connection;
     $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_tk' AND kursus = '$kursus' AND jenis_kursus = '$jenis'";
@@ -34,6 +40,7 @@ $_SESSION['sisaKuotaCal1'] = $sisaKuotaCal1;
 $_SESSION['sisaKuotaTem'] = $sisaKuotaTem;
 $_SESSION['sisaKuotaTem1'] = $sisaKuotaTem1;
 ?>
+
 
 
 
