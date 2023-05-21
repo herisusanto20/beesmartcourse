@@ -1,129 +1,44 @@
 <?php
-// Koneksi ke database
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "registrasi";
 
-// Membuat koneksi
 $connection = mysqli_connect($servername, $username, $password, $dbname);
 
-// Memeriksa koneksi
 if (!$connection) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Matematika
-$queryMatematika = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Matematika' AND jeniskursussmp = 'Reguler'";
-$resultMatematika = mysqli_query($connection, $queryMatematika);
 
-if ($resultMatematika) {
-    $rowMatematika = mysqli_fetch_assoc($resultMatematika);
-    $sisaKuotaMatematika = 5 - $rowMatematika['total']; // Menghitung sisa kuota Matematika
-} else {
-    $sisaKuotaMatematika = 5; // Jika terjadi kesalahan, mengatur sisa kuota Matematika menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Matematika
-$queryMatematika1 = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Matematika' AND jeniskursussmp = 'Privat'";
-$resultMatematika1 = mysqli_query($connection, $queryMatematika1);
+$kursus = isset($_POST['kursussmp']) ? $_POST['kursussmp'] : '';
+$jeniskursus = isset($_POST['jeniskursussmp']) ? $_POST['jeniskursussmp'] : '';
 
-if ($resultMatematika1) {
-    $rowMatematika1 = mysqli_fetch_assoc($resultMatematika1);
-    $sisaKuotaMatematika1 = 3 - $rowMatematika1['total']; // Menghitung sisa kuota Matematika
-} else {
-    $sisaKuotaMatematika = 3; // Jika terjadi kesalahan, mengatur sisa kuota Matematika menjadi 5
-}
+$query = "UPDATE tb_kuota SET kuota = kuota - 1 WHERE tabel = 'tb_smp' AND kursus = '$kursus' AND jenis_kursus = '$jeniskursus'";
+mysqli_query($connection, $query);
 
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus IPA reguler
-$queryIPA = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'IPA' AND jeniskursussmp = 'Reguler'";
-$resultIPA = mysqli_query($connection, $queryIPA);
+function getKuota($kursus, $jenis) {
+    global $connection;
+    $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_smp' AND kursus = '$kursus' AND jenis_kursus = '$jenis'";
+    $result = mysqli_query($connection, $query);
 
-if ($resultIPA) {
-    $rowIPA = mysqli_fetch_assoc($resultIPA);
-    $sisaKuotaIPA = 5 - $rowIPA['total']; // Menghitung sisa kuota IPA
-} else {
-    $sisaKuotaIPA = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus IPA reguler
-$queryIPA1 = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'IPA' AND jeniskursussmp = 'Privat'";
-$resultIPA1 = mysqli_query($connection, $queryIPA1);
-
-if ($resultIPA1) {
-    $rowIPA1 = mysqli_fetch_assoc($resultIPA1);
-    $sisaKuotaIPA1 = 3 - $rowIPA1['total']; // Menghitung sisa kuota IPA
-} else {
-    $sisaKuotaIPA1 = 3; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
-$queryDesain = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Desain Grafis' AND jeniskursussmp = 'Reguler'";
-$resultDesain = mysqli_query($connection, $queryDesain);
-
-if ($resultDesain) {
-    $rowDesain = mysqli_fetch_assoc($resultDesain);
-    $sisaKuotaDesain = 5 - $rowDesain['total']; // Menghitung sisa kuota Desain reguler
-} else {
-    $sisaKuotaDesain = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Pem reguler
-$queryDesain1 = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Desain Grafis' AND jeniskursussmp = 'Privat'";
-$resultDesain1 = mysqli_query($connection, $queryDesain1);
-
-if ($resultDesain1) {
-    $rowDesain1 = mysqli_fetch_assoc($resultDesain1);
-    $sisaKuotaDesain1 = 3 - $rowDesain1['total']; // Menghitung sisa kuota Desain reguler
-} else {
-    $sisaKuotaDesain1 = 3; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
-$queryPem = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Pemrograman' AND jeniskursussmp = 'Reguler'";
-$resultPem = mysqli_query($connection, $queryPem);
-
-if ($resultPem) {
-    $rowPem = mysqli_fetch_assoc($resultPem);
-    $sisaKuotaPem = 5 - $rowPem['total']; // Menghitung sisa kuota Desain reguler
-} else {
-    $sisaKuotaPem = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
-$queryPem1 = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Pemrograman' AND jeniskursussmp = 'Privat'";
-$resultPem1 = mysqli_query($connection, $queryPem1);
-
-if ($resultPem1) {
-    $rowPem1 = mysqli_fetch_assoc($resultPem1);
-    $sisaKuotaPem1 = 3 - $rowPem1['total']; // Menghitung sisa kuota Desain reguler
-} else {
-    $sisaKuotaPem1 = 3; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
-$queryIng = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Bahasa Inggris' AND jeniskursussmp = 'Reguler'";
-$resultIng = mysqli_query($connection, $queryIng);
-
-if ($resultIng) {
-    $rowIng = mysqli_fetch_assoc($resultIng);
-    $sisaKuotaIng = 5 - $rowIng['total']; // Menghitung sisa kuota Desain reguler
-} else {
-    $sisaKuotaIng = 5; // Jika terjadi kesalahan, mengatur sisa kuota IPA menjadi 5
-}
-// Menghitung jumlah baris yang terisi dalam tabel tb_smp untuk kursus Desain reguler
-$queryIng1 = "SELECT COUNT(*) AS total FROM tb_smp WHERE kursussmp = 'Bahasa Inggris' AND jeniskursussmp = 'Privat'";
-$resultIng1 = mysqli_query($connection, $queryIng1);
-
-if ($resultIng1) {
-    $rowIng1 = mysqli_fetch_assoc($resultIng1);
-    $sisaKuotaIng1 = 3 - $rowIng1['total']; // Menghitung sisa kuota inggris reguler
-} else {
-    $sisaKuotaIng1 = 3; // Jika terjadi kesalahan, mengatur sisa kuota Inggris
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['kuota'];
+    } else {
+        return 0;
+    }
 }
 
-$sisaKuotaMatematika = isset($sisaKuotaMatematika) ? $sisaKuotaMatematika : 5;
-$sisaKuotaMatematika1 = isset($sisaKuotaMatematika1) ? $sisaKuotaMatematika1 : 3;
-$sisaKuotaIPA = isset($sisaKuotaIPA) ? $sisaKuotaIPA : 5;
-$sisaKuotaIPA1 = isset($sisaKuotaIPA1) ? $sisaKuotaIPA1 : 3;
-$sisaKuotaDesain = isset($sisaKuotaDesain) ? $sisaKuotaDesain : 5;
-$sisaKuotaDesain1 = isset($sisaKuotaDesain1) ? $sisaKuotaDesain1 : 3;
-$sisaKuotaPem = isset($sisaKuotaPem) ? $sisaKuotaPem : 5;
-$sisaKuotaPem1 = isset($sisaKuotaPem1) ? $sisaKuotaPem1 : 3;
-$sisaKuotaIng = isset($sisaKuotaIng) ? $sisaKuotaIng : 5;
-$sisaKuotaIng1 = isset($sisaKuotaIng1) ? $sisaKuotaIng1 : 3;
+$sisaKuotaMatematika = getKuota('Matematika', 'Reguler');
+$sisaKuotaMatematika1 = getKuota('Matematika', 'Privat');
+$sisaKuotaIPA = getKuota('IPA', 'Reguler');
+$sisaKuotaIPA1 = getKuota('IPA', 'Privat');
+$sisaKuotaDesain = getKuota('Desain Grafis', 'Reguler');
+$sisaKuotaDesain1 = getKuota('Desain Grafis', 'Privat');
+$sisaKuotaPem = getKuota('Pemrograman', 'Reguler');
+$sisaKuotaPem1 = getKuota('Pemrograman', 'Privat');
+$sisaKuotaIng = getKuota('Bahasa Inggris', 'Reguler');
+$sisaKuotaIng1 = getKuota('Bahasa Inggris', 'Privat');
 
 
 session_start();
@@ -423,8 +338,8 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
         $isDisabled = $sisaKuotaIng == 0 ? 'disabled' : '';
         $isDisabled1 = $sisaKuotaIng1 == 0 ? 'disabled' : '';
     ?>
-    <a href="registrasi2Ing.php" class="button <?php echo $isDisabled; ?>">Daftar</a>
-    <a href="registrasi2Ing1.php" class="button <?php echo $isDisabled1; ?>">Daftar</a>
+    <a href="registrasi2Ing.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
+    <a href="registrasi2Ing1.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
 </div> 
         <!-- chatbot start -->
                 <!-- chatbot -->
