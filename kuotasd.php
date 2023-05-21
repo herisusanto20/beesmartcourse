@@ -317,7 +317,7 @@ $_SESSION['sisaKuotaIP1'] = $sisaKuotaIP1;
       <div class="chatbot-message">
         <p>Halo! Ada yang bisa saya bantu?</p>
         <ul class="ulchatbot">
-          <li onclick="selectOption('register')">Kapan pendaftaran TK tersedia?</li>
+          <li onclick="selectOption('register')">Bagaimana cara melakukann pendaftaran?</li>
           <li onclick="selectOption('course')">Pembelajaran seperti apa yang Bee smart course berikan?</li>
         </ul>
                   </div>

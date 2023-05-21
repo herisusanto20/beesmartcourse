@@ -1,4 +1,3 @@
-
 <?php
 // Koneksi ke database
 $servername = "localhost";
@@ -18,144 +17,41 @@ if (!$connection) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mengambil data yang diisi oleh pengguna
     $kursus = $_POST['kursus'];
-    
-    // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
-    if ($kursus == 'Matematika' && $jenis_kursus == 'Reguler' && $sisaKuotaMatematika2 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaMatematika2--;
-        }
-    }elseif ($kursus == 'Matematika' && $jenis_kursus == 'Privat' && $sisaKuotaMatematika3 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaMatematika3--;
-        }
-    }elseif ($kursus == 'Matematika' && $jenis_kursus == 'Online' && $sisaKuotaMatematika4 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaMatematika4--;
-        }
-    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Reguler' && $sisaKuotaIPA2 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaIPA2--;
-        }
-    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Privat' && $sisaKuotaIPA3 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaIPA3--;
-        }
-    }elseif ($kursus == 'IPA'  && $jenis_kursus == 'Online' && $sisaKuotaIPA4 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaIPA4--;
-        }
-    } elseif ($kursus == 'Desain Grafis'   && $jenis_kursus == 'Reguler' && $sisaKuotaDesain2 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaDesain2--;
-        }
-    }elseif ($kursus == 'Desain Grafis'  && $jenis_kursus == 'Privat' && $sisaKuotaDesain3 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaDesain3--;
-        }    
-}elseif ($kursus == 'Desain Grafis'  && $jenis_kursus == 'Online' && $sisaKuotaDesain4 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaDesain4--;
-    }    
-}elseif ($kursus == 'Pemrograman'  && $jenis_kursus == 'Reguler' && $sisaKuotaPem2 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaPem2--;
-    }    
-}elseif ($kursus == 'Pemrograman'  && $jenis_kursus == 'Privat' && $sisaKuotaPem3 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaPem3--;
-    }    
-}elseif ($kursus == 'Pemrograman'  && $jenis_kursus == 'Online' && $sisaKuotaPem4 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaPem4--;
-    }    
-}elseif ($kursus == 'Bahasa Inggris'  && $jenis_kursus == 'Reguler' && $sisaKuotaIng2 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaIng2--;
-    }    
-}elseif ($kursus == 'Bahasa Inggris'  && $jenis_kursus == 'Privat' && $sisaKuotaIng3 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaIng3--;
-    }    
-}elseif ($kursus == 'Bahasa Inggris'  && $jenis_kursus == 'Online' && $sisaKuotaIng4 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_data (kursus) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaIng4--;
-    }    
+    $jeniskursus = $_POST['jenis_kursus'];
+
+    // Mengupdate nilai kuota pada tabel tb_kuota
+    $query = "UPDATE tb_kuota SET kuota = kuota - 1 WHERE tabel = 'tb_data' AND kursus = '$kursus' AND jenis_kursus = '$jeniskursus'";
+    mysqli_query($connection, $query);
 }
+
+// Fungsi untuk mendapatkan nilai kuota
+function getKuota($kursus, $jenis) {
+    global $connection;
+    $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_data' AND kursus = '$kursus' AND jenis_kursus = '$jenis'";
+    $result = mysqli_query($connection, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['kuota'];
+    } else {
+        return 0;
+    }
+    session_start();
+$_SESSION['sisaKuotaMatematika2'] = $sisaKuotaMatematika2;
+$_SESSION['sisaKuotaMatematika3'] = $sisaKuotaMatematika3;
+$_SESSION['sisaKuotaMatematika4'] = $sisaKuotaMatematika4;
+$_SESSION['sisaKuotaIPA2'] = $sisaKuotaIPA2;
+$_SESSION['sisaKuotaIPA3'] = $sisaKuotaIPA3;
+$_SESSION['sisaKuotaIPA4'] = $sisaKuotaIPA4;
+$_SESSION['sisaKuotaDesain2'] = $sisaKuotaDesain2;
+$_SESSION['sisaKuotaDesain3'] = $sisaKuotaDesain3;
+$_SESSION['sisaKuotaDesain4'] = $sisaKuotaDesain4;
+$_SESSION['sisaKuotaPem2'] = $sisaKuotaPem2;
+$_SESSION['sisaKuotaPem3'] = $sisaKuotaPem3;
+$_SESSION['sisaKuotaPem4'] = $sisaKuotaPem4;
+$_SESSION['sisaKuotaIng2'] = $sisaKuotaIng2;
+$_SESSION['sisaKuotaIng3'] = $sisaKuotaIng3;
+$_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
 }
 ?>
 

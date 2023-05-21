@@ -356,7 +356,7 @@ $_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
       <div class="chatbot-message">
         <p>Halo! Ada yang bisa saya bantu?</p>
         <ul class="ulchatbot">
-          <li onclick="selectOption('register')">Kapan pendaftaran TK tersedia?</li>
+          <li onclick="selectOption('register')">Kapan pendaftaran akan kembali tersedia?</li>
           <li onclick="selectOption('course')">Pembelajaran seperti apa yang Bee smart course berikan?</li>
         </ul>
                   </div>
