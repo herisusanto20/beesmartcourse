@@ -371,8 +371,8 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
         $isDisabled2 = $sisaKuotaIng4 == 0 ? 'disabled' : '';
     ?>
     <a href="registrasiIng.php" class="button <?php echo $isDisabled; ?>">Daftar Reguler</a>
-    <a href="registrasiIng1.php" class="button <?php echo $isDisabled; ?>">Daftar Privat</a>
-    <a href="registrasiIng2.php" class="button <?php echo $isDisabled; ?>">Daftar Online</a>
+    <a href="registrasiIng1.php" class="button <?php echo $isDisabled1; ?>">Daftar Privat</a>
+    <a href="registrasiIng2.php" class="button <?php echo $isDisabled2; ?>">Daftar Online</a>
 </div> 
         <!-- chatbot start -->
                 <!-- chatbot -->
