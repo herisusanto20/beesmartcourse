@@ -17,102 +17,39 @@ if (!$connection) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mengambil data yang diisi oleh pengguna
     $kursus = $_POST['kursussmp'];
-    
-    // Memeriksa apakah masih ada kuota tersedia untuk kursus yang dipilih
-    if ($kursus == 'Matematika' && $jeniskursussmp == 'Reguler' && $sisaKuotaMatematika > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaMatematika--;
-        }
-    }elseif ($kursus == 'Matematika' && $jeniskursussmp == 'Privat' && $sisaKuotaMatematika1 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota Matematika
-            $sisaKuotaMatematika1--;
-        }
-    } elseif ($kursus == 'IPA'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIPA > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaIPA--;
-        }
-    }elseif ($kursus == 'IPA'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIPA1 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaIPA1--;
-        }
-    } elseif ($kursus == 'Desain Grafis'   && $jeniskursussmp == 'Reguler' && $sisaKuotaDesain > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaDesain--;
-        }
-    }elseif ($kursus == 'Desain Grafis'  && $jeniskursussmp == 'Privat' && $sisaKuotaDesain1 > 0) {
-        // Memasukkan data pengguna ke dalam tabel
-        $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-        $result = mysqli_query($connection, $query);
-        
-        if ($result) {
-            // Mengurangi sisa kuota IPA
-            $sisaKuotaDesain1--;
-        }    
-}elseif ($kursus == 'Pemrograman'  && $jeniskursussmp == 'Reguler' && $sisaKuotaPem > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaPem--;
-    }    
-}elseif ($kursus == 'Pemrograman'  && $jeniskursussmp == 'Privat' && $sisaKuotaPem > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaPem--;
-    }    
-}elseif ($kursus == 'Bahasa Inggris'  && $jeniskursussmp == 'Reguler' && $sisaKuotaIng > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaIng--;
-    }    
-}elseif ($kursus == 'Bahasa Inggris'  && $jeniskursussmp == 'Privat' && $sisaKuotaIng1 > 0) {
-    // Memasukkan data pengguna ke dalam tabel
-    $query = "INSERT INTO tb_smp (kursussmp) VALUES ('$kursus')";
-    $result = mysqli_query($connection, $query);
-    
-    if ($result) {
-        // Mengurangi sisa kuota IPA
-        $sisaKuotaIng1--;
-    }    
-}
-}
-?>
+    $jeniskursus = $_POST['jeniskursussmp'];
 
+    // Mengupdate nilai kuota pada tabel tb_kuota
+    $query = "UPDATE tb_kuota SET kuota = kuota - 1 WHERE tabel = 'tb_smp' AND kursus = '$kursus' AND jenis_kursus = '$jeniskursus'";
+    mysqli_query($connection, $query);
+}
+
+// Fungsi untuk mendapatkan nilai kuota
+function getKuota($kursus, $jenis) {
+    global $connection;
+    $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_smp' AND kursus = '$kursus' AND jenis_kursus = '$jenis'";
+    $result = mysqli_query($connection, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['kuota'];
+    } else {
+        return 0;
+    }
+    session_start();
+$_SESSION['sisaKuotaMatematika'] = $sisaKuotaMatematika;
+$_SESSION['sisaKuotaMatematika1'] = $sisaKuotaMatematika1;
+$_SESSION['sisaKuotaIPA'] = $sisaKuotaIPA;
+$_SESSION['sisaKuotaIPA1'] = $sisaKuotaIPA1;
+$_SESSION['sisaKuotaDesain'] = $sisaKuotaDesain;
+$_SESSION['sisaKuotaDesain1'] = $sisaKuotaDesain1;
+$_SESSION['sisaKuotaDesain1'] = $sisaKuotaPem;
+$_SESSION['sisaKuotaDesain1'] = $sisaKuotaPem1;
+$_SESSION['sisaKuotaIng'] = $sisaKuotaIng;
+$_SESSION['sisaKuotaIng1'] = $sisaKuotaIng1;
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -121,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Bahasa Inggris Privat</title>
+    <title>Pendaftaran SMP</title>
                 <!-- Fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,16 +152,9 @@ input.addEventListener('input', function() {
                             <option>Bahasa Inggris</option>
                         </optgroup>
                         </select >
-                        <?php
-// Inisialisasi variabel sisa kuota
-$sisaKuotaIng = 5; // Contoh nilai awal, bisa diganti sesuai kebutuhan
-$sisaKuotaIng1 = 3; // Contoh nilai awal, bisa diganti sesuai kebutuhan
-
-// ...
-?>
                         <select name="jeniskursussmp" class="input-controll" required>
     <optgroup label="Jenis Kursus">
-        <option <?php echo ($sisaKuotaIng1 > 3) ? 'disabled' : ''; ?>>Privat</option>
+        <option>Privat</option>
     </optgroup>
 </select>
 
