@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $container .= '</div>';
     ob_end_clean();
   
-    header("Location: kuotasd.php?container=" . urlencode($container));
+    header("Location: kuotasd1.php?container=" . urlencode($container));
     exit();
   } elseif ($tabel === 'tb_smp') {
     // Sama seperti sebelumnya untuk tabel 'tb_smp'
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $container .= '</div>';
     ob_end_clean();
   
-    header("Location: kuotasmp.php?container=" . urlencode($container));
+    header("Location: kuotasmp1.php?container=" . urlencode($container));
     exit();
   } elseif ($tabel === 'tb_data') {
     // Sama seperti sebelumnya untuk tabel 'tb_data'
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $container .= '</div>';
     ob_end_clean();
   
-    header("Location: kuotasma.php?container=" . urlencode($container));
+    header("Location: kuotasma1.php?container=" . urlencode($container));
     exit();
   }
   
@@ -99,78 +99,131 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    h2 {
+      color: #333333;
+      text-align: center;
+    }
+
     .container {
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: 500px;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-/* Tampilan untuk perangkat handphone */
-@media only screen and (max-width: 600px) {
-  .container {
-    /* Gaya CSS untuk handphone */
-  }
-}
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
 
-/* Tampilan untuk perangkat tablet */
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
-  .container {
-    /* Gaya CSS untuk tablet */
-  }
-}
+    .container label {
+      display: block;
+      margin-bottom: 5px;
+    }
 
-/* Tampilan untuk perangkat komputer */
-@media only screen and (min-width: 1025px) {
-  .container {
-    /* Gaya CSS untuk komputer */
-  }
-}
+    .container input[type="text"],
+    .container input[type="number"],
+    .container select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
 
+    .container input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #1e90ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .container input[type="submit"]:hover{
+      color: red;
+      background-color: orange;
+    }
+
+    /* Tampilan untuk perangkat handphone */
+    @media only screen and (max-width: 600px) {
+      .container {
+        /* Gaya CSS untuk handphone */
+      }
+    }
+
+    /* Tampilan untuk perangkat tablet */
+    @media only screen and (min-width: 601px) and (max-width: 1024px) {
+      .container {
+        /* Gaya CSS untuk tablet */
+      }
+    }
+
+    /* Tampilan untuk perangkat komputer */
+    @media only screen and (min-width: 1025px) {
+      .container {
+        /* Gaya CSS untuk komputer */
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>Form Tambah Mapel</h2>
-  <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-  <label for="tabel">Tabel:</label>
-  <select name="tabel" id="tabel">
-    <option value="tb_tk">tb_tk</option>
-    <option value="tb_sd">tb_sd</option>
-    <option value="tb_smp">tb_smp</option>
-    <option value="tb_data">tb_data</option>
-  </select>
-  <br><br>
-  
-  <label for="kursus">Kursus:</label>
-  <input type="text" id="kursus" name="kursus[]" required>
-  <br>
-  <label for="jenis_kursus1">Jenis Kursus 1:</label>
-  <select id="jenis_kursus1" name="jenis_kursus[]" required>
-    <option value="Reguler">Reguler</option>
-    <option value="Privat">Privat</option>
-  </select>
-  <br>
-  <label for="kuota1">Kuota 1:</label>
-  <input type="number" id="kuota1" name="kuota[]" required>
-  <br>
-  <label for="jenis_kursus2">Jenis Kursus 2:</label>
-  <select id="jenis_kursus2" name="jenis_kursus[]" required>
-    <option value="Reguler">Reguler</option>
-    <option value="Privat">Privat</option>
-  </select>
-  <br>
-  <label for="kuota2">Kuota 2:</label>
-  <input type="number" id="kuota2" name="kuota[]" required>
-  <br><br>
-  
-  <input type="submit" value="Tambahkan">
-</form>
-
-<?php
-// Tampilkan container yang telah dibuat
-echo $container;
-?>
-
+  <div class="container">
+    <h2>Form Tambah Mapel</h2>
+    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+      <label for="tabel">Tabel:</label>
+      <select name="tabel" id="tabel">
+        <option value="tb_tk">tb_tk</option>
+        <option value="tb_sd">tb_sd</option>
+        <option value="tb_smp">tb_smp</option>
+        <option value="tb_data">tb_data</option>
+      </select>
+      <br><br>
+      
+      <label for="kursus">Kursus:</label>
+      <input type="text" id="kursus" name="kursus[]" required>
+      <br>
+      <label for="jenis_kursus1">Jenis Kursus 1:</label>
+      <select id="jenis_kursus1" name="jenis_kursus[]" required>
+        <option value="Reguler">Reguler</option>
+        <option value="Privat">Privat</option>
+        <option value="Online">Online (SMA)</option>
+      </select>
+      <br>
+      <label for="kuota1">Kuota 1:</label>
+      <input type="number" id="kuota1" name="kuota[]" required>
+      <br>
+      <label for="jenis_kursus2">Jenis Kursus 2:</label>
+      <select id="jenis_kursus2" name="jenis_kursus[]" required>
+        <option value="Reguler">Reguler</option>
+        <option value="Privat">Privat</option>
+        <option value="Online">Online (SMA)</option>
+      </select>
+      <br>
+      <label for="kuota2">Kuota 2:</label>
+      <input type="number" id="kuota2" name="kuota[]" required>
+      <br>
+      <label for="jenis_kursus3">Jenis Kursus 2:</label>
+      <select id="jenis_kursus3" name="jenis_kursus[]">
+        <option value="Reguler">Reguler</option>
+        <option value="Privat">Privat</option>
+        <option value="Online">Online (SMA)</option>
+      </select>
+      <br>
+      <label for="kuota3">Kuota 2:</label>
+      <input type="number" id="kuota2" name="kuota[]">
+      <br><br>
+      
+      <input type="submit" value="Tambahkan">
+    </form>
+  </div>
 </body>
 </html>
+

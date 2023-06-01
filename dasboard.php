@@ -25,6 +25,7 @@
                 <a href="data-registrasi.php">Data Daftar</a>
                 <a href="laporan_dataall.php">Laporan</a>
                 <a href="updatekuota.php">Kuota Pendaftaran</a>
+                <a href="tambah_kuota.php">Tambah Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <a href="register.php">Daftar Akses</a>
                 <!-- <a href="datapresensi.php">Presensi</a> -->

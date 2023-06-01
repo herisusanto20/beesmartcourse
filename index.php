@@ -154,10 +154,10 @@
             <main class="content">
                 <h1>Mari Belajar <span>Bee Smart </span>Course</h1>
                 <p>Pintar Meraih Kesuksesan </p>
-                <a href="kuotatk.php" class="cta">Kelas TK</a>
-                <a href="kuotasd.php" class="cta">Kelas SD</a>
-                <a href="kuotasmp.php" class="cta">Kelas SMP</a>
-                <a href="kuotasma.php" class="cta">Kelas SMA</a>
+                <a href="kuotatk1.php" class="cta">Kelas TK</a>
+                <a href="kuotasd1.php" class="cta">Kelas SD</a>
+                <a href="kuotasmp1.php" class="cta">Kelas SMP</a>
+                <a href="kuotasma1.php" class="cta">Kelas SMA</a>
                 
                 
                 
