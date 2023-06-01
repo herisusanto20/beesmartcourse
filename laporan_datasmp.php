@@ -56,7 +56,7 @@
                             <td>Alamat</td>
                             <td>Kursus</td>
                             <td>Jenis Kursus</td>
-                            <td>Status</td>
+                            <td>Keterangan</td>
 
                         </tr>
                     </thead>

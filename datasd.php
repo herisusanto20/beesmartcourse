@@ -27,7 +27,7 @@
                 <a href="laporan_dataall.php">Laporan</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <a href="register.php">Daftar Akses</a>
-                <a href="datapresensi.php">Presensi</a>
+                <!-- <a href="datapresensi.php">Presensi</a> -->
             </div>
             <div class="navbar-extra">
                 <!-- <a href="#" id="search"><i data-feather="search"></i></a>
@@ -97,7 +97,7 @@
             <th>Alamat</th>
             <th>Kursus</th>
             <th>Jenis Kursus</th>
-            <th>Status</th>
+            <th>Keterangan</th>
             <th colspan="3">Tambahan</th>
         </tr>
     </thead>

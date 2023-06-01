@@ -82,12 +82,12 @@
         <tr>
             <th>Nama</th>
             <th>Tanggal Pendaftaran</th>
-            <th>Kelas</th>
             <th>Nama Orang Tua</th>
             <th>No Handphone</th>
             <th>Alamat</th>
             <th>Kursus</th>
             <th>Jenis Kursus</th>
+            <th>Keterangan</th>
             <th colspan="2">Konfirmasi</th>
         </tr>
     </thead>

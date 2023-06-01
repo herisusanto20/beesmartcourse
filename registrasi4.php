@@ -180,5 +180,37 @@ $_SESSION['sisaKuotaTem1'] = getKuota('Tematik', 'Privat');
     </script>
     <!-- Script buat hamburger -->
     <script src="js/script.js"></script>
+
+
+    <!-- <script>
+    function validateForm(event) {
+        event.preventDefault(); // Mencegah pengiriman formulir secara langsung
+
+        // Mendapatkan nilai input nomor handphone
+        var phoneNumber = document.getElementById("nohandphonetk").value;
+
+        // Mengirimkan permintaan ke server untuk memeriksa duplikasi
+        fetch("check_duplicate.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "phoneNumber=" + encodeURIComponent(phoneNumber)
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === "duplicate") {
+                alert("Nomor handphone sudah terdaftar. Tidak dapat melakukan pendaftaran.");
+            } else {
+                // Jika tidak ada duplikasi, lanjutkan pengiriman formulir
+                event.target.submit();
+            }
+        })
+        .catch(error => {
+            console.error("Terjadi kesalahan:", error);
+        });
+    }
+    onsubmit="return validateForm(event)"
+</script> -->
 </body>
 </html>

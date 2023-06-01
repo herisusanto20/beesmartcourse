@@ -23,8 +23,8 @@
             <div class="navbar-nav">
                 <a href="datasiswa.php">Data Siswa</a>
                 <!-- <a href="gaji.php">Penggajian</a> -->
-                <a href="presensi.php">Presensi</a>
-                <a href="ubahdata.php">Ubah Data Profil</a>
+                <!-- <a href="presensi.php">Presensi</a> -->
+                <!-- <a href="ubahdata.php">Ubah Data Profil</a> -->
             </div>
             <div class="navbar-extra">
                 <a href="login.php">

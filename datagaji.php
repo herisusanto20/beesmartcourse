@@ -204,7 +204,7 @@
                 <a href="laporan_dataall.php">Laporan</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <a href="register.php">Daftar Akses</a>
-                <a href="datapresensi.php">Presensi</a>
+                <!-- <a href="datapresensi.php">Presensi</a> -->
                 
             </div>
             <div class="navbar-extra">

@@ -51,13 +51,12 @@
                             <td>No</td>
                             <td>Nama Siswa</td>
                             <td>Tanggal Pendaftaran</td>
-                            <td>Kelas</td>
                             <td>Nama Orang Tua</td>
                             <td>No Handphone</td>
                             <td>Alamat</td>
                             <td>Kursus</td>
                             <td>Jenis Kursus</td>
-                            <td>Status</td>
+                            <td>Keterangan</td>
 
                         </tr>
                     </thead>
