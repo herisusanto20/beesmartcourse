@@ -4,17 +4,17 @@ $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
 
 if (isset($_POST['proses'])) {
   // Ambil data dari form
-  $namatk = $_POST['namatk'];
-  $tanggaltk = $_POST['tanggaltk'];
-  $namaortutk = $_POST['namaortutk'];
-  $nohandphonetk = $_POST['nohandphonetk'];
-  $alamattk = $_POST['alamattk'];
-  $statustk = $_POST['statustk'];
-  $kursustk = $_POST['kursustk'];
-  $jeniskursustk = $_POST['jeniskursustk'];
+  $namatk = $_POST['nama'];
+  $tanggaltk = $_POST['tanggal'];
+  $namaortutk = $_POST['kelas'];
+  $nohandphonetk = $_POST['no_handphone'];
+  $alamattk = $_POST['alamat'];
+  $statustk = $_POST['statussma'];
+  $kursustk = $_POST['kursus'];
+  $jeniskursustk = $_POST['jenis_kursus'];
 
   // Periksa apakah kuota tersedia
-  $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_tk' AND kursus = '$kursustk' AND jenis_kursus = '$jeniskursustk'";
+  $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_data' AND kursus = '$kursustk' AND jenis_kursus = '$jeniskursustk'";
   $result = mysqli_query($koneksi, $query);
   $row = mysqli_fetch_assoc($result);
   $kuota = $row['kuota'];
@@ -22,16 +22,16 @@ if (isset($_POST['proses'])) {
   if ($kuota > 0) {
     // Kurangi kuota
     $updated_kuota = $kuota - 1;
-    $update_query = "UPDATE tb_kuota SET kuota = $updated_kuota WHERE tabel = 'tb_tk' AND kursus = '$kursustk' AND  jenis_kursus = '$jeniskursustk'";
+    $update_query = "UPDATE tb_kuota SET kuota = $updated_kuota WHERE tabel = 'tb_data' AND kursus = '$kursustk' AND  jenis_kursus = '$jeniskursustk'";
     mysqli_query($koneksi, $update_query);
 
     // Lanjutkan dengan menyimpan data pendaftaran ke database
-    $insert_query = "INSERT INTO tb_tk (namatk, tanggaltk, namaortutk, nohandphonetk, alamattk, statustk, kursustk, jeniskursustk) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk')";
+    $insert_query = "INSERT INTO tb_data (nama, tanggal, kelas, no_handphone, alamat, statussma, kursus, jenis_kursus) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk')";
     mysqli_query($koneksi, $insert_query);
 
     echo "Pendaftaran berhasil!";
   } else {
-    echo "Kuota untuk jenis kursus '$jeniskursustk' pada tabel 'tb_tk' telah habis.";
+    echo "Kuota untuk jenis kursus '$jeniskursustk' pada tabel 'tb_data' telah habis.";
   }
 }
 
@@ -44,7 +44,7 @@ mysqli_close($koneksi);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form TK</title>
+  <title>Form SD</title>
   <style>
   body {
     background-color: #f0f0f0;
@@ -162,14 +162,13 @@ mysqli_close($koneksi);
 </style>
 
 
-
 </head>
 <body>
 <body>
   <div class="container">
     <div class="form-container">
       <form action="" method="POST" enctype="multipart/form-data">
-      <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required><br>
+      <input type="text" name="nama" placeholder="Nama Lengkap" class="input-controll" required><br>
   <script>
     function setTodayDate() {
       var today = new Date();
@@ -178,19 +177,19 @@ mysqli_close($koneksi);
       var year = today.getFullYear();
       var todayDate = year + '-' + month + '-' + day;
 
-      document.getElementById("tanggaltk").setAttribute("value", todayDate);
+      document.getElementById("tanggal").setAttribute("value", todayDate);
     }
   </script>
   <p>Tanggal Pendaftaran</p>
-  <input type="date" name="tanggaltk" id="tanggaltk" placeholder="Tanggal" class="input-controll" readonly required><br>
+  <input type="date" name="tanggal" id="tanggal" placeholder="Tanggal" class="input-controll" readonly required><br>
   <script>
     setTodayDate();
   </script>
-  <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required>
-  <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
+  <input type="text" name="kelas" placeholder="Kelas" class="input-controll" required>
+  <input type="text" name="no_handphone" id="no_handphone" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
   <span id="error-message" class="error-message"></span>
   <script>
-    var input = document.getElementById('nohandphonetk');
+    var input = document.getElementById('no_handphone');
     var errorMessage = document.getElementById('error-message');
 
     input.addEventListener('input', function() {
@@ -206,10 +205,10 @@ mysqli_close($koneksi);
       }
     });
   </script>
-  <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required>
-  <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
-  <label for="kursustk">Kursus:</label>
-<select name="kursustk" class="input-controll" required>
+  <input type="text" name="alamat" placeholder="Alamat" class="input-controll" required>
+  <input type="hidden" name="statussma" placeholder="Keterangan" class="input-controll">
+  <label for="kursus">Kursus:</label>
+<select name="kursus" class="input-controll" required>
 <option value="">-- Kursus --</option>
 <?php
     // Koneksi ke database
@@ -217,8 +216,8 @@ mysqli_close($koneksi);
 
     // Nilai dari kolom "tabel" yang ingin Anda gunakan
     $tabel = $_POST['tabel'];
-    $tabel = 'tb_tk';
-    $jenis_kursus = 'Reguler';
+    $tabel = 'tb_data';
+    $jenis_kursus = 'Online';
 
     // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
     $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
@@ -238,9 +237,9 @@ mysqli_close($koneksi);
 
 </select>
 
-  <select name="jeniskursustk" class="input-controll" required>
+  <select name="jenis_kursus" class="input-controll" required>
     <optgroup label="Jenis Kursus">
-      <option>Reguler</option>
+      <option>Online</option>
     </optgroup>
   </select>
   <input type="submit" value="DAFTAR" class="btn" name="proses">

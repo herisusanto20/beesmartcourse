@@ -218,7 +218,7 @@ mysqli_close($koneksi);
     // Nilai dari kolom "tabel" yang ingin Anda gunakan
     $tabel = $_POST['tabel'];
     $tabel = 'tb_tk';
-    $jenis_kursus = 'Reguler';
+    $jenis_kursus = 'Privat';
 
     // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
     $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
@@ -240,7 +240,7 @@ mysqli_close($koneksi);
 
   <select name="jeniskursustk" class="input-controll" required>
     <optgroup label="Jenis Kursus">
-      <option>Reguler</option>
+      <option>Privat</option>
     </optgroup>
   </select>
   <input type="submit" value="DAFTAR" class="btn" name="proses">

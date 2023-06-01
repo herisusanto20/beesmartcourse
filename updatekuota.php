@@ -136,13 +136,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <label for="kursus">Kursus:</label>
         <select name="kursus" id="kursus">
-            <option value="Matematika">Matematika</option>
-            <option value="IPA">IPA</option>
-            <option value="Desain Grafis">Desain Grafis</option>
-            <option value="Pemrograman">Pemrograman</option>
-            <option value="Bahasa Inggris">Bahasa Inggris</option>
-            <option value="Calistung">Calistung</option>
-            <option value="Tematik">Tematik</option>
+        <?php
+    // Koneksi ke database
+    $conn = mysqli_connect("localhost", "root", "", "registrasi");
+
+    // Nilai dari kolom "tabel" yang ingin Anda gunakan
+    $tabel = $_POST['tabel'];
+    $jenis_kursus = 'Reguler';
+
+    // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
+    $sql = "SELECT * FROM tb_kuota WHERE jenis_kursus = '$jenis_kursus'";
+
+    $result = mysqli_query($conn, $sql);
+
+    // Loop untuk menampilkan data kursus pada dropdown
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<option value='" . $row['kursus'] . "'>" . $row['kursus'] . "</option>";
+    }
+?>
         </select>
 
         <br><br>

@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </style>
 </head>
 <body>
-  <h2>Form Tambah Kuota</h2>
+  <h2>Form Tambah Mapel</h2>
   <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
   <label for="tabel">Tabel:</label>
   <select name="tabel" id="tabel">

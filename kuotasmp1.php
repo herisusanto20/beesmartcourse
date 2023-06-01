@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <!-- Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
@@ -64,9 +64,9 @@
       background-color: #cccccc;
     }
                 /* chatbot css tk */
-     .ulchatbot {
+                .ulchatbot {
     cursor: pointer;
-      }
+}
 
 .chat-header {
     border-radius: 10px 10px 0 0;
@@ -179,18 +179,18 @@
                 <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
             </div>
         </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <!-- Navbar End -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
   <?php
   // Koneksi ke database (sesuaikan dengan pengaturan server Anda)
   $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
 
   // Ambil data kuota berdasarkan kolom "tabel" dengan nilai "tb_tk"
-  $query = "SELECT kursus, jenis_kursus, kuota FROM tb_kuota WHERE tabel = 'tb_tk'";
+  $query = "SELECT kursus, jenis_kursus, kuota FROM tb_kuota WHERE tabel = 'tb_smp'";
   $result = mysqli_query($koneksi, $query);
 
   // Inisialisasi variabel array untuk menyimpan data kuota berdasarkan kursus
@@ -220,7 +220,7 @@ foreach ($data_kuota as $kursus => $kuota) {
 
   // Periksa kuota Reguler, jika 0 maka nonaktifkan tombol "Daftar Reguler"
   if ($kuota['Reguler'] > 0) {
-    echo '<a href="formtk.php?kursus=' . $kursus . '">Daftar Reguler</a>';
+    echo '<a href="formsmp.php?kursus=' . $kursus . '">Daftar Reguler</a>';
   } else {
     echo '<a href="#" disabled>Daftar Reguler</a>';
   }
@@ -229,7 +229,7 @@ foreach ($data_kuota as $kursus => $kuota) {
 
   // Periksa kuota Privat, jika 0 maka nonaktifkan tombol "Daftar Privat"
   if ($kuota['Privat'] > 0) {
-    echo '<a href="formtk1.php?kursus=' . $kursus . '">Daftar Privat</a>';
+    echo '<a href="formsmp1.php?kursus=' . $kursus . '">Daftar Privat</a>';
   } else {
     echo '<a href="#" disabled>Daftar Privat</a>';
   }
