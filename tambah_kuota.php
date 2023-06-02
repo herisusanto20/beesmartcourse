@@ -98,9 +98,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
+   <!-- Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
+            rel="stylesheet">
+        <!-- Feather Icons -->
+        <script src="https://unpkg.com/feather-icons"></script>
+        <!-- My Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin-top: 3rem;
+      font-family: "Poppins", sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -109,6 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     h2 {
+      font-size: 20px;
       color: #333333;
       text-align: center;
     }
@@ -175,8 +187,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </style>
 </head>
 <body>
+  <!-- Navbar Start -->
+<nav class="navbar">
+            <a href="dasboard.php" class="navbar-logo"><span>Bee Smart </span>Course</a>
+            <div class="navbar-nav">
+                <a href="dasboard.php">Home</a>
+                <a href="data-registrasi.php">Data</a>
+                <a href="laporan_dataall.php">Laporan</a>
+                <a href="updatekuota.php">Kuota</a>
+                <a href="tambah_kuota.php">Tambah Kursus</a>
+                <!-- <a href="datagaji.php">Penggajian</a> -->
+                <a href="register.php">Daftar Akses</a>
+                <!-- <a href="datapresensi.php">Presensi</a> -->
+                
+            </div>
+            <div class="navbar-extra">
+                <!-- <a href="#" id="search"><i data-feather="search"></i></a>
+                <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a> -->
+                <a href="login.php">
+                        <i data-feather="log-out"></i>
+                    </a>
+                <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+            </div>
+        </nav>
+
+        <!-- Navbar End -->
   <div class="container">
-    <h2>Form Tambah Mapel</h2>
+    <h2>Form Tambah Kursus</h2>
     <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
       <label for="tabel">Tabel:</label>
       <select name="tabel" id="tabel">
@@ -200,7 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <label for="kuota1">Kuota 1:</label>
       <input type="number" id="kuota1" name="kuota[]" required>
       <br>
-      <label for="jenis_kursus2">Jenis Kursus 2:</label>
+      <label for="jenis_kursus2">Jenis Kursus 3:</label>
       <select id="jenis_kursus2" name="jenis_kursus[]" required>
         <option value="Reguler">Reguler</option>
         <option value="Privat">Privat</option>
@@ -210,20 +247,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <label for="kuota2">Kuota 2:</label>
       <input type="number" id="kuota2" name="kuota[]" required>
       <br>
-      <label for="jenis_kursus3">Jenis Kursus 2:</label>
+      <label for="jenis_kursus3">Jenis Kursus 3:</label>
       <select id="jenis_kursus3" name="jenis_kursus[]">
         <option value="Reguler">Reguler</option>
         <option value="Privat">Privat</option>
         <option value="Online">Online (SMA)</option>
       </select>
       <br>
-      <label for="kuota3">Kuota 2:</label>
-      <input type="number" id="kuota2" name="kuota[]">
+      <label for="kuota3">Kuota 3:</label>
+      <input type="number" id="kuota3" name="kuota[]">
       <br><br>
       
       <input type="submit" value="Tambahkan">
     </form>
   </div>
+   <!-- Feather -->
+   <script>
+            feather.replace()
+          </script>
+          <!-- Script buat hamburger -->
+          <script src="js/script.js"></script>
 </body>
 </html>
 
