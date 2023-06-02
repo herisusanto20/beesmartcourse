@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Pendaftaran SMA</title>
+    <title>Edit Kursus</title>
       <!-- Fonts -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,10 +44,8 @@
 
         <!-- Navbar End -->
         <section class="pilih">
-        <a href="laporan_datatk.php" class="cta1">Kelas TK</a>
-                <a href="laporan_datasd.php" class="cta1">Kelas SD</a>
-                <a href="laporan_datasmp.php" class="cta1">Kelas SMP</a>
-                <a href="laporan_data.php" class="cta1">Kelas SMA</a>
+                <a href="tambah_kuota.php" class="cta1">Tambah Kursus</a>
+                <a href="kurang_kuota.php" class="cta1">Hapus Kursus</a>
         </section>
 <!-- Feather Icons -->
 <script>

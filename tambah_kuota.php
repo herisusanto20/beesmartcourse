@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="data-registrasi.php">Data</a>
                 <a href="laporan_dataall.php">Laporan</a>
                 <a href="updatekuota.php">Kuota</a>
-                <a href="tambah_kuota.php">Tambah Kursus</a>
+                <a href="editkursus.php">Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <a href="register.php">Daftar Akses</a>
                 <!-- <a href="datapresensi.php">Presensi</a> -->
