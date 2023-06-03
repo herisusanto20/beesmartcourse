@@ -16,6 +16,38 @@
         <!-- Feather Icons -->
         <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    form.ketik {
+        margin-bottom: 20px;
+    }
+
+    form.ketik label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    form.ketik input[type="text"],
+    form.ketik input[type="submit"] {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    form.ketik input[type="text"] {
+        width: 200px;
+    }
+
+    form.ketik input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    form.ketik input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
 </head>
 <body class="body_kategori">
     <!-- Navbar Start -->
@@ -45,6 +77,7 @@
         <div class="table-wrapper">
 <table cellspacing='0'>
     <thead>
+        <!-- sesi search on -->
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="ketik">
 		<label for="keyword">Silakan Ketik : </label>
 		<input type="text" id="keyword" name="keyword">
@@ -59,7 +92,7 @@
 	if (isset($_POST['keyword'])) {
 		$keyword = $_POST['keyword'];
 		// Query untuk mencari data pertemuan berdasarkan keyword pada semua kolom
-		$sql = "SELECT * FROM tb_tk WHERE namatk LIKE '%$keyword%' OR tanggaltk LIKE '%$keyword%' OR namaortutk LIKE '%$keyword%' OR nohandphonetk LIKE '%$keyword%' OR alamattk LIKE '%$keyword%' OR kursustk LIKE '%$keyword%' OR jeniskursustk LIKE '%$keyword%'";
+		$sql = "SELECT * FROM tb_tk WHERE namatk LIKE '%$keyword%' OR tanggaltk LIKE '%$keyword%' OR namaortutk LIKE '%$keyword%' OR nohandphonetk LIKE '%$keyword%' OR alamattk LIKE '%$keyword%' OR kursustk LIKE '%$keyword%' OR jeniskursustk LIKE '%$keyword%' OR statustk LIKE '%$keyword%'";
 	} else {
 		// Query untuk mengambil semua data dari tabel pertemuan
 		$sql = "SELECT * FROM tb_tk ORDER BY tanggaltk ASC";
@@ -70,6 +103,7 @@
 		die("Query failed: " . mysqli_error($conn));
 	}
 	?>
+    <!-- sesi search off -->
     <thead>
     <tbody>
         <tr>

@@ -44,48 +44,33 @@
         <h2 class="h2data">Data Pendaftaran SMA</h2>
 <table cellspacing='0'>
     <thead>
-        <!-- Filtering on -->
-<?php
-    include 'db.php';
+            <!-- sesi search on -->
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="ketik">
+		<label for="keyword">Silakan Ketik : </label>
+		<input type="text" id="keyword" name="keyword">
+		<input type="submit" value="Cari">
+	</form> <br>
+	<?php
+	$conn = mysqli_connect("localhost", "root", "", "registrasi");
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	// Mengecek apakah form pencarian sudah di-submit
+	if (isset($_POST['keyword'])) {
+		$keyword = $_POST['keyword'];
+		// Query untuk mencari data pertemuan berdasarkan keyword pada semua kolom
+		$sql = "SELECT * FROM tb_data WHERE nama LIKE '%$keyword%' OR tanggal LIKE '%$keyword%' OR kelas LIKE '%$keyword%' OR no_handphone LIKE '%$keyword%' OR alamat LIKE '%$keyword%' OR kursus LIKE '%$keyword%' OR jenis_kursus LIKE '%$keyword%' OR statussma LIKE '%$keyword%'";
+	} else {
+		// Query untuk mengambil semua data dari tabel pertemuan
+		$sql = "SELECT * FROM tb_data ORDER BY tanggal ASC";
+	}
 
-    // Ambil nilai jenis kursus dari parameter GET (jika tersedia)
-    $kursus = isset($_GET['kursus']) ? $_GET['kursus'] : '';
-
-    // Validasi nilai jenis kursus
-    $valid_kursus = ['Matematika', 'Desain Grafis', 'Pemrograman', 'Bahasa Inggris', 'IPA' ];
-    if (!empty($kursus) && !in_array($kursus, $valid_kursus)) {
-        echo "Jenis kursus tidak valid";
-        exit();
-    }
-
-    // Filter data berdasarkan jenis kursus jika nilai jenis kursus tidak kosong
-    $sql = "SELECT * FROM tb_data";
-    if (!empty($kursus)) {
-        $sql .= " WHERE kursus = '$kursus'";
-    }
-    // Tambahkan kondisi ORDER BY pada query SQL
-    $sql .= " ORDER BY tanggal ASC";
-
-
-    // Eksekusi query
-    $result = mysqli_query($conn, $sql);
-?>
-
-<!-- Form untuk memfilter data berdasarkan jenis kursus -->
-<form action="" method="get">
-    <label>Pilih jenis kursus:</label>
-    <select name="kursus">
-        <option value="">Semua</option>
-        <option value="Matematika" <?php if ($kursus == 'Matematika') echo 'selected'; ?>>Matematika</option>
-        <option value="Desain Grafis" <?php if ($kursus == 'Desain Grafis') echo 'selected'; ?>>Desain Grafis</option>
-        <option value="Pemrograman" <?php if ($kursus == 'Pemrograman') echo 'selected'; ?>>Pemrograman</option>
-        <option value="Bahasa Inggris" <?php if ($kursus == 'Bahasa Inggris') echo 'selected'; ?>>Bahasa Inggris</option>
-        <option value="IPA" <?php if ($kursus == 'IPA') echo 'selected'; ?>>IPA</option>
-    </select>
-    <input type="submit" value="Filter" id="filter">
-</form>
-<br>
-<!-- Filtering off -->
+	$result = mysqli_query($conn, $sql);
+	if (!$result) {
+		die("Query failed: " . mysqli_error($conn));
+	}
+	?>
+    <!-- sesi search off -->
     <thead>
     <tbody>
         <tr>
