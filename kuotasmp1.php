@@ -15,16 +15,23 @@
         <link rel="stylesheet" href="css/style.css">
 <style>
     body {
-      font-family: Arial, sans-serif;
+      margin-top:3rem;
+      display: flex;
+      font-family: "Poppins", sans-serif;
     }
     
     .container {
-      margin: 10px;
-      max-width: 500px;
-      padding: 20px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+  margin: 10px;
+  margin-top:4rem;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #ffffff;
+  transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 4px 8px #3498db;
+}
     
     h3 {
       font-size: 18px;
@@ -42,7 +49,7 @@
       color: #ffffff;
       text-decoration: none;
       border-radius: 4px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.1s ease;
       border: none;
       cursor: pointer;
       font-size: 14px;
@@ -51,7 +58,7 @@
     }
     
     .button:hover {
-      background-color: #2980b9;
+      background-color: orange;
     }
     
     .button.disabled {
@@ -220,7 +227,7 @@ foreach ($data_kuota as $kursus => $kuota) {
 
   // Periksa kuota Reguler, jika 0 maka nonaktifkan tombol "Daftar Reguler"
   if ($kuota['Reguler'] > 0) {
-    echo '<a href="formsmp.php?kursus=' . $kursus . '">Daftar Reguler</a>';
+    echo '<a href="formsmp.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Reguler</button></a>';
   } else {
     echo '<a href="#" disabled>Daftar Reguler</a>';
   }
@@ -229,7 +236,7 @@ foreach ($data_kuota as $kursus => $kuota) {
 
   // Periksa kuota Privat, jika 0 maka nonaktifkan tombol "Daftar Privat"
   if ($kuota['Privat'] > 0) {
-    echo '<a href="formsmp1.php?kursus=' . $kursus . '">Daftar Privat</a>';
+    echo '<a href="formsmp1.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Private</button></a>';
   } else {
     echo '<a href="#" disabled>Daftar Privat</a>';
   }
