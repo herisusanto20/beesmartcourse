@@ -24,7 +24,7 @@
             <div class="navbar-nav">
                 <a href="datasiswa.php">Data Siswa</a>
                 <!-- <a href="gaji.php">Penggajian</a> -->
-                <a href="presensi.php">Presensi</a>
+                <!-- <a href="presensi.php">Presensi</a> -->
             </div>
             <div class="navbar-extra">
                 <a href="login.php">
@@ -38,45 +38,33 @@
         <h2 class="h2data">Data Pendaftaran TK</h2>
 <table cellspacing='0'>
     <thead>
-        <!-- Filtering on -->
-<?php
-    include 'db.php';
+ <!-- sesi search on -->
+ <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="ketik">
+		<label for="keyword">Silakan Ketik : </label>
+		<input type="text" id="keyword" name="keyword">
+		<input type="submit" value="Cari">
+	</form> <br>
+	<?php
+	$conn = mysqli_connect("localhost", "root", "", "registrasi");
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	// Mengecek apakah form pencarian sudah di-submit
+	if (isset($_POST['keyword'])) {
+		$keyword = $_POST['keyword'];
+		// Query untuk mencari data pertemuan berdasarkan keyword pada semua kolom
+		$sql = "SELECT * FROM tb_tk WHERE namatk LIKE '%$keyword%' OR tanggaltk LIKE '%$keyword%' OR namaortutk LIKE '%$keyword%' OR nohandphonetk LIKE '%$keyword%' OR alamattk LIKE '%$keyword%' OR kursustk LIKE '%$keyword%' OR jeniskursustk LIKE '%$keyword%' OR statustk LIKE '%$keyword%'";
+	} else {
+		// Query untuk mengambil semua data dari tabel pertemuan
+		$sql = "SELECT * FROM tb_tk ORDER BY tanggaltk ASC";
+	}
 
-    // Ambil nilai jenis kursus dari parameter GET (jika tersedia)
-    $kursustk = isset($_GET['kursustk']) ? $_GET['kursustk'] : '';
-
-    // Validasi nilai jenis kursus
-    $valid_kursustk = ['Matematika', 'Calistung', 'Tematik'];
-    if (!empty($kursustk) && !in_array($kursustk, $valid_kursustk)) {
-        echo "Jenis kursus tidak valid";
-        exit();
-    }
-
-    // Filter data berdasarkan jenis kursus jika nilai jenis kursus tidak kosong
-    $sql = "SELECT * FROM tb_tk";
-    if (!empty($kursustk)) {
-        $sql .= " WHERE kursustk = '$kursustk'";
-    }
-    // Urutkan data dr yg dulu
-    $sql .= " ORDER BY tanggaltk ASC";
-
-    // Eksekusi query
-    $result = mysqli_query($conn, $sql);
-?>
-
-<!-- Form untuk memfilter data berdasarkan jenis kursus -->
-<form action="" method="get">
-    <label>Pilih jenis kursus:</label>
-    <select name="kursustk">
-        <option value="">Semua</option>
-        <option value="Matematika" <?php if ($kursustk == 'Matematika') echo 'selected'; ?>>Matematika</option>
-        <option value="Calistung" <?php if ($kursustk == 'Calistung') echo 'selected'; ?>>Calistung</option>
-        <option value="Tematik" <?php if ($kursustk == 'Tematik') echo 'selected'; ?>>Tematik</option>
-    </select>
-    <input type="submit" value="Filter">
-</form>
-
-<!-- Filtering off -->
+	$result = mysqli_query($conn, $sql);
+	if (!$result) {
+		die("Query failed: " . mysqli_error($conn));
+	}
+	?>
+    <!-- sesi search off -->
     <thead>
     <tbody>
         <tr>

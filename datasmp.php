@@ -19,20 +19,23 @@
 </head>
 <body class="body_kategori">
     <!-- Navbar Start -->
-<nav class="navbar">
+    <nav class="navbar">
             <a href="dasboard.php" class="navbar-logo"><span>Bee Smart </span>Course</a>
             <div class="navbar-nav">
-            <a href="dasboard.php">Home</a>
-                <a href="data-registrasi.php">Data Daftar</a>
+                <a href="dasboard.php">Home</a>
+                <a href="data-registrasi.php">Data</a>
                 <a href="laporan_dataall.php">Laporan</a>
+                <a href="updatekuota.php">Kuota</a>
+                <a href="editkursus.php">Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <a href="register.php">Daftar Akses</a>
                 <!-- <a href="datapresensi.php">Presensi</a> -->
+                
             </div>
             <div class="navbar-extra">
                 <!-- <a href="#" id="search"><i data-feather="search"></i></a>
                 <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a> -->
-                <a href="index.php">
+                <a href="login.php">
                         <i data-feather="log-out"></i>
                     </a>
                 <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>

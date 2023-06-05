@@ -100,14 +100,9 @@
       background-color: orange;
     }
     
-    .button.disabled {
-      display: inline-block;
-      padding: 10px 20px;
-      color: orange;
-      background-color: #cccccc;
-      pointer-events: none;
-      cursor: not-allowed;
-    }
+    a[disabled] {
+  visibility: hidden;
+}
     
     .button.disabled:hover {
       background-color: #cccccc;

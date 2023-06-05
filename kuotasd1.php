@@ -61,11 +61,9 @@
       background-color: orange;
     }
     
-    .button.disabled {
-      background-color: #cccccc;
-      pointer-events: none;
-      cursor: not-allowed;
-    }
+    a[disabled] {
+  visibility: hidden;
+}
     
     .button.disabled:hover {
       background-color: #cccccc;
