@@ -159,6 +159,29 @@ mysqli_close($koneksi);
     color: orange;
     text-decoration: underline;
   }
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .country-code {
+    display: inline-block;
+    padding: 8px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-right: none;
+  }
+
+  .phone-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .error-message {
+    color: red;
+  }
 </style>
 
 
@@ -186,25 +209,51 @@ mysqli_close($koneksi);
     setTodayDate();
   </script>
   <input type="text" name="kelassd" placeholder="Kelas" class="input-controll" required>
-  <input type="text" name="nohandphonesd" id="nohandphonesd" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
-  <span id="error-message" class="error-message"></span>
-  <script>
-    var input = document.getElementById('nohandphonesd');
-    var errorMessage = document.getElementById('error-message');
+  <div class="input-wrapper">
+  <span class="country-code">+62</span>
+  <input type="text" name="nohandphonesd" id="nohandphonesd" placeholder="Nomor Handphone atau WA" class="phone-input" required>
+</div>
+<span id="error-message" class="error-message"></span>
 
-    input.addEventListener('input', function() {
-      var pattern = /^[0-9]{10,14}$/;
-      var isValid = pattern.test(input.value);
+<script>
+  var input = document.getElementById('nohandphonesd');
+  var countryCode = document.querySelector('.country-code');
+  var errorMessage = document.getElementById('error-message');
 
-      if (!isValid) {
-        errorMessage.textContent = 'Nomor handphone harus terdiri dari 10 hingga 14 digit angka';
-        input.classList.add('error');
-      } else {
-        errorMessage.textContent = '';
-        input.classList.remove('error');
-      }
-    });
-  </script>
+  input.addEventListener('input', function() {
+    var phoneNumber = input.value.trim();
+
+    if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
+      errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
+      input.classList.add('error');
+    } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
+      errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
+      input.classList.add('error');
+    } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
+      errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
+      input.classList.add('error');
+    } else {
+      errorMessage.textContent = '';
+      input.classList.remove('error');
+    }
+  });
+
+  function getFullPhoneNumber() {
+    var countryCodeValue = countryCode.textContent;
+    var phoneNumberValue = input.value.trim();
+    var fullPhoneNumber = countryCodeValue + phoneNumberValue;
+    return fullPhoneNumber;
+  }
+
+  // Contoh penggunaan:
+  var submitButton = document.getElementById('submit-button');
+  submitButton.addEventListener('click', function() {
+    var fullPhoneNumber = getFullPhoneNumber();
+    // Lakukan tindakan selanjutnya dengan nomor handphone lengkap (fullPhoneNumber)
+    // Misalnya, kirim ke server atau lakukan validasi lebih lanjut.
+    console.log(fullPhoneNumber);
+  });
+</script>
   <input type="text" name="alamatsd" placeholder="Alamat" class="input-controll" required>
   <input type="hidden" name="statussd" placeholder="Keterangan" class="input-controll">
   <label for="kursussd">Kursus:</label>

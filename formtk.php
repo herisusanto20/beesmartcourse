@@ -159,6 +159,29 @@ mysqli_close($koneksi);
     color: orange;
     text-decoration: underline;
   }
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .country-code {
+    display: inline-block;
+    padding: 8px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-right: none;
+  }
+
+  .phone-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .error-message {
+    color: red;
+  }
 </style>
 
 
@@ -169,7 +192,25 @@ mysqli_close($koneksi);
   <div class="container">
     <div class="form-container">
       <form action="" method="POST" enctype="multipart/form-data">
-      <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required><br>
+      <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required oninput="validateNamaTk(this)" />
+<span id="namatk-error" class="error-message"></span>
+
+<script>
+  function validateNamaTk(input) {
+    var regex = /^[a-zA-Z\s]+$/;
+    var errorMessage = document.getElementById('namatk-error');
+
+    if (!regex.test(input.value)) {
+      errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
+      input.classList.add('error');
+      document.getElementById('daftar-button').disabled = true;
+    } else {
+      errorMessage.textContent = '';
+      input.classList.remove('error');
+      document.getElementById('daftar-button').disabled = false;
+    }
+  }
+</script>
   <script>
     function setTodayDate() {
       var today = new Date();
@@ -186,27 +227,88 @@ mysqli_close($koneksi);
   <script>
     setTodayDate();
   </script>
-  <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required>
-  <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
-  <span id="error-message" class="error-message"></span>
-  <script>
-    var input = document.getElementById('nohandphonetk');
-    var errorMessage = document.getElementById('error-message');
+ <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
+<span id="namaortutk-error" class="error-message"></span>
 
-    input.addEventListener('input', function() {
-      var pattern = /^[0-9]{10,14}$/;
-      var isValid = pattern.test(input.value);
+<script>
+  function validateNamaOrtuTk(input) {
+    var regex = /^[a-zA-Z\s]+$/;
+    var errorMessage = document.getElementById('namaortutk-error');
 
-      if (!isValid) {
-        errorMessage.textContent = 'Nomor handphone harus terdiri dari 10 hingga 14 digit angka';
-        input.classList.add('error');
-      } else {
-        errorMessage.textContent = '';
-        input.classList.remove('error');
-      }
-    });
-  </script>
-  <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required>
+    if (!regex.test(input.value)) {
+      errorMessage.textContent = 'Nama Orang Tua hanya boleh mengandung huruf';
+      input.classList.add('error');
+      document.getElementById('daftar-button').disabled = true;
+    } else {
+      errorMessage.textContent = '';
+      input.classList.remove('error');
+      document.getElementById('daftar-button').disabled = false;
+    }
+  }
+</script>
+
+<div class="input-wrapper">
+  <span class="country-code">+62</span>
+  <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
+</div>
+<span id="error-message" class="error-message"></span>
+
+
+
+<script>
+  var input = document.getElementById('nohandphonetk');
+  var countryCode = document.querySelector('.country-code');
+  var errorMessage = document.getElementById('error-message');
+  var daftarButton = document.getElementById('daftar-button');
+
+  input.addEventListener('input', function() {
+    var phoneNumber = input.value.trim();
+
+    if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
+      errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
+      input.classList.add('error');
+      daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+    } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
+      errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
+      input.classList.add('error');
+      daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+    } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
+      errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
+      input.classList.add('error');
+      daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+    } else {
+      errorMessage.textContent = '';
+      input.classList.remove('error');
+      daftarButton.disabled = false; // Mengaktifkan tombol DAFTAR
+    }
+  });
+
+  daftarButton.addEventListener('click', function(event) {
+    if (daftarButton.disabled) {
+      event.preventDefault(); // Membatalkan aksi pengiriman formulir
+    }
+  });
+</script>
+<input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required oninput="validateAlamatTk(this)" />
+<span id="alamattk-error" class="error-message"></span>
+
+<script>
+  function validateAlamatTk(input) {
+    var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
+    var errorMessage = document.getElementById('alamattk-error');
+
+    if (!regex.test(input.value)) {
+      errorMessage.textContent = 'Alamat tidak valid';
+      input.classList.add('error');
+      document.getElementById('daftar-button').disabled = true;
+    } else {
+      errorMessage.textContent = '';
+      input.classList.remove('error');
+      document.getElementById('daftar-button').disabled = false;
+    }
+  }
+</script>
+
   <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
   <label for="kursustk">Kursus:</label>
 <select name="kursustk" class="input-controll" required>
@@ -243,9 +345,8 @@ mysqli_close($koneksi);
       <option>Reguler</option>
     </optgroup>
   </select>
-  <input type="submit" value="DAFTAR" class="btn" name="proses">
+  <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button">
 </form>
-      </form>
     </div>
     <div class="sidebar">
       <h2>Informasi Tambahan</h2>
