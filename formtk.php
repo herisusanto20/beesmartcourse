@@ -246,7 +246,7 @@ mysqli_close($koneksi);
           <option>Reguler</option>
         </optgroup>
       </select>
-      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button" onclick="validateForm(event)">
+      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button">
     </form>
   </div>
 </div>
@@ -263,7 +263,7 @@ mysqli_close($koneksi);
     } else {
       errorMessage.textContent = '';
       input.classList.remove('error');
-      document.getElementById('daftar-button').disabled = false;
+      checkFormValidity();
     }
   }
 
@@ -290,7 +290,7 @@ mysqli_close($koneksi);
     } else {
       errorMessage.textContent = '';
       input.classList.remove('error');
-      document.getElementById('daftar-button').disabled = false;
+      checkFormValidity();
     }
   }
 
@@ -321,7 +321,7 @@ mysqli_close($koneksi);
     } else {
       errorMessage.textContent = '';
       input.classList.remove('error');
-      daftarButton.disabled = false; // Mengaktifkan tombol DAFTAR
+      checkFormValidity();
     }
   }
 
@@ -336,22 +336,25 @@ mysqli_close($koneksi);
     } else {
       errorMessage.textContent = '';
       input.classList.remove('error');
-      document.getElementById('daftar-button').disabled = false;
+      checkFormValidity();
     }
   }
 
-  function validateForm(event) {
-    validateNoHandphoneTk();
-    validateAlamatTk();
+  function checkFormValidity() {
+    var inputs = document.querySelectorAll('.input-controll');
+    var isValid = true;
 
-    if (daftarButton.disabled) {
-      event.preventDefault();
-      alert('Terdapat kesalahan pada input. Silakan perbaiki sebelum melanjutkan.');
+    for (var i = 0; i < inputs.length; i++) {
+      if (inputs[i].value === '') {
+        isValid = false;
+        break;
+      }
     }
-  }
 
-  daftarButton.addEventListener('click', validateForm);
+    daftarButton.disabled = !isValid;
+  }
 </script>
+
 
 </form>
     </div>
