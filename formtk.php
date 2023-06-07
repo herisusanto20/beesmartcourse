@@ -48,7 +48,7 @@ mysqli_close($koneksi);
   <style>
   body {
     background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
   }
@@ -75,15 +75,20 @@ mysqli_close($koneksi);
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
   }
-
   .form-container .btn {
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
+  }
+
+  .form-container .btn:disabled {
+    background-color: grey;
+    cursor: not-allowed;
   }
 
   .form-container .btn:hover {
@@ -182,6 +187,9 @@ mysqli_close($koneksi);
   .error-message {
     color: red;
   }
+  h2{
+    color: #007bff;
+  }
 </style>
 
 
@@ -191,6 +199,7 @@ mysqli_close($koneksi);
 <div class="container">
   <div class="form-container">
     <form action="" method="POST" enctype="multipart/form-data">
+      <h2>Silakan Isi Formulir pendaftaran </h2>
       <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required oninput="validateNamaTk(this)" />
       <span id="namatk-error" class="error-message"></span>
 
@@ -202,7 +211,7 @@ mysqli_close($koneksi);
 
       <div class="input-wrapper">
         <span class="country-code">+62</span>
-        <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
+        <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Contoh : 83844714177" class="phone-input" required>
       </div>
       <span id="error-message" class="error-message"></span>
 
