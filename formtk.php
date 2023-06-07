@@ -189,11 +189,67 @@ mysqli_close($koneksi);
 </head>
 <body>
 <body>
-  <div class="container">
-    <div class="form-container">
-      <form action="" method="POST" enctype="multipart/form-data">
+<div class="container">
+  <div class="form-container">
+    <form action="" method="POST" enctype="multipart/form-data">
       <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required oninput="validateNamaTk(this)" />
-<span id="namatk-error" class="error-message"></span>
+      <span id="namatk-error" class="error-message"></span>
+
+      <p>Tanggal Pendaftaran</p>
+      <input type="date" name="tanggaltk" id="tanggaltk" placeholder="Tanggal" class="input-controll" readonly required><br>
+
+      <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
+      <span id="namaortutk-error" class="error-message"></span>
+
+      <div class="input-wrapper">
+        <span class="country-code">+62</span>
+        <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
+      </div>
+      <span id="error-message" class="error-message"></span>
+
+      <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required oninput="validateAlamatTk(this)" />
+      <span id="alamattk-error" class="error-message"></span>
+
+      <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
+      <label for="kursustk">Kursus:</label>
+      <select name="kursustk" class="input-controll" required>
+        <option value="">-- Kursus --</option>
+        <?php
+        // Koneksi ke database
+        $conn = mysqli_connect("localhost", "root", "", "registrasi");
+
+        // Nilai dari kolom "tabel" yang ingin Anda gunakan
+        $tabel = $_POST['tabel'];
+        $tabel = 'tb_tk';
+        $jenis_kursus = 'Reguler';
+
+        // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
+        $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
+
+        $result = mysqli_query($conn, $sql);
+
+        // Loop untuk menampilkan data kursus pada dropdown
+        while ($row = mysqli_fetch_assoc($result)) {
+          $kursus = $row['kursus'];
+          $kuota = $row['kuota'];
+
+          if ($kuota > 0) {
+            echo "<option value='" . $kursus . "'>" . $kursus . "</option>";
+          }
+        }
+        ?>
+
+      </select>
+
+      <select name="jeniskursustk" class="input-controll" required>
+        <optgroup label="Jenis Kursus">
+          <option>Reguler</option>
+        </optgroup>
+      </select>
+      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button" onclick="validateForm(event)">
+    </form>
+  </div>
+</div>
 
 <script>
   function validateNamaTk(input) {
@@ -210,27 +266,19 @@ mysqli_close($koneksi);
       document.getElementById('daftar-button').disabled = false;
     }
   }
-</script>
-  <script>
-    function setTodayDate() {
-      var today = new Date();
-      var day = String(today.getDate()).padStart(2, '0');
-      var month = String(today.getMonth() + 1).padStart(2, '0');
-      var year = today.getFullYear();
-      var todayDate = year + '-' + month + '-' + day;
 
-      document.getElementById("tanggaltk").setAttribute("value", todayDate);
-    }
-  </script>
-  <p>Tanggal Pendaftaran</p>
-  <input type="date" name="tanggaltk" id="tanggaltk" placeholder="Tanggal" class="input-controll" readonly required><br>
-  <script>
-    setTodayDate();
-  </script>
- <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
-<span id="namaortutk-error" class="error-message"></span>
+  function setTodayDate() {
+    var today = new Date();
+    var day = String(today.getDate()).padStart(2, '0');
+    var month = String(today.getMonth() + 1).padStart(2, '0');
+    var year = today.getFullYear();
+    var todayDate = year + '-' + month + '-' + day;
 
-<script>
+    document.getElementById("tanggaltk").setAttribute("value", todayDate);
+  }
+
+  setTodayDate();
+
   function validateNamaOrtuTk(input) {
     var regex = /^[a-zA-Z\s]+$/;
     var errorMessage = document.getElementById('namaortutk-error');
@@ -245,23 +293,17 @@ mysqli_close($koneksi);
       document.getElementById('daftar-button').disabled = false;
     }
   }
-</script>
 
-<div class="input-wrapper">
-  <span class="country-code">+62</span>
-  <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
-</div>
-<span id="error-message" class="error-message"></span>
-
-
-
-<script>
   var input = document.getElementById('nohandphonetk');
   var countryCode = document.querySelector('.country-code');
   var errorMessage = document.getElementById('error-message');
   var daftarButton = document.getElementById('daftar-button');
 
-  input.addEventListener('input', function() {
+  input.addEventListener('input', function () {
+    validateNoHandphoneTk();
+  });
+
+  function validateNoHandphoneTk() {
     var phoneNumber = input.value.trim();
 
     if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
@@ -281,18 +323,8 @@ mysqli_close($koneksi);
       input.classList.remove('error');
       daftarButton.disabled = false; // Mengaktifkan tombol DAFTAR
     }
-  });
+  }
 
-  daftarButton.addEventListener('click', function(event) {
-    if (daftarButton.disabled) {
-      event.preventDefault(); // Membatalkan aksi pengiriman formulir
-    }
-  });
-</script>
-<input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required oninput="validateAlamatTk(this)" />
-<span id="alamattk-error" class="error-message"></span>
-
-<script>
   function validateAlamatTk(input) {
     var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
     var errorMessage = document.getElementById('alamattk-error');
@@ -307,45 +339,20 @@ mysqli_close($koneksi);
       document.getElementById('daftar-button').disabled = false;
     }
   }
+
+  function validateForm(event) {
+    validateNoHandphoneTk();
+    validateAlamatTk();
+
+    if (daftarButton.disabled) {
+      event.preventDefault();
+      alert('Terdapat kesalahan pada input. Silakan perbaiki sebelum melanjutkan.');
+    }
+  }
+
+  daftarButton.addEventListener('click', validateForm);
 </script>
 
-  <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
-  <label for="kursustk">Kursus:</label>
-<select name="kursustk" class="input-controll" required>
-<option value="">-- Kursus --</option>
-<?php
-    // Koneksi ke database
-    $conn = mysqli_connect("localhost", "root", "", "registrasi");
-
-    // Nilai dari kolom "tabel" yang ingin Anda gunakan
-    $tabel = $_POST['tabel'];
-    $tabel = 'tb_tk';
-    $jenis_kursus = 'Reguler';
-
-    // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
-    $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
-
-    $result = mysqli_query($conn, $sql);
-
-    // Loop untuk menampilkan data kursus pada dropdown
-    while ($row = mysqli_fetch_assoc($result)) {
-        $kursus = $row['kursus'];
-        $kuota = $row['kuota'];
-        
-        if ($kuota > 0) {
-            echo "<option value='" . $kursus . "'>" . $kursus . "</option>";
-        }
-    }
-?>
-
-</select>
-
-  <select name="jeniskursustk" class="input-controll" required>
-    <optgroup label="Jenis Kursus">
-      <option>Reguler</option>
-    </optgroup>
-  </select>
-  <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button">
 </form>
     </div>
     <div class="sidebar">
