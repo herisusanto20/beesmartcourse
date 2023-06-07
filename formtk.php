@@ -188,7 +188,6 @@ mysqli_close($koneksi);
 
 </head>
 <body>
-<body>
 <div class="container">
   <div class="form-container">
     <form action="" method="POST" enctype="multipart/form-data">
@@ -358,7 +357,7 @@ mysqli_close($koneksi);
 
 </form>
     </div>
-    <div class="sidebar">
+    <!-- <div class="sidebar">
       <h2>Informasi Tambahan</h2>
       <p>Selamat datang di halaman pendaftaran. Silakan isi formulir di sebelah kiri untuk mendaftar.</p>
 
@@ -372,7 +371,7 @@ mysqli_close($koneksi);
       <h2>Kontak</h2>
       <p>Email: info@example.com</p>
       <p>Telepon: 123-456-789</p>
-    </div>
+    </div> -->
   </div>
 </body>
 </html>
