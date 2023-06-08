@@ -38,6 +38,7 @@ if (isset($_POST['proses'])) {
 // Tutup koneksi ke database
 mysqli_close($koneksi);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +49,7 @@ mysqli_close($koneksi);
   <style>
   body {
     background-color: #f0f0f0;
-    font-family: "Poppins", sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
@@ -75,20 +76,15 @@ mysqli_close($koneksi);
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    margin-right: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
   }
+
   .form-container .btn {
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
-  }
-
-  .form-container .btn:disabled {
-    background-color: grey;
-    cursor: not-allowed;
   }
 
   .form-container .btn:hover {
@@ -187,9 +183,6 @@ mysqli_close($koneksi);
   .error-message {
     color: red;
   }
-  h2{
-    color: #007bff;
-  }
 </style>
 
 
@@ -199,7 +192,6 @@ mysqli_close($koneksi);
 <div class="container">
   <div class="form-container">
     <form action="" method="POST" enctype="multipart/form-data">
-      <h2>Silakan Isi Formulir pendaftaran </h2>
       <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required oninput="validateNamaTk(this)" />
       <span id="namatk-error" class="error-message"></span>
 
@@ -211,7 +203,7 @@ mysqli_close($koneksi);
 
       <div class="input-wrapper">
         <span class="country-code">+62</span>
-        <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Contoh : 83844714177" class="phone-input" required>
+        <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
       </div>
       <span id="error-message" class="error-message"></span>
 
@@ -260,128 +252,141 @@ mysqli_close($koneksi);
 </div>
 
 <script>
-  function validateNamaTk(input) {
-    var regex = /^[a-zA-Z\s]+$/;
-    var errorMessage = document.getElementById('namatk-error');
+  function checkFormValidity() {
+  // Cek semua input form untuk validitas
+  var inputs = document.getElementsByTagName('input');
+  var isFormValid = true;
 
-    if (!regex.test(input.value)) {
-      errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
-      input.classList.add('error');
-      document.getElementById('daftar-button').disabled = true;
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-      checkFormValidity();
+  for (var i = 0; i < inputs.length; i++) {
+    if (!inputs[i].checkValidity()) {
+      isFormValid = false;
+      break;
     }
   }
 
-  function setTodayDate() {
-    var today = new Date();
-    var day = String(today.getDate()).padStart(2, '0');
-    var month = String(today.getMonth() + 1).padStart(2, '0');
-    var year = today.getFullYear();
-    var todayDate = year + '-' + month + '-' + day;
+  // Aktifkan atau nonaktifkan tombol "DAFTAR" berdasarkan validitas form
+  var daftarButton = document.getElementById('daftar-button');
+  daftarButton.disabled = !isFormValid;
+}
 
-    document.getElementById("tanggaltk").setAttribute("value", todayDate);
-  }
-
-  setTodayDate();
-
-  function validateNamaOrtuTk(input) {
-    var regex = /^[a-zA-Z\s]+$/;
-    var errorMessage = document.getElementById('namaortutk-error');
-
-    if (!regex.test(input.value)) {
-      errorMessage.textContent = 'Nama Orang Tua hanya boleh mengandung huruf';
-      input.classList.add('error');
-      document.getElementById('daftar-button').disabled = true;
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-      checkFormValidity();
-    }
-  }
-
-  var input = document.getElementById('nohandphonetk');
-  var countryCode = document.querySelector('.country-code');
-  var errorMessage = document.getElementById('error-message');
+function validateNamaTk(input) {
+  var regex = /^[a-zA-Z\s]+$/;
+  var errorMessage = document.getElementById('namatk-error');
   var daftarButton = document.getElementById('daftar-button');
 
-  input.addEventListener('input', function () {
-    validateNoHandphoneTk();
-  });
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
+    input.classList.add('error');
+    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+    checkFormValidity();
+  }
+}
 
-  function validateNoHandphoneTk() {
-    var phoneNumber = input.value.trim();
+function setTodayDate() {
+  var today = new Date();
+  var day = String(today.getDate()).padStart(2, '0');
+  var month = String(today.getMonth() + 1).padStart(2, '0');
+  var year = today.getFullYear();
+  var todayDate = year + '-' + month + '-' + day;
 
-    if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
-      errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
-      input.classList.add('error');
-      daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
-    } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
-      errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
-      input.classList.add('error');
-      daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
-    } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
-      errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
-      input.classList.add('error');
-      daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-      checkFormValidity();
-    }
+  document.getElementById('tanggaltk').value = todayDate;
+}
+
+setTodayDate();
+
+var namaTkInput = document.getElementById('namatk');
+namaTkInput.addEventListener('input', function () {
+  validateNamaTk(this);
+});
+
+
+function validateNamaOrtuTk(input) {
+  var regex = /^[a-zA-Z\s]+$/;
+  var errorMessage = document.getElementById('namaortutk-error');
+  var daftarButton = document.getElementById('daftar-button');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Nama Orang Tua hanya boleh mengandung huruf';
+    input.classList.add('error');
+    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+    checkFormValidity();
+  }
+}
+
+var namaOrtuTkInput = document.getElementById('namaortutk');
+namaOrtuTkInput.addEventListener('input', function () {
+  validateNamaOrtuTk(this);
+});
+
+
+function validateNoHandphoneTk() {
+  var input = document.getElementById('nohandphonetk');
+  var errorMessage = document.getElementById('nohandphonetk-error');
+  var phoneNumber = input.value.trim();
+  var daftarButton = document.getElementById('daftar-button');
+
+  if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
+    errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
+    input.classList.add('error');
+    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+  } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
+    errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
+    input.classList.add('error');
+    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+  } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
+    errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
+    input.classList.add('error');
+    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+    checkFormValidity();
+  }
+}
+
+var nohandphoneTkInput = document.getElementById('nohandphonetk');
+nohandphoneTkInput.addEventListener('input', function () {
+  validateNoHandphoneTk();
+  checkFormValidity();
+});
+
+
+function validateAlamatTk(input) {
+  var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
+  var errorMessage = document.getElementById('alamattk-error');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Alamat tidak valid';
+    input.classList.add('error');
+    document.getElementById('daftar-button').disabled = true;
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+}
+
+var alamatTkInput = document.getElementById('alamattk');
+alamatTkInput.addEventListener('input', function () {
+  validateAlamatTk(alamatTkInput);
+  checkFormValidity();
+});
+
+// Aktifkan atau nonaktifkan tombol "DAFTAR" berdasarkan validitas form
+var daftarButton = document.getElementById('daftar-button');
+  if (isFormValid) {
+    daftarButton.disabled = false;
+  } else {
+    daftarButton.disabled = true;
   }
 
-  function validateAlamatTk(input) {
-    var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
-    var errorMessage = document.getElementById('alamattk-error');
 
-    if (!regex.test(input.value)) {
-      errorMessage.textContent = 'Alamat tidak valid';
-      input.classList.add('error');
-      document.getElementById('daftar-button').disabled = true;
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-      checkFormValidity();
-    }
-  }
-
-  function checkFormValidity() {
-    var inputs = document.querySelectorAll('.input-controll');
-    var isValid = true;
-
-    for (var i = 0; i < inputs.length; i++) {
-      if (inputs[i].value === '') {
-        isValid = false;
-        break;
-      }
-    }
-
-    daftarButton.disabled = !isValid;
-  }
 </script>
-
-
-</form>
-    </div>
-    <!-- <div class="sidebar">
-      <h2>Informasi Tambahan</h2>
-      <p>Selamat datang di halaman pendaftaran. Silakan isi formulir di sebelah kiri untuk mendaftar.</p>
-
-      <h2>Tautan Navigasi</h2>
-      <ul>
-        <li><a href="index.php#home">Beranda</a></li>
-        <li><a href="index.php#about">Tentang Kami</a></li>
-        <li><a href="index.php#contact">Kontak</a></li>
-      </ul>
-
-      <h2>Kontak</h2>
-      <p>Email: info@example.com</p>
-      <p>Telepon: 123-456-789</p>
-    </div> -->
-  </div>
 </body>
 </html>
 

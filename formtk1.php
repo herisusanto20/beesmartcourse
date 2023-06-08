@@ -210,30 +210,6 @@ mysqli_close($koneksi);
     setTodayDate();
   </script>
   <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required>
-  <!-- <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="No Handphone atau WA, contoh: +62819157788649" class="input-controll" required>
-<span id="error-message" class="error-message"></span>
-
-<script>
-  var input = document.getElementById('nohandphonetk');
-  var errorMessage = document.getElementById('error-message');
-
-  input.addEventListener('input', function() {
-    var phoneNumber = input.value.trim();
-
-    // Menghapus karakter non-digit dari nomor handphone
-    var numericPhoneNumber = phoneNumber.replace(/\D/g, '');
-
-    var isValid = phoneNumber.startsWith('+62') && numericPhoneNumber.length >= 10 && numericPhoneNumber.length <= 14;
-
-    if (!isValid) {
-      errorMessage.textContent = 'Nomor handphone harus dimulai dengan +62, diikuti oleh 10 hingga 14 digit angka';
-      input.classList.add('error');
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-    }
-  });
-</script> -->
 <div class="input-wrapper">
   <span class="country-code">+62</span>
   <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
@@ -279,27 +255,6 @@ mysqli_close($koneksi);
     console.log(fullPhoneNumber);
   });
 </script>
-
-
-<!-- <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="No Handphone atau WA, contoh: +62819157788649" class="input-controll" required>
-<span id="error-message" class="error-message"></span>
-
-<script>
-  var input = document.getElementById('nohandphonetk');
-  var errorMessage = document.getElementById('error-message');
-
-  input.addEventListener('input', function() {
-    var phoneNumber = input.value.trim();
-
-    if (phoneNumber.length >= 3 && !phoneNumber.startsWith('+62')) {
-      errorMessage.textContent = 'Nomor handphone harus dimulai dengan +62';
-      input.classList.add('error');
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-    }
-  });
-</script> -->
   <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required>
   <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
   <label for="kursustk">Kursus:</label>
@@ -339,7 +294,6 @@ mysqli_close($koneksi);
   </select>
   <input type="submit" value="DAFTAR" class="btn" name="proses">
 </form>
-      </form>
     </div>
     <div class="sidebar">
       <h2>Informasi Tambahan</h2>
