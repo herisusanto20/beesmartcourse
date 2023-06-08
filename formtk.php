@@ -268,6 +268,18 @@ mysqli_close($koneksi);
   daftarButton.disabled = !isFormValid;
 }
 
+function setTodayDate() {
+  var today = new Date();
+  var day = String(today.getDate()).padStart(2, '0');
+  var month = String(today.getMonth() + 1).padStart(2, '0');
+  var year = today.getFullYear();
+  var todayDate = year + '-' + month + '-' + day;
+
+  document.getElementById('tanggaltk').value = todayDate;
+}
+
+setTodayDate();
+
 function validateNamaTk(input) {
   var regex = /^[a-zA-Z\s]+$/;
   var errorMessage = document.getElementById('namatk-error');
@@ -284,22 +296,11 @@ function validateNamaTk(input) {
   }
 }
 
-function setTodayDate() {
-  var today = new Date();
-  var day = String(today.getDate()).padStart(2, '0');
-  var month = String(today.getMonth() + 1).padStart(2, '0');
-  var year = today.getFullYear();
-  var todayDate = year + '-' + month + '-' + day;
-
-  document.getElementById('tanggaltk').value = todayDate;
-}
-
-setTodayDate();
-
 var namaTkInput = document.getElementById('namatk');
 namaTkInput.addEventListener('input', function () {
   validateNamaTk(this);
 });
+
 
 
 function validateNamaOrtuTk(input) {
