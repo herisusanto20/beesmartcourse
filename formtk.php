@@ -207,9 +207,6 @@ mysqli_close($koneksi);
   <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required oninput="validateNoHandphoneTk()">
   <span id="nohandphonetk-error" class="error-message"></span>
 </div>
-
-      
-
       <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required oninput="validateAlamatTk(this)" />
       <span id="alamattk-error" class="error-message"></span>
 

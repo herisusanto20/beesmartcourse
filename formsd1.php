@@ -33,6 +33,7 @@ if (isset($_POST['proses'])) {
   } else {
     echo "Kuota untuk jenis kursus '$jeniskursustk' pada tabel 'tb_sd' telah habis.";
   }
+  echo "<meta http-equiv=refresh content=2;URL='kuotasd1.php'>";
 }
 
 // Tutup koneksi ke database
@@ -191,110 +192,178 @@ mysqli_close($koneksi);
   <div class="container">
     <div class="form-container">
       <form action="" method="POST" enctype="multipart/form-data">
-      <input type="text" name="namasd" placeholder="Nama Lengkap" class="input-controll" required><br>
-  <script>
-    function setTodayDate() {
-      var today = new Date();
-      var day = String(today.getDate()).padStart(2, '0');
-      var month = String(today.getMonth() + 1).padStart(2, '0');
-      var year = today.getFullYear();
-      var todayDate = year + '-' + month + '-' + day;
+      <input type="text" name="namasd" placeholder="Nama Lengkap" class="input-controll" required oninput="validateNamaSd(this)" />
+      <span id="namasd-error" class="error-message"></span>
 
-      document.getElementById("tanggalsd").setAttribute("value", todayDate);
-    }
-  </script>
-  <p>Tanggal Pendaftaran</p>
-  <input type="date" name="tanggalsd" id="tanggalsd" placeholder="Tanggal" class="input-controll" readonly required><br>
-  <script>
-    setTodayDate();
-  </script>
-  <input type="text" name="kelassd" placeholder="Kelas" class="input-controll" required>
-  <div class="input-wrapper">
+      <p>Tanggal Pendaftaran</p>
+      <input type="date" name="tanggalsd" id="tanggalsd" placeholder="Tanggal" class="input-controll" readonly required><br>
+
+      <input type="text" name="kelassd" placeholder="Kelas" class="input-controll" required oninput="validateKelasSd(this)" />
+      <span id="kelassd-error" class="error-message"></span>
+
+      <div class="input-wrapper">
   <span class="country-code">+62</span>
-  <input type="text" name="nohandphonesd" id="nohandphonesd" placeholder="Nomor Handphone atau WA" class="phone-input" required>
+  <input type="text" name="nohandphonesd" id="nohandphonesd" placeholder="Nomor Handphone atau WA" class="phone-input" required oninput="validateNoHandphoneSd()">
+  <span id="nohandphonesd-error" class="error-message"></span>
 </div>
-<span id="error-message" class="error-message"></span>
+<input type="text" name="alamatsd" placeholder="Alamat" class="input-controll" required oninput="validateAlamatSd(this)" />
+      <span id="alamatsd-error" class="error-message"></span>
 
-<script>
-  var input = document.getElementById('nohandphonesd');
-  var countryCode = document.querySelector('.country-code');
-  var errorMessage = document.getElementById('error-message');
+      <input type="hidden" name="statussd" placeholder="Keterangan" class="input-controll">
+      <label for="kursussd">Kursus:</label>
+      <select name="kursussd" class="input-controll" required>
+        <option value="">-- Kursus --</option>
+        <?php
+        // Koneksi ke database
+        $conn = mysqli_connect("localhost", "root", "", "registrasi");
 
-  input.addEventListener('input', function() {
-    var phoneNumber = input.value.trim();
+        // Nilai dari kolom "tabel" yang ingin Anda gunakan
+        $tabel = $_POST['tabel'];
+        $tabel = 'tb_sd';
+        $jenis_kursus = 'Privat';
 
-    if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
-      errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
-      input.classList.add('error');
-    } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
-      errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
-      input.classList.add('error');
-    } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
-      errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
-      input.classList.add('error');
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-    }
-  });
+        // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
+        $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
 
-  function getFullPhoneNumber() {
-    var countryCodeValue = countryCode.textContent;
-    var phoneNumberValue = input.value.trim();
-    var fullPhoneNumber = countryCodeValue + phoneNumberValue;
-    return fullPhoneNumber;
-  }
+        $result = mysqli_query($conn, $sql);
 
-  // Contoh penggunaan:
-  var submitButton = document.getElementById('submit-button');
-  submitButton.addEventListener('click', function() {
-    var fullPhoneNumber = getFullPhoneNumber();
-    // Lakukan tindakan selanjutnya dengan nomor handphone lengkap (fullPhoneNumber)
-    // Misalnya, kirim ke server atau lakukan validasi lebih lanjut.
-    console.log(fullPhoneNumber);
-  });
-</script>
-  <input type="text" name="alamatsd" placeholder="Alamat" class="input-controll" required>
-  <input type="hidden" name="statussd" placeholder="Keterangan" class="input-controll">
-  <label for="kursussd">Kursus:</label>
-<select name="kursussd" class="input-controll" required>
-<option value="">-- Kursus --</option>
-<?php
-    // Koneksi ke database
-    $conn = mysqli_connect("localhost", "root", "", "registrasi");
+        // Loop untuk menampilkan data kursus pada dropdown
+        while ($row = mysqli_fetch_assoc($result)) {
+          $kursus = $row['kursus'];
+          $kuota = $row['kuota'];
 
-    // Nilai dari kolom "tabel" yang ingin Anda gunakan
-    $tabel = $_POST['tabel'];
-    $tabel = 'tb_sd';
-    $jenis_kursus = 'Privat';
-
-    // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
-    $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
-
-    $result = mysqli_query($conn, $sql);
-
-    // Loop untuk menampilkan data kursus pada dropdown
-    while ($row = mysqli_fetch_assoc($result)) {
-        $kursus = $row['kursus'];
-        $kuota = $row['kuota'];
-        
-        if ($kuota > 0) {
+          if ($kuota > 0) {
             echo "<option value='" . $kursus . "'>" . $kursus . "</option>";
+          }
         }
-    }
-?>
+        ?>
 
-</select>
+      </select>
 
-  <select name="jeniskursussd" class="input-controll" required>
-    <optgroup label="Jenis Kursus">
-      <option>Privat</option>
-    </optgroup>
-  </select>
-  <input type="submit" value="DAFTAR" class="btn" name="proses">
+      <select name="jeniskursussd" class="input-controll" required>
+        <optgroup label="Jenis Kursus">
+          <option>Privat</option>
+        </optgroup>
+      </select>
+      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button2">
 </form>
-      </form>
     </div>
+    <script>
+  function setTodayDate() {
+  var today = new Date();
+  var day = String(today.getDate()).padStart(2, '0');
+  var month = String(today.getMonth() + 1).padStart(2, '0');
+  var year = today.getFullYear();
+  var todayDate = year + '-' + month + '-' + day;
+
+  document.getElementById('tanggalsd').value = todayDate;
+}
+
+function validateNamaSd(input) {
+  var regex = /^[a-zA-Z\s]+$/;
+  var errorMessage = document.getElementById('namasd-error');
+  var daftarButton = document.getElementById('daftar-button2');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function validateKelasSd(input) {
+  var regex = /^[0-9]+$/;
+  var errorMessage = document.getElementById('kelassd-error');
+  var daftarButton = document.getElementById('daftar-button2');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Kelas tidak boleh mengandung huruf';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+
+function validateNoHandphoneSd() {
+  var input = document.getElementById('nohandphonesd');
+  var errorMessage = document.getElementById('nohandphonesd-error');
+  var phoneNumber = input.value.trim();
+
+  var startsWithEight = phoneNumber.startsWith('8');
+  var hasValidLength = phoneNumber.length >= 11 && phoneNumber.length <= 13;
+  var onlyDigits = /^\d+$/.test(phoneNumber);
+
+  if (!startsWithEight || !hasValidLength || !onlyDigits) {
+    errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8 dan terdiri dari 9 hingga 13 digit angka';
+    errorMessage.classList.add('error-message');
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    errorMessage.classList.remove('error-message');
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function validateAlamatSd(input) {
+  var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
+  var errorMessage = document.getElementById('alamatsd-error');
+  var daftarButton = document.getElementById('daftar-button2');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Alamat tidak valid';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function checkFormValidity() {
+  var daftarButton = document.getElementById('daftar-button2');
+  var inputs = document.querySelectorAll('input.error');
+
+  daftarButton.disabled = inputs.length > 0;
+}
+
+// Set tanggal hari ini saat halaman dimuat
+setTodayDate();
+
+// Tambahkan event listener untuk input nama TK
+var namaTkInput = document.getElementById('namasd');
+namaTkInput.addEventListener('input', function () {
+  validateNamaTk(this);
+});
+
+// Tambahkan event listener untuk input nama orang tua TK
+var namaOrtuTkInput = document.getElementById('kelassd');
+namaOrtuTkInput.addEventListener('input', function () {
+  validateNamaOrtuTk(this);
+});
+
+// Tambahkan event listener untuk input nomor handphone TK
+var nohandphoneTkInput = document.getElementById('nohandphonesd');
+nohandphoneTkInput.addEventListener('input', function () {
+  validateNoHandphoneTk();
+});
+
+// Tambahkan event listener untuk input alamat TK
+var alamatTkInput = document.getElementById('alamatsd');
+alamatTkInput.addEventListener('input', function () {
+  validateAlamatTk(this);
+});
+
+// Panggil fungsi checkFormValidity() saat halaman dimuat untuk menginisialisasi tombol DAFTAR
+checkFormValidity();
+
+</script>
     <div class="sidebar">
       <h2>Informasi Tambahan</h2>
       <p>Selamat datang di halaman pendaftaran. Silakan isi formulir di sebelah kiri untuk mendaftar.</p>
