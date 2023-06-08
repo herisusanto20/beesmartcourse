@@ -33,6 +33,7 @@ if (isset($_POST['proses'])) {
   } else {
     echo "Kuota untuk jenis kursus '$jeniskursustk' pada tabel 'tb_tk' telah habis.";
   }
+  echo "<meta http-equiv=refresh content=2;URL='kuotatk1.php'>";
 }
 
 // Tutup koneksi ke database

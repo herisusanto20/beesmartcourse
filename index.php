@@ -158,12 +158,9 @@
                 <a href="kuotasd1.php" class="cta">Kelas SD</a>
                 <a href="kuotasmp1.php" class="cta">Kelas SMP</a>
                 <a href="kuotasma1.php" class="cta">Kelas SMA</a>
-                
-                
-                
-
             </main>
         </section>
+        
         <!-- Hero End -->
 
         <!-- SLIDE IKLAN BEE SMART HELLO -->
