@@ -250,7 +250,6 @@ mysqli_close($koneksi);
     </form>
   </div>
 </div>
-
 <script>
   function checkFormValidity() {
   // Cek semua input form untuk validitas
@@ -360,18 +359,22 @@ nohandphoneTkInput.addEventListener('input', function () {
 function validateAlamatTk(input) {
   var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
   var errorMessage = document.getElementById('alamattk-error');
-  var daftarButton = document.getElementById('daftar-button');
 
   if (!regex.test(input.value)) {
     errorMessage.textContent = 'Alamat tidak valid';
     input.classList.add('error');
-    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
+    document.getElementById('daftar-button').disabled = true;
   } else {
     errorMessage.textContent = '';
     input.classList.remove('error');
-    checkFormValidity();
   }
 }
+
+var alamatTkInput = document.getElementById('alamattk');
+alamatTkInput.addEventListener('input', function () {
+  validateAlamatTk(alamatTkInput);
+  checkFormValidity();
+});
 
 // Aktifkan atau nonaktifkan tombol "DAFTAR" berdasarkan validitas form
 var daftarButton = document.getElementById('daftar-button');
