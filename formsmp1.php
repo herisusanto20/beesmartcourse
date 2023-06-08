@@ -33,6 +33,7 @@ if (isset($_POST['proses'])) {
   } else {
     echo "Kuota untuk jenis kursus '$jeniskursustk' pada tabel 'tb_smp' telah habis.";
   }
+  echo "<meta http-equiv=refresh content=2;URL='kuotasmp1.php'>";
 }
 
 // Tutup koneksi ke database
@@ -44,7 +45,7 @@ mysqli_close($koneksi);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form SD</title>
+  <title>Form SMP</title>
   <style>
   body {
     background-color: #f0f0f0;
@@ -159,6 +160,29 @@ mysqli_close($koneksi);
     color: orange;
     text-decoration: underline;
   }
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .country-code {
+    display: inline-block;
+    padding: 8px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-right: none;
+  }
+
+  .phone-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .error-message {
+    color: red;
+  }
 </style>
 
 
@@ -168,84 +192,178 @@ mysqli_close($koneksi);
   <div class="container">
     <div class="form-container">
       <form action="" method="POST" enctype="multipart/form-data">
-      <input type="text" name="namasmp" placeholder="Nama Lengkap" class="input-controll" required><br>
-  <script>
-    function setTodayDate() {
-      var today = new Date();
-      var day = String(today.getDate()).padStart(2, '0');
-      var month = String(today.getMonth() + 1).padStart(2, '0');
-      var year = today.getFullYear();
-      var todayDate = year + '-' + month + '-' + day;
+      <input type="text" name="namasmp" placeholder="Nama Lengkap" class="input-controll" required oninput="validateNamaSmp(this)" />
+      <span id="namasmp-error" class="error-message"></span>
 
-      document.getElementById("tanggalsmp").setAttribute("value", todayDate);
-    }
-  </script>
-  <p>Tanggal Pendaftaran</p>
-  <input type="date" name="tanggalsmp" id="tanggalsmp" placeholder="Tanggal" class="input-controll" readonly required><br>
-  <script>
-    setTodayDate();
-  </script>
-  <input type="text" name="kelassmp" placeholder="Kelas" class="input-controll" required>
-  <input type="text" name="nohandphonesmp" id="nohandphonesmp" placeholder="No Handphone atau WA, contoh: 62819157788649" class="input-controll" required>
-  <span id="error-message" class="error-message"></span>
-  <script>
-    var input = document.getElementById('nohandphonesmp');
-    var errorMessage = document.getElementById('error-message');
+      <p>Tanggal Pendaftaran</p>
+      <input type="date" name="tanggalsmp" id="tanggalsmp" placeholder="Tanggal" class="input-controll" readonly required><br>
 
-    input.addEventListener('input', function() {
-      var pattern = /^[0-9]{10,14}$/;
-      var isValid = pattern.test(input.value);
+      <input type="text" name="kelassmp" placeholder="Kelas" class="input-controll" required oninput="validateKelasSmp(this)" />
+      <span id="kelassmp-error" class="error-message"></span>
 
-      if (!isValid) {
-        errorMessage.textContent = 'Nomor handphone harus terdiri dari 10 hingga 14 digit angka';
-        input.classList.add('error');
-      } else {
-        errorMessage.textContent = '';
-        input.classList.remove('error');
-      }
-    });
-  </script>
-  <input type="text" name="alamatsmp" placeholder="Alamat" class="input-controll" required>
-  <input type="hidden" name="statussmp" placeholder="Keterangan" class="input-controll">
-  <label for="kursussmp">Kursus:</label>
-<select name="kursussmp" class="input-controll" required>
-<option value="">-- Kursus --</option>
-<?php
-    // Koneksi ke database
-    $conn = mysqli_connect("localhost", "root", "", "registrasi");
+      <div class="input-wrapper">
+  <span class="country-code">+62</span>
+  <input type="text" name="nohandphonesmp" id="nohandphonesmp" placeholder="Contoh : 89989823312" class="phone-input" required oninput="validateNoHandphoneSmp()">
+  <span id="nohandphonesmp-error" class="error-message"></span>
+</div>
+<input type="text" name="alamatsmp" placeholder="Alamat" class="input-controll" required oninput="validateAlamatSmp(this)" />
+      <span id="alamatsmp-error" class="error-message"></span>
 
-    // Nilai dari kolom "tabel" yang ingin Anda gunakan
-    $tabel = $_POST['tabel'];
-    $tabel = 'tb_smp';
-    $jenis_kursus = 'Privat';
+      <input type="hidden" name="statussmp" placeholder="Keterangan" class="input-controll">
+      <label for="kursussmp">Kursus:</label>
+      <select name="kursussmp" class="input-controll" required>
+        <option value="">-- Kursus --</option>
+        <?php
+        // Koneksi ke database
+        $conn = mysqli_connect("localhost", "root", "", "registrasi");
 
-    // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
-    $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
+        // Nilai dari kolom "tabel" yang ingin Anda gunakan
+        $tabel = $_POST['tabel'];
+        $tabel = 'tb_smp';
+        $jenis_kursus = 'Privat';
 
-    $result = mysqli_query($conn, $sql);
+        // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
+        $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
 
-    // Loop untuk menampilkan data kursus pada dropdown
-    while ($row = mysqli_fetch_assoc($result)) {
-        $kursus = $row['kursus'];
-        $kuota = $row['kuota'];
-        
-        if ($kuota > 0) {
+        $result = mysqli_query($conn, $sql);
+
+        // Loop untuk menampilkan data kursus pada dropdown
+        while ($row = mysqli_fetch_assoc($result)) {
+          $kursus = $row['kursus'];
+          $kuota = $row['kuota'];
+
+          if ($kuota > 0) {
             echo "<option value='" . $kursus . "'>" . $kursus . "</option>";
+          }
         }
-    }
-?>
+        ?>
 
-</select>
+      </select>
 
-  <select name="jeniskursussmp" class="input-controll" required>
-    <optgroup label="Jenis Kursus">
-      <option>Privat</option>
-    </optgroup>
-  </select>
-  <input type="submit" value="DAFTAR" class="btn" name="proses">
+      <select name="jeniskursussmp" class="input-controll" required>
+        <optgroup label="Jenis Kursus">
+          <option>Privat</option>
+        </optgroup>
+      </select>
+      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button4">
 </form>
-      </form>
     </div>
+    <script>
+  function setTodayDate() {
+  var today = new Date();
+  var day = String(today.getDate()).padStart(2, '0');
+  var month = String(today.getMonth() + 1).padStart(2, '0');
+  var year = today.getFullYear();
+  var todayDate = year + '-' + month + '-' + day;
+
+  document.getElementById('tanggalsmp').value = todayDate;
+}
+
+function validateNamaSmp(input) {
+  var regex = /^[a-zA-Z\s]+$/;
+  var errorMessage = document.getElementById('namasmp-error');
+  var daftarButton = document.getElementById('daftar-button4');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function validateKelasSmp(input) {
+  var regex = /^[0-9]+$/;
+  var errorMessage = document.getElementById('kelassmp-error');
+  var daftarButton = document.getElementById('daftar-button4');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Kelas tidak boleh mengandung huruf atau simbol';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+
+function validateNoHandphoneSmp() {
+  var input = document.getElementById('nohandphonesmp');
+  var errorMessage = document.getElementById('nohandphonesmp-error');
+  var phoneNumber = input.value.trim();
+
+  var startsWithEight = phoneNumber.startsWith('8');
+  var hasValidLength = phoneNumber.length >= 11 && phoneNumber.length <= 13;
+  var onlyDigits = /^\d+$/.test(phoneNumber);
+
+  if (!startsWithEight || !hasValidLength || !onlyDigits) {
+    errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8 dan terdiri dari 9 hingga 13 digit angka';
+    errorMessage.classList.add('error-message');
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    errorMessage.classList.remove('error-message');
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function validateAlamatSmp(input) {
+  var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
+  var errorMessage = document.getElementById('alamatsmp-error');
+  var daftarButton = document.getElementById('daftar-button4');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Alamat tidak valid';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function checkFormValidity() {
+  var daftarButton = document.getElementById('daftar-button4');
+  var inputs = document.querySelectorAll('input.error');
+
+  daftarButton.disabled = inputs.length > 0;
+}
+
+// Set tanggal hari ini saat halaman dimuat
+setTodayDate();
+
+// Tambahkan event listener untuk input nama TK
+var namaTkInput = document.getElementById('namasmp');
+namaTkInput.addEventListener('input', function () {
+  validateNamaTk(this);
+});
+
+// Tambahkan event listener untuk input nama orang tua TK
+var namaOrtuTkInput = document.getElementById('kelassmp');
+namaOrtuTkInput.addEventListener('input', function () {
+  validateNamaOrtuTk(this);
+});
+
+// Tambahkan event listener untuk input nomor handphone TK
+var nohandphoneTkInput = document.getElementById('nohandphonesmp');
+nohandphoneTkInput.addEventListener('input', function () {
+  validateNoHandphoneTk();
+});
+
+// Tambahkan event listener untuk input alamat TK
+var alamatTkInput = document.getElementById('alamatsmp');
+alamatTkInput.addEventListener('input', function () {
+  validateAlamatTk(this);
+});
+
+// Panggil fungsi checkFormValidity() saat halaman dimuat untuk menginisialisasi tombol DAFTAR
+checkFormValidity();
+
+</script>
     <div class="sidebar">
       <h2>Informasi Tambahan</h2>
       <p>Selamat datang di halaman pendaftaran. Silakan isi formulir di sebelah kiri untuk mendaftar.</p>
