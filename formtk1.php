@@ -38,6 +38,7 @@ if (isset($_POST['proses'])) {
 // Tutup koneksi ke database
 mysqli_close($koneksi);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,129 +189,184 @@ mysqli_close($koneksi);
 
 </head>
 <body>
-<body>
-  <div class="container">
-    <div class="form-container">
-      <form action="" method="POST" enctype="multipart/form-data">
-      <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required><br>
-  <script>
-    function setTodayDate() {
-      var today = new Date();
-      var day = String(today.getDate()).padStart(2, '0');
-      var month = String(today.getMonth() + 1).padStart(2, '0');
-      var year = today.getFullYear();
-      var todayDate = year + '-' + month + '-' + day;
+<div class="container">
+  <div class="form-container">
+    <form action="" method="POST" enctype="multipart/form-data">
+      <input type="text" name="namatk" placeholder="Nama Lengkap" class="input-controll" required oninput="validateNamaTk(this)" />
+      <span id="namatk-error" class="error-message"></span>
 
-      document.getElementById("tanggaltk").setAttribute("value", todayDate);
-    }
-  </script>
-  <p>Tanggal Pendaftaran</p>
-  <input type="date" name="tanggaltk" id="tanggaltk" placeholder="Tanggal" class="input-controll" readonly required><br>
-  <script>
-    setTodayDate();
-  </script>
-  <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required>
-<div class="input-wrapper">
+      <p>Tanggal Pendaftaran</p>
+      <input type="date" name="tanggaltk" id="tanggaltk" placeholder="Tanggal" class="input-controll" readonly required><br>
+
+      <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
+      <span id="namaortutk-error" class="error-message"></span>
+
+      <div class="input-wrapper">
   <span class="country-code">+62</span>
-  <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
+  <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required oninput="validateNoHandphoneTk()">
+  <span id="nohandphonetk-error" class="error-message"></span>
 </div>
-<span id="error-message" class="error-message"></span>
 
-<script>
-  var input = document.getElementById('nohandphonetk');
-  var countryCode = document.querySelector('.country-code');
-  var errorMessage = document.getElementById('error-message');
+      
 
-  input.addEventListener('input', function() {
-    var phoneNumber = input.value.trim();
+      <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required oninput="validateAlamatTk(this)" />
+      <span id="alamattk-error" class="error-message"></span>
 
-    if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
-      errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
-      input.classList.add('error');
-    } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
-      errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
-      input.classList.add('error');
-    } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
-      errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
-      input.classList.add('error');
-    } else {
-      errorMessage.textContent = '';
-      input.classList.remove('error');
-    }
-  });
+      <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
+      <label for="kursustk">Kursus:</label>
+      <select name="kursustk" class="input-controll" required>
+        <option value="">-- Kursus --</option>
+        <?php
+        // Koneksi ke database
+        $conn = mysqli_connect("localhost", "root", "", "registrasi");
 
-  function getFullPhoneNumber() {
-    var countryCodeValue = countryCode.textContent;
-    var phoneNumberValue = input.value.trim();
-    var fullPhoneNumber = countryCodeValue + phoneNumberValue;
-    return fullPhoneNumber;
-  }
+        // Nilai dari kolom "tabel" yang ingin Anda gunakan
+        $tabel = $_POST['tabel'];
+        $tabel = 'tb_tk';
+        $jenis_kursus = 'Privat';
 
-  // Contoh penggunaan:
-  var submitButton = document.getElementById('submit-button');
-  submitButton.addEventListener('click', function() {
-    var fullPhoneNumber = getFullPhoneNumber();
-    // Lakukan tindakan selanjutnya dengan nomor handphone lengkap (fullPhoneNumber)
-    // Misalnya, kirim ke server atau lakukan validasi lebih lanjut.
-    console.log(fullPhoneNumber);
-  });
-</script>
-  <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required>
-  <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
-  <label for="kursustk">Kursus:</label>
-<select name="kursustk" class="input-controll" required>
-<option value="">-- Kursus --</option>
-<?php
-    // Koneksi ke database
-    $conn = mysqli_connect("localhost", "root", "", "registrasi");
+        // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
+        $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
 
-    // Nilai dari kolom "tabel" yang ingin Anda gunakan
-    $tabel = $_POST['tabel'];
-    $tabel = 'tb_tk';
-    $jenis_kursus = 'Privat';
+        $result = mysqli_query($conn, $sql);
 
-    // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
-    $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
+        // Loop untuk menampilkan data kursus pada dropdown
+        while ($row = mysqli_fetch_assoc($result)) {
+          $kursus = $row['kursus'];
+          $kuota = $row['kuota'];
 
-    $result = mysqli_query($conn, $sql);
-
-    // Loop untuk menampilkan data kursus pada dropdown
-    while ($row = mysqli_fetch_assoc($result)) {
-        $kursus = $row['kursus'];
-        $kuota = $row['kuota'];
-        
-        if ($kuota > 0) {
+          if ($kuota > 0) {
             echo "<option value='" . $kursus . "'>" . $kursus . "</option>";
+          }
         }
-    }
-?>
+        ?>
 
-</select>
+      </select>
 
-  <select name="jeniskursustk" class="input-controll" required>
-    <optgroup label="Jenis Kursus">
-      <option>Privat</option>
-    </optgroup>
-  </select>
-  <input type="submit" value="DAFTAR" class="btn" name="proses">
-</form>
-    </div>
-    <div class="sidebar">
-      <h2>Informasi Tambahan</h2>
-      <p>Selamat datang di halaman pendaftaran. Silakan isi formulir di sebelah kiri untuk mendaftar.</p>
-
-      <h2>Tautan Navigasi</h2>
-      <ul>
-        <li><a href="index.php#home">Beranda</a></li>
-        <li><a href="index.php#about">Tentang Kami</a></li>
-        <li><a href="index.php#contact">Kontak</a></li>
-      </ul>
-
-      <h2>Kontak</h2>
-      <p>Email: info@example.com</p>
-      <p>Telepon: 123-456-789</p>
-    </div>
+      <select name="jeniskursustk" class="input-controll" required>
+        <optgroup label="Jenis Kursus">
+          <option>Privat</option>
+        </optgroup>
+      </select>
+      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button">
+    </form>
   </div>
+</div>
+<script>
+  function setTodayDate() {
+  var today = new Date();
+  var day = String(today.getDate()).padStart(2, '0');
+  var month = String(today.getMonth() + 1).padStart(2, '0');
+  var year = today.getFullYear();
+  var todayDate = year + '-' + month + '-' + day;
+
+  document.getElementById('tanggaltk').value = todayDate;
+}
+
+function validateNamaTk(input) {
+  var regex = /^[a-zA-Z\s]+$/;
+  var errorMessage = document.getElementById('namatk-error');
+  var daftarButton = document.getElementById('daftar-button');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function validateNamaOrtuTk(input) {
+  var regex = /^[a-zA-Z\s]+$/;
+  var errorMessage = document.getElementById('namaortutk-error');
+  var daftarButton = document.getElementById('daftar-button');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Nama Orang Tua hanya boleh mengandung huruf';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+
+function validateNoHandphoneTk() {
+  var input = document.getElementById('nohandphonetk');
+  var errorMessage = document.getElementById('nohandphonetk-error');
+  var phoneNumber = input.value.trim();
+
+  var startsWithEight = phoneNumber.startsWith('8');
+  var hasValidLength = phoneNumber.length >= 11 && phoneNumber.length <= 13;
+  var onlyDigits = /^\d+$/.test(phoneNumber);
+
+  if (!startsWithEight || !hasValidLength || !onlyDigits) {
+    errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8 dan terdiri dari 9 hingga 13 digit angka';
+    errorMessage.classList.add('error-message');
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    errorMessage.classList.remove('error-message');
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function validateAlamatTk(input) {
+  var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
+  var errorMessage = document.getElementById('alamattk-error');
+  var daftarButton = document.getElementById('daftar-button');
+
+  if (!regex.test(input.value)) {
+    errorMessage.textContent = 'Alamat tidak valid';
+    input.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    input.classList.remove('error');
+  }
+  checkFormValidity();
+}
+
+function checkFormValidity() {
+  var daftarButton = document.getElementById('daftar-button');
+  var inputs = document.querySelectorAll('input.error');
+
+  daftarButton.disabled = inputs.length > 0;
+}
+
+// Set tanggal hari ini saat halaman dimuat
+setTodayDate();
+
+// Tambahkan event listener untuk input nama TK
+var namaTkInput = document.getElementById('namatk');
+namaTkInput.addEventListener('input', function () {
+  validateNamaTk(this);
+});
+
+// Tambahkan event listener untuk input nama orang tua TK
+var namaOrtuTkInput = document.getElementById('namaortutk');
+namaOrtuTkInput.addEventListener('input', function () {
+  validateNamaOrtuTk(this);
+});
+
+// Tambahkan event listener untuk input nomor handphone TK
+var nohandphoneTkInput = document.getElementById('nohandphonetk');
+nohandphoneTkInput.addEventListener('input', function () {
+  validateNoHandphoneTk();
+});
+
+// Tambahkan event listener untuk input alamat TK
+var alamatTkInput = document.getElementById('alamattk');
+alamatTkInput.addEventListener('input', function () {
+  validateAlamatTk(this);
+});
+
+// Panggil fungsi checkFormValidity() saat halaman dimuat untuk menginisialisasi tombol DAFTAR
+checkFormValidity();
+
+</script>
 </body>
 </html>
-
