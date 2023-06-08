@@ -202,10 +202,12 @@ mysqli_close($koneksi);
       <span id="namaortutk-error" class="error-message"></span>
 
       <div class="input-wrapper">
-        <span class="country-code">+62</span>
-        <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required>
-      </div>
-      <span id="error-message" class="error-message"></span>
+  <span class="country-code">+62</span>
+  <input type="text" name="nohandphonetk" id="nohandphonetk" placeholder="Nomor Handphone atau WA" class="phone-input" required oninput="validateNoHandphoneTk()">
+  <span id="nohandphonetk-error" class="error-message"></span>
+</div>
+
+      
 
       <input type="text" name="alamattk" placeholder="Alamat" class="input-controll" required oninput="validateAlamatTk(this)" />
       <span id="alamattk-error" class="error-message"></span>
@@ -291,22 +293,23 @@ function validateNamaOrtuTk(input) {
   checkFormValidity();
 }
 
+
 function validateNoHandphoneTk() {
   var input = document.getElementById('nohandphonetk');
   var errorMessage = document.getElementById('nohandphonetk-error');
   var phoneNumber = input.value.trim();
 
-  if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
-    errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
-    input.classList.add('error');
-  } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
-    errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
-    input.classList.add('error');
-  } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
-    errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
+  var startsWithEight = phoneNumber.startsWith('8');
+  var hasValidLength = phoneNumber.length >= 11 && phoneNumber.length <= 13;
+  var onlyDigits = /^\d+$/.test(phoneNumber);
+
+  if (!startsWithEight || !hasValidLength || !onlyDigits) {
+    errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8 dan terdiri dari 9 hingga 13 digit angka';
+    errorMessage.classList.add('error-message');
     input.classList.add('error');
   } else {
     errorMessage.textContent = '';
+    errorMessage.classList.remove('error-message');
     input.classList.remove('error');
   }
   checkFormValidity();
