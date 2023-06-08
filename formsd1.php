@@ -280,7 +280,7 @@ function validateKelasSd(input) {
   var daftarButton = document.getElementById('daftar-button2');
 
   if (!regex.test(input.value)) {
-    errorMessage.textContent = 'Kelas tidak boleh mengandung huruf';
+    errorMessage.textContent = 'Kelas tidak boleh mengandung huruf atau simbol';
     input.classList.add('error');
   } else {
     errorMessage.textContent = '';
