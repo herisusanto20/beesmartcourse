@@ -251,24 +251,7 @@ mysqli_close($koneksi);
   </div>
 </div>
 <script>
-  function checkFormValidity() {
-  // Cek semua input form untuk validitas
-  var inputs = document.getElementsByTagName('input');
-  var isFormValid = true;
-
-  for (var i = 0; i < inputs.length; i++) {
-    if (!inputs[i].checkValidity()) {
-      isFormValid = false;
-      break;
-    }
-  }
-
-  // Aktifkan atau nonaktifkan tombol "DAFTAR" berdasarkan validitas form
-  var daftarButton = document.getElementById('daftar-button');
-  daftarButton.disabled = !isFormValid;
-}
-
-function setTodayDate() {
+  function setTodayDate() {
   var today = new Date();
   var day = String(today.getDate()).padStart(2, '0');
   var month = String(today.getMonth() + 1).padStart(2, '0');
@@ -278,8 +261,6 @@ function setTodayDate() {
   document.getElementById('tanggaltk').value = todayDate;
 }
 
-setTodayDate();
-
 function validateNamaTk(input) {
   var regex = /^[a-zA-Z\s]+$/;
   var errorMessage = document.getElementById('namatk-error');
@@ -288,20 +269,12 @@ function validateNamaTk(input) {
   if (!regex.test(input.value)) {
     errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
     input.classList.add('error');
-    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
   } else {
     errorMessage.textContent = '';
     input.classList.remove('error');
-    checkFormValidity();
   }
+  checkFormValidity();
 }
-
-var namaTkInput = document.getElementById('namatk');
-namaTkInput.addEventListener('input', function () {
-  validateNamaTk(this);
-});
-
-
 
 function validateNamaOrtuTk(input) {
   var regex = /^[a-zA-Z\s]+$/;
@@ -311,51 +284,33 @@ function validateNamaOrtuTk(input) {
   if (!regex.test(input.value)) {
     errorMessage.textContent = 'Nama Orang Tua hanya boleh mengandung huruf';
     input.classList.add('error');
-    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
   } else {
     errorMessage.textContent = '';
     input.classList.remove('error');
-    checkFormValidity();
   }
+  checkFormValidity();
 }
-
-var namaOrtuTkInput = document.getElementById('namaortutk');
-namaOrtuTkInput.addEventListener('input', function () {
-  validateNamaOrtuTk(this);
-});
-
 
 function validateNoHandphoneTk() {
   var input = document.getElementById('nohandphonetk');
   var errorMessage = document.getElementById('nohandphonetk-error');
   var phoneNumber = input.value.trim();
-  var daftarButton = document.getElementById('daftar-button');
 
   if (phoneNumber.length >= 3 && !phoneNumber.startsWith('8')) {
     errorMessage.textContent = 'Nomor handphone harus dimulai dengan angka 8';
     input.classList.add('error');
-    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
   } else if (phoneNumber.length >= 5 && (phoneNumber.length < 11 || phoneNumber.length > 15)) {
     errorMessage.textContent = 'Nomor handphone harus terdiri dari 9 hingga 13 digit angka';
     input.classList.add('error');
-    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
   } else if (phoneNumber.length > 0 && !/^\d*$/.test(phoneNumber)) {
     errorMessage.textContent = 'Nomor handphone hanya boleh berisi angka';
     input.classList.add('error');
-    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
   } else {
     errorMessage.textContent = '';
     input.classList.remove('error');
-    checkFormValidity();
   }
-}
-
-var nohandphoneTkInput = document.getElementById('nohandphonetk');
-nohandphoneTkInput.addEventListener('input', function () {
-  validateNoHandphoneTk();
   checkFormValidity();
-});
-
+}
 
 function validateAlamatTk(input) {
   var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
@@ -365,31 +320,50 @@ function validateAlamatTk(input) {
   if (!regex.test(input.value)) {
     errorMessage.textContent = 'Alamat tidak valid';
     input.classList.add('error');
-    daftarButton.disabled = true; // Menonaktifkan tombol DAFTAR
   } else {
     errorMessage.textContent = '';
     input.classList.remove('error');
-    checkFormValidity();
   }
+  checkFormValidity();
 }
 
+function checkFormValidity() {
+  var daftarButton = document.getElementById('daftar-button');
+  var inputs = document.querySelectorAll('input.error');
+
+  daftarButton.disabled = inputs.length > 0;
+}
+
+// Set tanggal hari ini saat halaman dimuat
+setTodayDate();
+
+// Tambahkan event listener untuk input nama TK
+var namaTkInput = document.getElementById('namatk');
+namaTkInput.addEventListener('input', function () {
+  validateNamaTk(this);
+});
+
+// Tambahkan event listener untuk input nama orang tua TK
+var namaOrtuTkInput = document.getElementById('namaortutk');
+namaOrtuTkInput.addEventListener('input', function () {
+  validateNamaOrtuTk(this);
+});
+
+// Tambahkan event listener untuk input nomor handphone TK
+var nohandphoneTkInput = document.getElementById('nohandphonetk');
+nohandphoneTkInput.addEventListener('input', function () {
+  validateNoHandphoneTk();
+});
+
+// Tambahkan event listener untuk input alamat TK
 var alamatTkInput = document.getElementById('alamattk');
 alamatTkInput.addEventListener('input', function () {
   validateAlamatTk(this);
-  checkFormValidity();
 });
 
-
-// Aktifkan atau nonaktifkan tombol "DAFTAR" berdasarkan validitas form
-var daftarButton = document.getElementById('daftar-button');
-  if (isFormValid) {
-    daftarButton.disabled = false;
-  } else {
-    daftarButton.disabled = true;
-  }
-
+// Panggil fungsi checkFormValidity() saat halaman dimuat untuk menginisialisasi tombol DAFTAR
+checkFormValidity();
 
 </script>
 </body>
 </html>
-
