@@ -198,8 +198,13 @@ mysqli_close($koneksi);
       <p>Tanggal Pendaftaran</p>
       <input type="date" name="tanggalsmp" id="tanggalsmp" placeholder="Tanggal" class="input-controll" readonly required><br>
 
-      <input type="text" name="kelassmp" placeholder="Kelas" class="input-controll" required oninput="validateKelasSmp(this)" />
-      <span id="kelassmp-error" class="error-message"></span>
+      <select name="kelassmp" class="input-controll" required onchange="validateKelasSmp(this)">
+    <option value="">Pilih Kelas</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+</select>
+<span id="kelassmp-error" class="error-message"></span>
 
       <div class="input-wrapper">
   <span class="country-code">+62</span>
@@ -337,27 +342,27 @@ function checkFormValidity() {
 setTodayDate();
 
 // Tambahkan event listener untuk input nama TK
-var namaTkInput = document.getElementById('namasmp');
-namaTkInput.addEventListener('input', function () {
-  validateNamaTk(this);
+var namaSmpInput = document.getElementById('namasmp');
+namaSmpInput.addEventListener('input', function () {
+  validateNamaSmp(this);
 });
 
 // Tambahkan event listener untuk input nama orang tua TK
-var namaOrtuTkInput = document.getElementById('kelassmp');
-namaOrtuTkInput.addEventListener('input', function () {
-  validateNamaOrtuTk(this);
+var KelasSmpInput = document.getElementById('kelassmp');
+KelasSmpInput.addEventListener('input', function () {
+  validateKelasSmp(this);
 });
 
 // Tambahkan event listener untuk input nomor handphone TK
-var nohandphoneTkInput = document.getElementById('nohandphonesmp');
-nohandphoneTkInput.addEventListener('input', function () {
-  validateNoHandphoneTk();
+var nohandphoneSmpInput = document.getElementById('nohandphonesmp');
+nohandphoneSmpInput.addEventListener('input', function () {
+  validateNoHandphoneSmp();
 });
 
 // Tambahkan event listener untuk input alamat TK
-var alamatTkInput = document.getElementById('alamatsmp');
-alamatTkInput.addEventListener('input', function () {
-  validateAlamatTk(this);
+var alamatSmpInput = document.getElementById('alamatsmp');
+alamatSmpInput.addEventListener('input', function () {
+  validateAlamatSmp(this);
 });
 
 // Panggil fungsi checkFormValidity() saat halaman dimuat untuk menginisialisasi tombol DAFTAR

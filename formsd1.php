@@ -198,8 +198,16 @@ mysqli_close($koneksi);
       <p>Tanggal Pendaftaran</p>
       <input type="date" name="tanggalsd" id="tanggalsd" placeholder="Tanggal" class="input-controll" readonly required><br>
 
-      <input type="text" name="kelassd" placeholder="Kelas" class="input-controll" required oninput="validateKelasSd(this)" />
-      <span id="kelassd-error" class="error-message"></span>
+      <select name="kelassd" class="input-controll" required onchange="validateKelasSd(this)">
+    <option value="">Pilih Kelas</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+</select>
+<span id="kelassd-error" class="error-message"></span>
 
       <div class="input-wrapper">
   <span class="country-code">+62</span>
@@ -337,27 +345,27 @@ function checkFormValidity() {
 setTodayDate();
 
 // Tambahkan event listener untuk input nama TK
-var namaTkInput = document.getElementById('namasd');
-namaTkInput.addEventListener('input', function () {
-  validateNamaTk(this);
+var namaSdInput = document.getElementById('namasd');
+namaSdInput.addEventListener('input', function () {
+  validateNamaSd(this);
 });
 
 // Tambahkan event listener untuk input nama orang tua TK
-var namaOrtuTkInput = document.getElementById('kelassd');
-namaOrtuTkInput.addEventListener('input', function () {
-  validateNamaOrtuTk(this);
+var kelasSdInput = document.getElementById('kelassd');
+kelasSdInput.addEventListener('input', function () {
+  validateKelasSd(this);
 });
 
 // Tambahkan event listener untuk input nomor handphone TK
-var nohandphoneTkInput = document.getElementById('nohandphonesd');
-nohandphoneTkInput.addEventListener('input', function () {
-  validateNoHandphoneTk();
+var nohandphoneSdInput = document.getElementById('nohandphonesd');
+nohandphoneSdInput.addEventListener('input', function () {
+  validateNoHandphoneSd();
 });
 
 // Tambahkan event listener untuk input alamat TK
-var alamatTkInput = document.getElementById('alamatsd');
-alamatTkInput.addEventListener('input', function () {
-  validateAlamatTk(this);
+var alamatSdInput = document.getElementById('alamatsd');
+alamatSdInput.addEventListener('input', function () {
+  validateAlamatSd(this);
 });
 
 // Panggil fungsi checkFormValidity() saat halaman dimuat untuk menginisialisasi tombol DAFTAR
