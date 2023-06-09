@@ -7,16 +7,21 @@ $container = "";
 // Periksa apakah ada permintaan untuk menambahkan data ke tabel tb_kuota
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $tabel = $_POST["tabel"];
-  $kursus = $_POST["kursus"][0];
+  $kursus = $_POST["kursus"];
   $jenis_kursus = $_POST["jenis_kursus"];
-  $kuota = $_POST["kuota"];
+
+  // Definisikan nilai kuota berdasarkan jenis kursus
+  $kuota_values = array(
+    "Reguler" => 5,
+    "Privat" => 2,
+    "Online" => 5
+  );
 
   // Tambahkan data ke tabel tb_kuota
-  for ($i = 0; $i < count($jenis_kursus); $i++) {
-    $jenis_kursus_item = $jenis_kursus[$i];
-    $kuota_item = $kuota[$i];
+  foreach ($jenis_kursus as $jenis) {
+    $kuota_item = $kuota_values[$jenis];
 
-    $query = "INSERT INTO tb_kuota (tabel, kursus, jenis_kursus, kuota) VALUES ('$tabel', '$kursus', '$jenis_kursus_item', '$kuota_item')";
+    $query = "INSERT INTO tb_kuota (tabel, kursus, jenis_kursus, kuota) VALUES ('$tabel', '$kursus', '$jenis', '$kuota_item')";
     mysqli_query($koneksi, $query);
   }
 
@@ -88,12 +93,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: kuotasma1.php?container=" . urlencode($container));
     exit();
   }
-  
-
 
   $container .= '</div>';
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -212,54 +217,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </nav>
 
         <!-- Navbar End -->
-  <div class="container">
+        <div class="container">
     <h2>Form Tambah Kursus</h2>
     <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-      <label for="tabel">Tabel:</label>
-      <select name="tabel" id="tabel">
-        <option value="tb_tk">tb_tk</option>
-        <option value="tb_sd">tb_sd</option>
-        <option value="tb_smp">tb_smp</option>
-        <option value="tb_data">tb_data</option>
-      </select>
-      <br><br>
-      
-      <label for="kursus">Kursus:</label>
-      <input type="text" id="kursus" name="kursus[]" required>
-      <br>
-      <label for="jenis_kursus1">Jenis Kursus 1:</label>
-      <select id="jenis_kursus1" name="jenis_kursus[]" required>
-        <option value="Reguler">Reguler</option>
-        <option value="Privat">Privat</option>
-        <option value="Online">Online (SMA)</option>
-      </select>
-      <br>
-      <label for="kuota1">Kuota 1:</label>
-      <input type="number" id="kuota1" name="kuota[]" required>
-      <br>
-      <label for="jenis_kursus2">Jenis Kursus 3:</label>
-      <select id="jenis_kursus2" name="jenis_kursus[]" required>
-        <option value="Reguler">Reguler</option>
-        <option value="Privat">Privat</option>
-        <option value="Online">Online (SMA)</option>
-      </select>
-      <br>
-      <label for="kuota2">Kuota 2:</label>
-      <input type="number" id="kuota2" name="kuota[]" required>
-      <br>
-      <label for="jenis_kursus3">Jenis Kursus 3:</label>
-      <select id="jenis_kursus3" name="jenis_kursus[]">
-        <option value="Reguler">Reguler</option>
-        <option value="Privat">Privat</option>
-        <option value="Online">Online (SMA)</option>
-      </select>
-      <br>
-      <label for="kuota3">Kuota 3:</label>
-      <input type="number" id="kuota3" name="kuota[]">
-      <br><br>
-      
-      <input type="submit" value="Tambahkan">
+        <label for="tabel">Tabel:</label>
+        <select name="tabel" id="tabel">
+            <option value="tb_tk">TK</option>
+            <option value="tb_sd">SD</option>
+            <option value="tb_smp">SMP</option>
+            <option value="tb_data">SMA</option>
+        </select>
+        <br><br>
+
+        <label for="kursus">Kursus:</label>
+        <input type="text" name="kursus" id="kursus">
+        <br><br>
+
+        <label for="jenis_kursus">Jenis Kursus:</label>
+<br>
+<input type="checkbox" name="jenis_kursus[Reguler]" value="Reguler"> Reguler (Kuota: 5)<br>
+<input type="checkbox" name="jenis_kursus[Privat]" value="Privat"> Privat (Kuota: 2)<br>
+<input type="checkbox" name="jenis_kursus[Online]" value="Online"> Online (Kuota: 5)<br>
+<br><br>
+
+
+        <input type="submit" value="Tambahkan">
     </form>
+
+</div>
+</div>
+
   </div>
    <!-- Feather -->
    <script>
