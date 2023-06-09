@@ -133,20 +133,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- Navbar End -->
         <div class="container">
-        <h2>Form Update Kuota</h2>
+    <h2>Form Update Kuota</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <label for="kursus">Kursus:</label>
-        <select name="kursus" id="kursus">
-        <?php
+    <label for="kursus">Kursus:</label>
+<select name="kursus" id="kursus">
+    <?php
     // Koneksi ke database
     $conn = mysqli_connect("localhost", "root", "", "registrasi");
 
     // Nilai dari kolom "tabel" yang ingin Anda gunakan
-    $tabel = $_POST['tabel'];
+    $tabel = "tb_tk";
     $jenis_kursus = 'Reguler';
 
-    // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
-    $sql = "SELECT * FROM tb_kuota WHERE jenis_kursus = '$jenis_kursus'";
+    // Query untuk mengambil data kursus dari tabel tb_kuota berdasarkan kolom "tabel"
+    $sql = "SELECT kursus FROM tb_kuota WHERE jenis_kursus = '$jenis_kursus' AND tabel = '$tabel'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -154,22 +154,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<option value='" . $row['kursus'] . "'>" . $row['kursus'] . "</option>";
     }
-?>
-        </select>
+    ?>
+</select>
+
 
         <br><br>
 
         <label for="jenis_kursus">Jenis Kursus:</label>
-        <select name="jenis_kursus" id="jenis_kursus">
-            <option value="Reguler">Reguler</option>
-            <option value="Privat">Privat</option>
-            <option value="Online">Online</option>
-        </select>
-
-        <br><br>
-
-        <label for="kuota">Kuota:</label>
-        <input type="number" name="kuota" id="kuota" required>
+        <br>
+        <input type="checkbox" name="jenis_kursus[]" value="Reguler"> Reguler (Kuota: 5)<br>
+        <input type="checkbox" name="jenis_kursus[]" value="Privat"> Privat (Kuota: 2)<br>
+        <input type="checkbox" name="jenis_kursus[]" value="Online"> Online (Kuota: 5)<br>
 
         <br><br>
 
@@ -185,6 +180,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Update Kuota">
     </form>
+</div>
+
+<?php
+// Koneksi ke database
+$conn = mysqli_connect("localhost", "root", "", "registrasi");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $tabel = $_POST['tabel'];
+    $jenis_kursus = $_POST['jenis_kursus'];
+
+    // Insert atau update data kuota ke tabel tb_kuota
+    foreach ($jenis_kursus as $jenis) {
+        $kuota = 0;
+        if ($jenis === 'Reguler') {
+            $kuota = 5;
+        } elseif ($jenis === 'Privat') {
+            $kuota = 2;
+        } elseif ($jenis === 'Online') {
+            $kuota = 5;
+        }
+
+        // Ambil nilai kursus berdasarkan kolom "kursus" dari tabel tb_kuota
+        $kursus = $_POST['kursus'];
+
+        // Hapus data kuota sebelumnya untuk jenis kursus dan tabel yang dipilih
+        $deleteQuery = "DELETE FROM tb_kuota WHERE jenis_kursus = '$jenis' AND tabel = '$tabel' AND kursus = '$kursus'";
+        mysqli_query($conn, $deleteQuery);
+
+        // Cek apakah data kuota sudah ada untuk jenis kursus dan tabel yang dipilih
+        $checkQuery = "SELECT * FROM tb_kuota WHERE jenis_kursus = '$jenis' AND tabel = '$tabel' AND kursus = '$kursus'";
+        $result = mysqli_query($conn, $checkQuery);
+
+        if (mysqli_num_rows($result) > 0) {
+            // Jika data kuota sudah ada, lakukan update
+            $updateQuery = "UPDATE tb_kuota SET kuota = $kuota WHERE jenis_kursus = '$jenis' AND tabel = '$tabel' AND kursus = '$kursus'";
+            mysqli_query($conn, $updateQuery);
+        } else {
+            // Jika data kuota belum ada, lakukan insert
+            $insertQuery = "INSERT INTO tb_kuota (jenis_kursus, kursus, kuota, tabel) VALUES ('$jenis', '$kursus', $kuota, '$tabel')";
+            mysqli_query($conn, $insertQuery);
+        }
+    }
+
+    echo "<meta http-equiv=refresh content=0;URL='kuotatk1.php'>";
+}
+
+?>
+
         </div>
 
     <!-- Feather -->
