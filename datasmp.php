@@ -77,6 +77,7 @@
     <thead>
     <tbody>
         <tr>
+            <th>No</th>
             <th>Nama</th>
             <th>Tanggal Pendaftaran</th>
             <th>Kelas</th>
@@ -88,10 +89,11 @@
             <th colspan="3">Tambahan</th>
         </tr>
     </thead>
-    
         <?php
+        $no = 1; 
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
+                echo "<td>".$no."</td>"; 
                 echo "<td>".$row['namasmp']."</td>";
                 echo "<td>".$row['tanggalsmp']."</td>";
                 echo "<td>".$row['kelassmp']."</td>";
@@ -104,6 +106,7 @@
                 echo "<td><a href='hapusdaftarsmp.php?namasmp=".$row['namasmp']."'>Hapus</a></td>";
                 echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['nohandphonesmp']."'>Hubungi Siswa</a></td>";
                 echo "</tr>";
+                $no++;
             }
         ?>
     </tbody>

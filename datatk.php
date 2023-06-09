@@ -109,37 +109,44 @@
     <!-- sesi search off -->
     <thead>
     <tbody>
-        <tr>
-            <th>Nama</th>
-            <th>Tanggal Pendaftaran</th>
-            <th>Nama Orang Tua</th>
-            <th>No Handphone</th>
-            <th>Alamat</th>
-            <th>Kursus</th>
-            <th>Jenis Kursus</th>
-            <th>Keterangan</th>
-            <th colspan="3">Tambahan</th>
-        </tr>
-    </thead>
+    <tr>
+        <th>NO</th>
+        <th>Nama</th>
+        <th>Tanggal Pendaftaran</th>
+        <th>Nama Orang Tua</th>
+        <th>No Handphone</th>
+        <th>Alamat</th>
+        <th>Kursus</th>
+        <th>Jenis Kursus</th>
+        <th>Keterangan</th>
+        <th colspan="3">Tambahan</th>
+    </tr>
+</thead>
+
+<?php
+$no = 1; // Variabel penghitung
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<tr>";
+    echo "<td>".$no."</td>"; // Tampilkan nomor
+    echo "<td>".$row['namatk']."</td>";
+    echo "<td>".$row['tanggaltk']."</td>";
+    echo "<td>".$row['namaortutk']."</td>";
+    echo "<td>".$row['nohandphonetk']."</td>";
+    echo "<td>".$row['alamattk']."</td>";
+    echo "<td>".$row['kursustk']."</td>";
+    echo "<td>".$row['jeniskursustk']."</td>";
+    echo "<td>".$row['statustk']."</td>";
+    echo "<td><a href='editdaftar.php?namatk=".$row['namatk']."'>Edit</a></td>";
+    echo "<td><a href='hapusdaftartk.php?namatk=".$row['namatk']."'>Hapus</a></td>";
+    echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['nohandphonetk']."'>Hubungi Siswa</a></td>";
+    echo "</tr>";
     
-        <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>".$row['namatk']."</td>";
-                echo "<td>".$row['tanggaltk']."</td>";
-                echo "<td>".$row['namaortutk']."</td>";
-                echo "<td>".$row['nohandphonetk']."</td>";
-                echo "<td>".$row['alamattk']."</td>";
-                echo "<td>".$row['kursustk']."</td>";
-                echo "<td>".$row['jeniskursustk']."</td>";
-                echo "<td>".$row['statustk']."</td>";
-                echo "<td><a href='editdaftar.php?namatk=".$row['namatk']."'>Edit</a></td>";
-                echo "<td><a href='hapusdaftartk.php?namatk=".$row['namatk']."'>Hapus</a></td>";
-                echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['nohandphonetk']."'>Hubungi Siswa</a></td>";
-                echo "</tr>";
-            }
-        ?>
-    </tbody>
+    $no++; // Increment variabel penghitung
+}
+?>
+</tbody>
+
 
     </thead>
 </table></div>

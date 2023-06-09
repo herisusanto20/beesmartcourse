@@ -77,37 +77,44 @@
     <!-- sesi search off -->
     <thead>
     <tbody>
-        <tr>
-            <th>Nama</th>
-            <th>Tanggal Pendaftaran</th>
-            <th>Kelas</th>
-            <th>No Handphone</th>
-            <th>Alamat</th>
-            <th>Kursus</th>
-            <th>Jenis Kursus</th>
-            <th>Keterangan</th>
-            <th colspan="3">Tambahan</th>
-        </tr>
-    </thead>
+    <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Tanggal Pendaftaran</th>
+        <th>Kelas</th>
+        <th>No Handphone</th>
+        <th>Alamat</th>
+        <th>Kursus</th>
+        <th>Jenis Kursus</th>
+        <th>Keterangan</th>
+        <th colspan="3">Tambahan</th>
+    </tr>
+</thead>
+
+<?php
+$noo = 1;
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<tr>";
+    echo "<td>".$noo."</td>";
+    echo "<td>".$row['namasd']."</td>";
+    echo "<td>".$row['tanggalsd']."</td>";
+    echo "<td>".$row['kelassd']."</td>";
+    echo "<td>".$row['nohandphonesd']."</td>";
+    echo "<td>".$row['alamatsd']."</td>";
+    echo "<td>".$row['kursussd']."</td>";
+    echo "<td>".$row['jeniskursussd']."</td>";
+    echo "<td>".$row['statussd']."</td>";
+    echo "<td><a href='editdaftarsd.php?namasd=".$row['namasd']."'>Edit</a></td>";
+    echo "<td><a href='hapusdaftarsd.php?namasd=".$row['namasd']."'>Hapus</a></td>";
+    echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['nohandphonesd']."'>Hubungi Siswa</a></td>";
+    echo "</tr>";
     
-        <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>".$row['namasd']."</td>";
-                echo "<td>".$row['tanggalsd']."</td>";
-                echo "<td>".$row['kelassd']."</td>";
-                echo "<td>".$row['nohandphonesd']."</td>";
-                echo "<td>".$row['alamatsd']."</td>";
-                echo "<td>".$row['kursussd']."</td>";
-                echo "<td>".$row['jeniskursussd']."</td>";
-                echo "<td>".$row['statussd']."</td>";
-                echo "<td><a href='editdaftarsd.php?namasd=".$row['namasd']."'>Edit</a></td>";
-                echo "<td><a href='hapusdaftarsd.php?namasd=".$row['namasd']."'>Hapus</a></td>";
-                echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['nohandphonesd']."'>Hubungi Siswa</a></td>";
-                echo "</tr>";
-            }
-        ?>
-    </tbody>
+    $noo++;
+}
+?>
+</tbody>
+
 
     </thead>
 </table></div>

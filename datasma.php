@@ -77,6 +77,7 @@
     <thead>
     <tbody>
         <tr>
+            <th>No</th>
             <th>Nama</th>
             <th>Tanggal Pendaftaran</th>
             <th>Kelas</th>
@@ -90,8 +91,10 @@
     </thead>
     
         <?php
+        $no = 1;
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
+                echo "<td>.$no.</td>";
                 echo "<td>".$row['nama']."</td>";
                 echo "<td>".$row['tanggal']."</td>";
                 echo "<td>".$row['kelas']."</td>";
@@ -104,6 +107,7 @@
                 echo "<td><a href='hapusdaftarsma.php?nama=".$row['nama']."'>Hapus</a></td>";
                 echo "<td><a href='https://api.whatsapp.com/send?phone=".$row['no_handphone']."'>Hubungi Siswa</a></td>";
                 echo "</tr>";
+                $no++;
             }
         ?>
     </tbody>
