@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="updatekuota.php">Kuota</a>
                 <a href="editkursus.php">Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
-                <a href="register.php">Daftar Akses</a>
+                <!-- <a href="register.php">Daftar Akses</a> -->
                 <!-- <a href="datapresensi.php">Presensi</a> -->
                 
             </div>
