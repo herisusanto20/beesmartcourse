@@ -13,25 +13,23 @@ if (!$connection) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $selectedTabel = $_POST['tabel'];
+// Mendapatkan nilai tingkat dari parameter URL
+$tabel = $_GET['tabel'];
 
-    // Query untuk mendapatkan data kursus
-    $query = "SELECT kursus FROM $selectedTabel";
+// Query untuk mengambil data kursus dari tabel tb_kuota berdasarkan kolom "tabel"
+$sql = "SELECT kursus FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = 'Reguler'";
 
-    $result = mysqli_query($connection, $query);
+$result = mysqli_query($connection, $sql);
 
-    if ($result && mysqli_num_rows($result) > 0) {        echo "<ul>";
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<li>" . $row['kursus'] . "</li>";
-        }
-        echo "</ul>";
-    } elseif ($result === false) {
-    echo "Terjadi kesalahan dalam eksekusi query: " . mysqli_error($connection);
-} else {
-    echo "Data kursus tidak ditemukan.";
+$kursus = array();
+
+// Loop untuk menambahkan data kursus ke array
+while ($row = mysqli_fetch_assoc($result)) {
+    $kursus[] = $row['kursus'];
 }
 
-    mysqli_close($connection);
-}
+// Mengembalikan data kursus sebagai respons JSON
+echo json_encode($kursus);
+
+mysqli_close($connection);
 ?>

@@ -138,33 +138,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Form Update Kuota</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
     <label for="tabel">Tingkat:</label>
-        <select name="tabel" id="tabel">
-            <option value="tb_tk">TK</option>
-            <option value="tb_sd">SD</option>
-            <option value="tb_smp">SMP</option>
-            <option value="tb_data">SMA</option>
-        </select>
-    <label for="kursus">Kursus:</label>
-<select name="kursus" id="kursus">
-    <?php
-    // Koneksi ke database
-    $conn = mysqli_connect("localhost", "root", "", "registrasi");
-
-    // Nilai dari kolom "tabel" yang ingin Anda gunakan
-    $tabel = "tb_data";
-    $jenis_kursus = 'Reguler';
-
-    // Query untuk mengambil data kursus dari tabel tb_kuota berdasarkan kolom "tabel"
-    $sql = "SELECT kursus FROM tb_kuota WHERE jenis_kursus = '$jenis_kursus' AND tabel = '$tabel'";
-
-    $result = mysqli_query($conn, $sql);
-
-    // Loop untuk menampilkan data kursus pada dropdown
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<option value='" . $row['kursus'] . "'>" . $row['kursus'] . "</option>";
-    }
-    ?>
+<select name="tabel" id="tabel" onchange="updateKursusOptions()">
+    <option value="tb_tk">TK</option>
+    <option value="tb_sd">SD</option>
+    <option value="tb_smp">SMP</option>
+    <option value="tb_data">SMA</option>
 </select>
+
+<label for="kursus">Kursus:</label>
+<select name="kursus" id="kursus"></select>
+
+<script>
+function updateKursusOptions() {
+    // Ambil nilai tingkat yang dipilih
+    var selectedTingkat = document.getElementById("tabel").value;
+    
+    // Ambil elemen dropdown kursus
+    var kursusDropdown = document.getElementById("kursus");
+    
+    // Kosongkan dropdown kursus
+    kursusDropdown.innerHTML = "";
+    
+    // Buat permintaan AJAX ke file PHP untuk mengambil data kursus yang sesuai
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parse JSON response
+            var response = JSON.parse(xhr.responseText);
+            
+            // Loop untuk menambahkan opsi kursus ke dropdown
+            response.forEach(function(kursus) {
+                var option = document.createElement("option");
+                option.value = kursus;
+                option.textContent = kursus;
+                kursusDropdown.appendChild(option);
+            });
+        }
+    };
+    
+    // Buat URL dengan parameter tingkat yang dipilih
+    var url = "get_kursus.php?tabel=" + selectedTingkat;
+    
+    // Kirim permintaan GET ke file PHP
+    xhr.open("GET", url, true);
+    xhr.send();
+}
+
+// Panggil fungsi updateKursusOptions saat halaman dimuat
+window.onload = updateKursusOptions;
+</script>
 
 
         <br><br>
