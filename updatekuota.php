@@ -16,11 +16,13 @@ if (!$connection) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kursus = $_POST['kursus'];
     $jenis_kursus = $_POST['jenis_kursus'];
-    $kuota = $_POST['kuota'];
+    // $kuota = $_POST['kuota'];
     $tabel = $_POST['tabel'];
 
+  }  if (isset($_POST['kuota'])) {
+    $kuota = $_POST['kuota'];
     // Query untuk update kuota
-    $query = "UPDATE tb_kuota SET kuota = $kuota WHERE kursus = '$kursus' AND jenis_kursus = '$jenis_kursus'";
+    $query = "UPDATE tb_kuota SET kuota = '$kuota' WHERE kursus = '$kursus' AND jenis_kursus = '$jenis_kursus'";
 
     if (mysqli_query($connection, $query)) {
         echo "Kuota berhasil diperbarui.";
@@ -135,6 +137,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container">
     <h2>Form Update Kuota</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+    <label for="tabel">Tingkat:</label>
+        <select name="tabel" id="tabel">
+            <option value="tb_tk">TK</option>
+            <option value="tb_sd">SD</option>
+            <option value="tb_smp">SMP</option>
+            <option value="tb_data">SMA</option>
+        </select>
     <label for="kursus">Kursus:</label>
 <select name="kursus" id="kursus">
     <?php
@@ -142,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = mysqli_connect("localhost", "root", "", "registrasi");
 
     // Nilai dari kolom "tabel" yang ingin Anda gunakan
-    $tabel = "tb_tk";
+    $tabel = "tb_data";
     $jenis_kursus = 'Reguler';
 
     // Query untuk mengambil data kursus dari tabel tb_kuota berdasarkan kolom "tabel"
@@ -168,13 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <br><br>
 
-        <label for="tabel">Tingkat:</label>
-        <select name="tabel" id="tabel">
-            <option value="tb_tk">TK</option>
-            <option value="tb_sd">SD</option>
-            <option value="tb_smp">SMP</option>
-            <option value="tb_data">SMA</option>
-        </select>
+        
 
         <br><br>
 
@@ -191,8 +194,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jenis_kursus = $_POST['jenis_kursus'];
 
     // Insert atau update data kuota ke tabel tb_kuota
+    $kuota = 0;
     foreach ($jenis_kursus as $jenis) {
-        $kuota = 0;
+
         if ($jenis === 'Reguler') {
             $kuota = 5;
         } elseif ($jenis === 'Privat') {
@@ -223,7 +227,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    echo "<meta http-equiv=refresh content=0;URL='kuotatk1.php'>";
+    // echo "<meta http-equiv=refresh content=0;URL='kuotatk1.php'>";
 }
 
 ?>
