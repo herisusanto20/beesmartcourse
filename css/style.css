@@ -93,7 +93,16 @@ body {
 #hamburger-menu {
   display: none;
 }
-
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../img/beesmart.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
 
 .hero-1 {
   width: 100%;

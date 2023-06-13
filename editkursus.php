@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +45,7 @@
         <section class="pilih">
                 <a href="tambah_kuota.php" class="cta1">Tambah Kursus</a>
                 <a href="kurang_kuota.php" class="cta1">Hapus Kursus</a>
+                
         </section>
 <!-- Feather Icons -->
 <script>

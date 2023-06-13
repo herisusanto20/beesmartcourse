@@ -242,6 +242,7 @@ foreach ($data_kuota as $kursus => $kuota) {
   echo '</div>';
 }
 
+
 // Tutup koneksi ke database
 mysqli_close($koneksi);
 ?>
