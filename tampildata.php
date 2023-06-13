@@ -14,7 +14,7 @@
 <style>
     .container {
         margin: 10px;
-        margin-top: 7rem;
+        margin-top: 1rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -65,7 +65,7 @@
                 <a href="data-registrasi.php">Data</a>
                 <a href="laporan_dataall.php">Laporan</a>
                 <a href="updatekuota.php">Kuota</a>
-                <a href="editkursus.php">Kursus</a>
+                <a href="tampildata.php">Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <!-- <a href="register.php">Daftar Akses</a> -->
                 <!-- <a href="datapresensi.php">Presensi</a> -->
@@ -82,6 +82,11 @@
         </nav>
 
         <!-- Navbar End -->
+        <section class="pilih">
+                <a href="tambah_kuota.php" class="cta1">Tambah Kursus</a>
+                <a href="kurang_kuota.php" class="cta1">Hapus Kursus</a>
+                
+        </section>
 <?php
 // Koneksi ke database (sesuaikan dengan pengaturan server Anda)
 $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
