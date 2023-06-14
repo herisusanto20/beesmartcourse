@@ -195,7 +195,7 @@ window.onload = updateKursusOptions;
         <br>
         <input type="checkbox" name="jenis_kursus[]" value="Reguler"> Reguler<br>
         <input type="checkbox" name="jenis_kursus[]" value="Privat"> Privat<br>
-        <input type="checkbox" name="jenis_kursus[]" value="Online"> Online<br>
+        <input type="checkbox" name="jenis_kursus[]" value="Online"> Online (Khusus SMA)<br>
 
         <br><br>
 

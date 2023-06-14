@@ -11,52 +11,63 @@
         <script src="https://unpkg.com/feather-icons"></script>
         <!-- My Style CSS -->
     <link rel="stylesheet" href="css/style.css">
-<style>
+    <style>
+    .hm {
+        /* background-image: url("../img/dataregis.jpg"); */
+        background-color: #1E90FF;
+    }
+
     .container {
-        margin: 10px;
-        margin-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+    width: 100%;
+    margin: 5px;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Mengatur kontainer agar ditampilkan di tengah */
+    align-items: flex-start; /* Mengatur kontainer agar elemen-elemennya ditampilkan di atas */
+}
 
-    .container:hover {
-        box-shadow: 0 4px 8px #3498db;
-    }
+.sub-container {
+    margin-top: 10px;
+    flex-basis: calc(25% - 20px); /* Mengatur lebar sub-container agar menempati 25% lebar kontainer dengan ruang sekitar 20px */
+}
 
-    .sub-container {
-        margin-top: 20px;
-        flex-basis: 100%;
-    }
+.course-container {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    height: 100%; /* Mengatur tinggi course-container agar memenuhi sub-container */
+}
 
-    .course-container {
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #f2f2f2;
-        border-radius: 5px;
-    }
 
-    .course-container h5 {
-        margin: 0;
-        font-size: 16px;
-        font-weight: bold;
-    }
+.course-container h5 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.2; /* Mengatur jarak antara baris agar lebih nyaman dibaca */
+}
 
-    .course-container p {
-        margin: 5px 0;
-        font-size: 14px;
-    }
+.course-container p {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 1.2; /* Mengatur jarak antara baris agar lebih nyaman dibaca */
+}
 
-    @media (min-width: 768px) {
+
+    @media (min-width: 1024px) {
         .sub-container {
-            flex-basis: calc(50% - 10px);
+            flex-basis: 100%;
+        }
+        
+        .container {
+            flex-direction: row;
         }
     }
 </style>
 
-
 </head>
-<body>
+<body class="hm">
       <!-- Navbar Start -->
 <nav class="navbar">
             <a href="dasboard.php" class="navbar-logo"><span>Bee Smart </span>Course</a>
@@ -87,6 +98,7 @@
                 <a href="kurang_kuota.php" class="cta1">Hapus Kursus</a>
                 
         </section>
+        <section class="pilih">
 <?php
 // Koneksi ke database (sesuaikan dengan pengaturan server Anda)
 $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
@@ -140,7 +152,7 @@ if (mysqli_num_rows($result) > 0) {
     // Tampilkan data dalam kontainer
     foreach ($kursus_data as $tabel => $kursus) {
         echo '<div class="container">';
-        echo '<h3>Kolom Tabel: ' . $tabel . '</h3>';
+        echo '<h3>Tingkatan : ' . $tabel . '</h3>';
 
         foreach ($kursus as $nama_kursus => $jenis_kursus_data) {
             echo '<div class="sub-container">';
@@ -167,6 +179,7 @@ mysqli_close($koneksi);
 ?>
  <!-- Feather -->
  <script>
+    </section>
             feather.replace()
           </script>
           <!-- Script buat hamburger -->
