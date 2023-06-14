@@ -235,9 +235,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label for="jenis_kursus">Jenis Kursus:</label>
 <br>
-<input type="checkbox" name="jenis_kursus[Reguler]" value="Reguler"> Reguler (Kuota: 5)<br>
-<input type="checkbox" name="jenis_kursus[Privat]" value="Privat"> Privat (Kuota: 2)<br>
-<input type="checkbox" name="jenis_kursus[Online]" value="Online"> Online (Kuota: 5)<br>
+<input type="checkbox" name="jenis_kursus[Reguler]" value="Reguler"> Reguler<br>
+<input type="checkbox" name="jenis_kursus[Privat]" value="Privat"> Privat<br>
+<input type="checkbox" name="jenis_kursus[Online]" value="Online"> Online (Khusus SMA)<br>
 <br><br>
 
 

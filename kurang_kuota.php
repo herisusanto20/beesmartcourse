@@ -116,12 +116,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["hapus"])) {
         <!-- Navbar End -->
   <h2>Form Hapus Kursus</h2> <br>
   <form method="post" action="kurang_kuota.php">
-    <label for="tabel">Tabel:</label>
+    <label for="tabel">Tingkatan:</label>
     <select name="tabel" id="tabel">
-      <option value="tb_tk">tb_tk</option>
-      <option value="tb_sd">tb_sd</option>
-      <option value="tb_smp">tb_smp</option>
-      <option value="tb_data">tb_data</option>
+      <option value="tb_tk">TK</option>
+      <option value="tb_sd">SD</option>
+      <option value="tb_smp">SMP</option>
+      <option value="tb_data">SMA</option>
     </select>
     <br><br>
     
