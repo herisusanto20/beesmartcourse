@@ -51,7 +51,7 @@
                             <td>No</td>
                             <td>Nama Siswa</td>
                             <td>Tanggal Pendaftaran</td>
-                            <td>Nama Orang Tua</td>
+                            <td>Nama Siswa</td>
                             <td>No Handphone</td>
                             <td>Alamat</td>
                             <td>Kursus</td>
