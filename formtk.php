@@ -26,6 +26,10 @@ if (isset($_POST['proses'])) {
     $update_query = "UPDATE tb_kuota SET kuota = $updated_kuota WHERE tabel = 'tb_tk' AND kursus = '$kursustk' AND  jenis_kursus = '$jeniskursustk'";
     mysqli_query($koneksi, $update_query);
 
+    // Update nilai kuota di tabel gelombang
+    $updateQuery = "UPDATE gelombang SET kuota = kuota - 1 WHERE nama_gelombang = '$geltk'";
+    mysqli_query($koneksi, $updateQuery);
+
     // Lanjutkan dengan menyimpan data pendaftaran ke database
     $insert_query = "INSERT INTO tb_tk (namatk, tanggaltk, namaortutk, nohandphonetk, alamattk, statustk, kursustk, jeniskursustk, geltk) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk',  '$geltk')";
     if (mysqli_query($koneksi, $insert_query)) {
@@ -36,12 +40,14 @@ if (isset($_POST['proses'])) {
   } else {
     echo "Kuota untuk jenis kursus '$jeniskursustk' pada tabel 'tb_tk' telah habis.";
   }
-  // echo "<meta http-equiv=refresh content=2;URL='kuotatk1.php'>";
+
+  echo "<meta http-equiv=refresh content=2;URL='kuotatk1.php'>";
 }
 
 // Tutup koneksi ke database
 mysqli_close($koneksi);
 ?>
+
 
 
 <!DOCTYPE html>
@@ -274,8 +280,6 @@ mysqli_close($koneksi);
     ?>
   </optgroup>
 </select>
-
-
       <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button">
     </form>
   </div>
