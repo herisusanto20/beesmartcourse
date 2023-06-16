@@ -12,6 +12,7 @@ if (isset($_POST['proses'])) {
   $statustk = $_POST['statustk'];
   $kursustk = $_POST['kursustk'];
   $jeniskursustk = $_POST['jeniskursustk'];
+  $geltk = $_POST['geltk'];
 
   // Periksa apakah kuota tersedia
   $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_tk' AND kursus = '$kursustk' AND jenis_kursus = '$jeniskursustk'";
@@ -26,19 +27,22 @@ if (isset($_POST['proses'])) {
     mysqli_query($koneksi, $update_query);
 
     // Lanjutkan dengan menyimpan data pendaftaran ke database
-    $insert_query = "INSERT INTO tb_tk (namatk, tanggaltk, namaortutk, nohandphonetk, alamattk, statustk, kursustk, jeniskursustk) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk')";
-    mysqli_query($koneksi, $insert_query);
-
-    echo "Pendaftaran berhasil!";
+    $insert_query = "INSERT INTO tb_tk (namatk, tanggaltk, namaortutk, nohandphonetk, alamattk, statustk, kursustk, jeniskursustk, geltk) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk',  '$geltk')";
+    if (mysqli_query($koneksi, $insert_query)) {
+      echo "Pendaftaran berhasil!";
+    } else {
+      echo "Terjadi kesalahan saat menyimpan data pendaftaran: " . mysqli_error($koneksi);
+    }
   } else {
     echo "Kuota untuk jenis kursus '$jeniskursustk' pada tabel 'tb_tk' telah habis.";
   }
-  echo "<meta http-equiv=refresh content=2;URL='kuotatk1.php'>";
+  // echo "<meta http-equiv=refresh content=2;URL='kuotatk1.php'>";
 }
 
 // Tutup koneksi ke database
 mysqli_close($koneksi);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -216,7 +220,7 @@ mysqli_close($koneksi);
         <option value="">-- Kursus --</option>
         <?php
         // Koneksi ke database
-        $conn = mysqli_connect("localhost", "root", "", "registrasi");
+        $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
 
         // Nilai dari kolom "tabel" yang ingin Anda gunakan
         $tabel = $_POST['tabel'];
@@ -226,7 +230,7 @@ mysqli_close($koneksi);
         // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
         $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
 
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($koneksi, $sql);
 
         // Loop untuk menampilkan data kursus pada dropdown
         while ($row = mysqli_fetch_assoc($result)) {
@@ -246,6 +250,32 @@ mysqli_close($koneksi);
           <option>Reguler</option>
         </optgroup>
       </select>
+      <select name="geltk" class="input-controll" required>
+  <optgroup label="gelombang">
+    <?php
+    // Lakukan koneksi ke database Anda di sini
+    $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
+
+    // Query untuk mengambil data dari kolom "nama_gelombang" pada tabel "gelombang"
+    $query = "SELECT nama_gelombang FROM gelombang WHERE kuota > 0";
+
+    // Jalankan query
+    $result = mysqli_query($koneksi, $query);
+
+    // Periksa apakah ada baris hasil query
+    if (mysqli_num_rows($result) > 0) {
+      // Loop melalui setiap baris hasil query
+      while ($row = mysqli_fetch_assoc($result)) {
+        $nama_gelombang = $row['nama_gelombang'];
+        // Tampilkan pilihan (options) dalam elemen select
+        echo '<option value="' . $nama_gelombang . '">' . $nama_gelombang . '</option>';
+      }
+    }
+    ?>
+  </optgroup>
+</select>
+
+
       <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button">
     </form>
   </div>

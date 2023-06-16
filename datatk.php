@@ -95,7 +95,7 @@
 	if (isset($_POST['keyword'])) {
 		$keyword = $_POST['keyword'];
 		// Query untuk mencari data pertemuan berdasarkan keyword pada semua kolom
-		$sql = "SELECT * FROM tb_tk WHERE namatk LIKE '%$keyword%' OR tanggaltk LIKE '%$keyword%' OR namaortutk LIKE '%$keyword%' OR nohandphonetk LIKE '%$keyword%' OR alamattk LIKE '%$keyword%' OR kursustk LIKE '%$keyword%' OR jeniskursustk LIKE '%$keyword%' OR statustk LIKE '%$keyword%'";
+		$sql = "SELECT * FROM tb_tk WHERE namatk LIKE '%$keyword%' OR tanggaltk LIKE '%$keyword%' OR namaortutk LIKE '%$keyword%' OR nohandphonetk LIKE '%$keyword%' OR alamattk LIKE '%$keyword%' OR kursustk LIKE '%$keyword%' OR jeniskursustk LIKE '%$keyword%' OR statustk LIKE '%$keyword%' OR geltk LIKE '%$keyword%'";
 	} else {
 		// Query untuk mengambil semua data dari tabel pertemuan
 		$sql = "SELECT * FROM tb_tk ORDER BY tanggaltk ASC";
@@ -118,6 +118,7 @@
         <th>Alamat</th>
         <th>Kursus</th>
         <th>Jenis Kursus</th>
+        <th>Gelombang</th>
         <th>Keterangan</th>
         <th colspan="3">Tambahan</th>
     </tr>
@@ -136,6 +137,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td>".$row['alamattk']."</td>";
     echo "<td>".$row['kursustk']."</td>";
     echo "<td>".$row['jeniskursustk']."</td>";
+    echo "<td>".$row['geltk']."</td>";
     echo "<td>".$row['statustk']."</td>";
     echo "<td><a href='editdaftar.php?namatk=".$row['namatk']."'>Edit</a></td>";
     echo "<td><a href='hapusdaftartk.php?namatk=".$row['namatk']."'>Hapus</a></td>";
