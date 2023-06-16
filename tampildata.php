@@ -177,9 +177,10 @@ if (mysqli_num_rows($result) > 0) {
 // Tutup koneksi ke database
 mysqli_close($koneksi);
 ?>
+</section>
  <!-- Feather -->
  <script>
-    </section>
+    
             feather.replace()
           </script>
           <!-- Script buat hamburger -->

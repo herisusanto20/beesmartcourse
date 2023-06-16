@@ -49,8 +49,8 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>Tanggal Pendaftaran</td>
                             <td>Nama Siswa</td>
+                            <td>Tanggal Pendaftaran</td>
                             <td>Kelas</td>
                             <td>No Handphone</td>
                             <td>Alamat</td>

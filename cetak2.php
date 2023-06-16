@@ -50,7 +50,7 @@
                         <tr>
                             <td>No</td>
                             <td>Tanggal Pendaftaran</td>
-                            <td>Nama Siswa</td>
+                            <td>Nama Orang Tua</td>
                             <td>Kelas</td>
                             <td>No Handphone</td>
                             <td>Alamat</td>

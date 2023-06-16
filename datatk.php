@@ -113,7 +113,7 @@
         <th>NO</th>
         <th>Nama</th>
         <th>Tanggal Pendaftaran</th>
-        <th>Nama Siswa</th>
+        <th>Nama Orang Tua</th>
         <th>No Handphone</th>
         <th>Alamat</th>
         <th>Kursus</th>
