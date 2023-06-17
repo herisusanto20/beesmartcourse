@@ -13,8 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["hapus"])) {
   mysqli_query($koneksi, $query);
 
   // Redirect kembali ke halaman kuota dengan data kursus yang diperbarui
-  header("Location: kurang_kuota.php?tabel=" . urlencode($tabel) . "&kursus=" . urlencode($kursus));
+  header("Location: tampildata.php?tabel=" . urlencode($tabel) . "&kursus=" . urlencode($kursus));
   exit();
+  
 }
 ?>
 
@@ -96,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["hapus"])) {
                 <a href="dasboard.php">Home</a>
                 <a href="data-registrasi.php">Data</a>
                 <a href="laporan_dataall.php">Laporan</a>
-                <a href="updatekuota.php">Kuota</a>
+                <!-- <a href="updatekuota.php">Kuota</a> -->
                 <a href="tampildata.php">Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <!-- <a href="register.php">Daftar Akses</a> -->
@@ -116,7 +117,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["hapus"])) {
         <!-- Navbar End -->
   <h2>Form Hapus Kursus</h2> <br>
   <form method="post" action="kurang_kuota.php">
-    <label for="tabel">Tingkatan:</label>
+  <label for="tabel">Tingkat:</label>
+<select name="tabel" id="tabel" onchange="updateKursusOptions()">
+    <option value="tb_tk">TK</option>
+    <option value="tb_sd">SD</option>
+    <option value="tb_smp">SMP</option>
+    <option value="tb_data">SMA</option>
+</select>
+
+<label for="kursus">Kursus:</label>
+<select name="kursus" id="kursus"></select>
+
+<script>
+function updateKursusOptions() {
+    // Ambil nilai tingkat yang dipilih
+    var selectedTingkat = document.getElementById("tabel").value;
+    
+    // Ambil elemen dropdown kursus
+    var kursusDropdown = document.getElementById("kursus");
+    
+    // Kosongkan dropdown kursus
+    kursusDropdown.innerHTML = "";
+    
+    // Buat permintaan AJAX ke file PHP untuk mengambil data kursus yang sesuai
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parse JSON response
+            var response = JSON.parse(xhr.responseText);
+            
+            // Loop untuk menambahkan opsi kursus ke dropdown
+            response.forEach(function(kursus) {
+                var option = document.createElement("option");
+                option.value = kursus;
+                option.textContent = kursus;
+                kursusDropdown.appendChild(option);
+            });
+        }
+    };
+    
+    // Buat URL dengan parameter tingkat yang dipilih
+    var url = "get_kursus.php?tabel=" + selectedTingkat;
+    
+    // Kirim permintaan GET ke file PHP
+    xhr.open("GET", url, true);
+    xhr.send();
+}
+
+// Panggil fungsi updateKursusOptions saat halaman dimuat
+window.onload = updateKursusOptions;
+</script>
+    <!-- <label for="tabel">Tingkatan:</label>
     <select name="tabel" id="tabel">
       <option value="tb_tk">TK</option>
       <option value="tb_sd">SD</option>
@@ -127,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["hapus"])) {
     
     <label for="kursus">Kursus:</label>
     <input type="text" id="kursus" name="kursus" required>
-    <br>
+    <br> -->
     <!-- <label for="jenis_kursus">Jenis Kursus:</label>
     <select id="jenis_kursus" name="jenis_kursus" required>
       <option value="Reguler">Reguler</option>
