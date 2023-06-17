@@ -75,7 +75,7 @@
                 <a href="dasboard.php">Home</a>
                 <a href="data-registrasi.php">Data</a>
                 <a href="laporan_dataall.php">Laporan</a>
-                <a href="updatekuota.php">Kuota</a>
+                <!-- <a href="updatekuota.php">Kuota</a> -->
                 <a href="tampildata.php">Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <!-- <a href="register.php">Daftar Akses</a> -->
@@ -96,6 +96,7 @@
         <section class="pilih">
                 <a href="tambah_kuota.php" class="cta1">Tambah Kursus</a>
                 <a href="kurang_kuota.php" class="cta1">Hapus Kursus</a>
+                <a href="updatekuota.php" class="cta1">Edit Kursus</a>
                 
         </section>
         <section class="pilih">
@@ -161,7 +162,7 @@ if (mysqli_num_rows($result) > 0) {
             foreach ($jenis_kursus_data as $jenis_kursus => $kuota) {
                 echo '<div class="course-container">';
                 echo '<h5>Jenis Kursus: ' . $jenis_kursus . '</h5>';
-                echo '<p>Kuota: ' . $kuota . '</p>';
+                echo '<p>Sisa Kuota: ' . $kuota . '</p>';
                 echo '</div>';
             }
 
