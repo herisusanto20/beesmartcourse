@@ -12,6 +12,7 @@ if (isset($_POST['proses'])) {
   $statustk = $_POST['statussd'];
   $kursustk = $_POST['kursussd'];
   $jeniskursustk = $_POST['jeniskursussd'];
+  $gelsd = $_POST['gelsd'];
 
   // Periksa apakah kuota tersedia
   $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_sd' AND kursus = '$kursustk' AND jenis_kursus = '$jeniskursustk'";
@@ -24,9 +25,12 @@ if (isset($_POST['proses'])) {
     $updated_kuota = $kuota - 1;
     $update_query = "UPDATE tb_kuota SET kuota = $updated_kuota WHERE tabel = 'tb_sd' AND kursus = '$kursustk' AND  jenis_kursus = '$jeniskursustk'";
     mysqli_query($koneksi, $update_query);
+    // Update nilai kuota di tabel gelombang
+    $updateQuery = "UPDATE gelombang SET kuota = kuota - 1 WHERE nama_gelombang = '$gelsd'";
+    mysqli_query($koneksi, $updateQuery);
 
     // Lanjutkan dengan menyimpan data pendaftaran ke database
-    $insert_query = "INSERT INTO tb_sd (namasd, tanggalsd, kelassd, nohandphonesd, alamatsd, statussd, kursussd, jeniskursussd) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk')";
+    $insert_query = "INSERT INTO tb_sd (namasd, tanggalsd, kelassd, nohandphonesd, alamatsd, statussd, kursussd, jeniskursussd, gelsd) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk', '$gelsd')";
     mysqli_query($koneksi, $insert_query);
 
     echo "Pendaftaran berhasil!";
@@ -209,6 +213,7 @@ mysqli_close($koneksi);
 </select>
 <span id="kelassd-error" class="error-message"></span>
 
+
       <div class="input-wrapper">
   <span class="country-code">+62</span>
   <input type="text" name="nohandphonesd" id="nohandphonesd" placeholder="Nomor Handphone atau WA" class="phone-input" required oninput="validateNoHandphoneSd()">
@@ -253,6 +258,30 @@ mysqli_close($koneksi);
           <option>Privat</option>
         </optgroup>
       </select>
+      <select name="gelsd" class="input-controll" required>
+  <optgroup label="gelombang">
+    <?php
+    // Lakukan koneksi ke database Anda di sini
+    $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
+
+    // Query untuk mengambil data dari kolom "nama_gelombang" pada tabel "gelombang"
+    $query = "SELECT nama_gelombang FROM gelombang WHERE kuota > 0";
+
+    // Jalankan query
+    $result = mysqli_query($koneksi, $query);
+
+    // Periksa apakah ada baris hasil query
+    if (mysqli_num_rows($result) > 0) {
+      // Loop melalui setiap baris hasil query
+      while ($row = mysqli_fetch_assoc($result)) {
+        $nama_gelombang = $row['nama_gelombang'];
+        // Tampilkan pilihan (options) dalam elemen select
+        echo '<option value="' . $nama_gelombang . '">' . $nama_gelombang . '</option>';
+      }
+    }
+    ?>
+  </optgroup>
+</select>
       <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button2">
 </form>
     </div>

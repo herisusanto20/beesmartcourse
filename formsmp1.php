@@ -12,6 +12,7 @@ if (isset($_POST['proses'])) {
   $statustk = $_POST['statussmp'];
   $kursustk = $_POST['kursussmp'];
   $jeniskursustk = $_POST['jeniskursussmp'];
+  $gelsmp = $_POST['gelsmp'];
 
   // Periksa apakah kuota tersedia
   $query = "SELECT kuota FROM tb_kuota WHERE tabel = 'tb_smp' AND kursus = '$kursustk' AND jenis_kursus = '$jeniskursustk'";
@@ -25,8 +26,12 @@ if (isset($_POST['proses'])) {
     $update_query = "UPDATE tb_kuota SET kuota = $updated_kuota WHERE tabel = 'tb_smp' AND kursus = '$kursustk' AND  jenis_kursus = '$jeniskursustk'";
     mysqli_query($koneksi, $update_query);
 
+      // Update nilai kuota di tabel gelombang
+      $updateQuery = "UPDATE gelombang SET kuota = kuota - 1 WHERE nama_gelombang = '$gelsmp'";
+      mysqli_query($koneksi, $updateQuery);
+
     // Lanjutkan dengan menyimpan data pendaftaran ke database
-    $insert_query = "INSERT INTO tb_smp (namasmp, tanggalsmp, kelassmp, nohandphonesmp, alamatsmp, statussmp, kursussmp, jeniskursussmp) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk')";
+    $insert_query = "INSERT INTO tb_smp (namasmp, tanggalsmp, kelassmp, nohandphonesmp, alamatsmp, statussmp, kursussmp, jeniskursussmp, gelsmp) VALUES ('$namatk', '$tanggaltk', '$namaortutk', '$nohandphonetk', '$alamattk', '$statustk', '$kursustk', '$jeniskursustk', '$gelsmp')";
     mysqli_query($koneksi, $insert_query);
 
     echo "Pendaftaran berhasil!";
@@ -250,7 +255,31 @@ mysqli_close($koneksi);
           <option>Privat</option>
         </optgroup>
       </select>
-      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button4">
+      <select name="gelsmp" class="input-controll" required>
+  <optgroup label="gelombang">
+    <?php
+    // Lakukan koneksi ke database Anda di sini
+    $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
+
+    // Query untuk mengambil data dari kolom "nama_gelombang" pada tabel "gelombang"
+    $query = "SELECT nama_gelombang FROM gelombang WHERE kuota > 0";
+
+    // Jalankan query
+    $result = mysqli_query($koneksi, $query);
+
+    // Periksa apakah ada baris hasil query
+    if (mysqli_num_rows($result) > 0) {
+      // Loop melalui setiap baris hasil query
+      while ($row = mysqli_fetch_assoc($result)) {
+        $nama_gelombang = $row['nama_gelombang'];
+        // Tampilkan pilihan (options) dalam elemen select
+        echo '<option value="' . $nama_gelombang . '">' . $nama_gelombang . '</option>';
+      }
+    }
+    ?>
+  </optgroup>
+</select>
+      <input type="submit" value="DAFTAR" class="btn" name="proses" id="daftar-button3">
 </form>
     </div>
     <script>
@@ -267,7 +296,7 @@ mysqli_close($koneksi);
 function validateNamaSmp(input) {
   var regex = /^[a-zA-Z\s]+$/;
   var errorMessage = document.getElementById('namasmp-error');
-  var daftarButton = document.getElementById('daftar-button4');
+  var daftarButton = document.getElementById('daftar-button3');
 
   if (!regex.test(input.value)) {
     errorMessage.textContent = 'Nama hanya boleh mengandung huruf';
@@ -282,7 +311,7 @@ function validateNamaSmp(input) {
 function validateKelasSmp(input) {
   var regex = /^[0-9]+$/;
   var errorMessage = document.getElementById('kelassmp-error');
-  var daftarButton = document.getElementById('daftar-button4');
+  var daftarButton = document.getElementById('daftar-button3');
 
   if (!regex.test(input.value)) {
     errorMessage.textContent = 'Kelas tidak boleh mengandung huruf atau simbol';
@@ -319,7 +348,7 @@ function validateNoHandphoneSmp() {
 function validateAlamatSmp(input) {
   var regex = /^[a-zA-Z]+\s*\d*[a-zA-Z0-9\s]*$/;
   var errorMessage = document.getElementById('alamatsmp-error');
-  var daftarButton = document.getElementById('daftar-button4');
+  var daftarButton = document.getElementById('daftar-button3');
 
   if (!regex.test(input.value)) {
     errorMessage.textContent = 'Alamat tidak valid';
@@ -332,7 +361,7 @@ function validateAlamatSmp(input) {
 }
 
 function checkFormValidity() {
-  var daftarButton = document.getElementById('daftar-button4');
+  var daftarButton = document.getElementById('daftar-button3');
   var inputs = document.querySelectorAll('input.error');
 
   daftarButton.disabled = inputs.length > 0;
