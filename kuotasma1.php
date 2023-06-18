@@ -32,6 +32,24 @@
 .container:hover {
   box-shadow: 0 4px 8px #3498db;
 }
+.containers {
+  align-items: center;
+  justify-content: center;
+  .text-outline
+    color: #fff; /* Warna tulisan */
+    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+  color: white;
+  margin: 10px;
+  margin-top:4rem;
+  max-width: 500px;
+  padding: 20px;
+  background-color: orange;
+  transition: box-shadow 0.3s ease;
+}
+
+.containers:hover {
+  box-shadow: 0 4px 8px red;
+}  
     /* Tampilan untuk handphone */
 @media (max-width: 767px) {
   body {
@@ -229,6 +247,46 @@
         <br>
         <br>
         <!-- Navbar End -->
+        <div class="containers">
+        <h2>Gelombang Pendaftaran</h2>
+        <?php
+        // Menghubungkan ke database
+        $host = 'localhost';
+        $username = 'root';
+        $password = '';
+        $dbname = 'registrasi';
+
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        // Memeriksa koneksi
+        if ($conn->connect_error) {
+            die("Koneksi gagal: " . $conn->connect_error);
+        }
+
+        // Melakukan query ke tabel gelombang
+        $sql = "SELECT nama_gelombang, periode FROM gelombang";
+        $result = $conn->query($sql);
+
+        // Menampilkan isi container
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $gelombang = $row['nama_gelombang'];
+                $periode = $row['periode'];
+        ?>
+                <div class="gelombang">
+                    <p>Gelombang ke-<?php echo $gelombang; ?></p>
+                    <p>Periode : <?php echo $periode; ?></p>
+                </div>
+        <?php
+            }
+        } else {
+            echo "Tidak ada data gelombang.";
+        }
+
+        // Menutup koneksi ke database
+        $conn->close();
+        ?>
+    </div>
   <?php
   // Koneksi ke database (sesuaikan dengan pengaturan server Anda)
   $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
