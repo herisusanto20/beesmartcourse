@@ -220,7 +220,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container">
     <h2>Form Tambah Kursus</h2>
     <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-        <label for="tabel">Tabel:</label>
+        <label for="tabel">Tingkat :</label>
         <select name="tabel" id="tabel">
             <option value="tb_tk">TK</option>
             <option value="tb_sd">SD</option>

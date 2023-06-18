@@ -209,7 +209,7 @@ mysqli_close($koneksi);
       <p>Tanggal Pendaftaran</p>
       <input type="date" name="tanggaltk" id="tanggaltk" placeholder="Tanggal" class="input-controll" readonly required><br>
 
-      <input type="text" name="namaortutk" placeholder="Nama Siswa" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
+      <input type="text" name="namaortutk" placeholder="Nama Orang tua" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
       <span id="namaortutk-error" class="error-message"></span>
 
       <div class="input-wrapper">
