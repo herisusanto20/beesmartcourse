@@ -40,14 +40,14 @@
         <!-- Navbar End -->
 
         <!-- Matematika Session -->
-            <section id="about" class="about">
+            <section id="about2" class="about2">
             <h2>Bahasa Inggris</h2>
 
-            <div class="row">
-                <div class="about-img">
+            <div class="row2">
+                <div class="about-img2">
                     <img src="img/inggris.jpg" alt="Bahasa Inggris">
                 </div>
-                <div class="content">
+                <div class="content2">
                     <ul>
                         <li>Dalam program bimbingan belajar Bahasa Inggris untuk SD hingga SMA di Bee Smart Course, kami memiliki pendekatan komprehensif untuk membantu siswa mengembangkan keterampilan mendengarkan, berbicara, membaca, dan menulis dalam Bahasa Inggris. Kami menyadari bahwa Bahasa Inggris adalah bahasa internasional yang penting untuk berkomunikasi di era globalisasi, dan kami ingin mempersiapkan siswa untuk menjadi mahir dalam menggunakan Bahasa Inggris dalam berbagai situasi.</li>
                         <li>Program kami disesuaikan dengan tingkat pendidikan siswa, mulai dari pemula hingga tingkat lanjutan. Kami menggunakan metode pengajaran yang interaktif dan melibatkan siswa secara aktif dalam proses pembelajaran. Kami menyediakan materi pembelajaran yang beragam, termasuk teks bacaan, dialog, rekaman audio, dan materi multimedia yang menarik. Materi kami didesain untuk memperluas kosakata siswa, meningkatkan pemahaman tata bahasa, dan meningkatkan kemampuan komunikasi mereka dalam Bahasa Inggris.</li>

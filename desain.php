@@ -41,14 +41,14 @@
         <!-- Navbar End -->
 
         <!-- Matematika Session -->
-            <section id="about" class="about">
+            <section id="about2" class="about2">
             <h2>Desain Grafis</h2>
 
-            <div class="row">
-                <div class="about-img">
+            <div class="row2">
+                <div class="about-img2">
                     <img src="img/design.jpg" alt="Tentang Kami">
                 </div>
-                <div class="content">
+                <div class="content2">
                     <ul>
                         <li>Dalam program bimbingan belajar Desain Grafis di Bee Smart Course, kami memiliki pendekatan yang serupa untuk membantu siswa mengembangkan pemahaman dan keterampilan yang kuat dalam desain grafis. Kami fokus pada pemahaman konsep dasar desain grafis dan kemudian memperluasnya ke tingkat yang lebih tinggi sesuai dengan tingkat pendidikan siswa mulai dari SMP hingga SMA, mulai dari pemula hingga tingkat lanjutan.</li>
                         <li>Selain itu, kami menyediakan latihan-latihan praktis yang dirancang untuk membantu siswa meningkatkan keterampilan desain mereka dan menerapkan konsep-konsep desain dalam konteks yang nyata. Siswa kami akan diberikan kesempatan untuk berlatih membuat desain-desain grafis, mulai dari desain logo, brosur, poster, hingga desain website. Tutor-tutor kami yang berkualifikasi dan berpengalaman siap membantu siswa dalam mengatasi kesulitan dan menjawab pertanyaan mereka dengan sabar dan penuh perhatian.</li>

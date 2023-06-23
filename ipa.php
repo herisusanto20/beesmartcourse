@@ -41,14 +41,14 @@
         <!-- Navbar End -->
 
         <!-- Matematika Session -->
-            <section id="about" class="about">
+            <section id="about2" class="about2">
             <h2>IPA</h2>
 
-            <div class="row">
-                <div class="about-img">
+            <div class="row2">
+                <div class="about-img2">
                     <img src="img/ipa.jpg" alt="IPA">
                 </div>
-                <div class="content">
+                <div class="content2">
                     <ul>
                         <li>Dalam program bimbingan belajar IPA (Ilmu Pengetahuan Alam) untuk SD hingga SMA di Bee Smart Course, kami menawarkan pendekatan yang holistik untuk membantu siswa memahami dan mengaplikasikan konsep-konsep ilmu pengetahuan alam dalam kehidupan sehari-hari. Kami percaya bahwa pemahaman yang kuat tentang IPA adalah kunci untuk mengembangkan rasa ingin tahu, keterampilan berpikir kritis, dan pemecahan masalah yang efektif.</li>
                         <li>Program kami dirancang untuk mencakup tiga bidang utama dalam IPA: fisika, kimia, dan biologi. Kami memiliki tutor-tutor yang berkualifikasi dan berpengalaman dalam bidang IPA yang siap membantu siswa mengatasi kesulitan dan menjawab pertanyaan mereka. Tutor kami menggunakan metode pengajaran yang interaktif, memfasilitasi diskusi kelompok, dan memberikan umpan balik konstruktif kepada siswa untuk membantu mereka memahami konsep-konsep yang sulit. Kami juga mendorong siswa untuk terlibat dalam proyek penelitian atau eksperimen mandiri untuk mengembangkan keterampilan penelitian dan penerapan konsep-konsep IPA dalam konteks nyata.</li>

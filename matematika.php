@@ -41,14 +41,14 @@
         <!-- Navbar End -->
 
         <!-- Matematika Session -->
-            <section id="about" class="about">
+            <section id="about2" class="about2">
             <h2><span>Mate</span>matika</h2>
 
-            <div class="row">
-    <div class="about-img">
+            <div class="row2">
+    <div class="about-img2">
         <img src="img/mtk2.jpg" alt="Matematika" style="width: 50%; height: auto;">
     </div>
-    <div class="content">
+    <div class="content2">
         <ul>
             <li>Dalam program bimbingan belajar kami, kami fokus pada pemahaman konsep matematika dasar dan kemudian memperluasnya ke tingkat yang lebih tinggi sesuai dengan tingkat pendidikan siswa mulai dari SD hingga SMA. Kami menggunakan pendekatan yang interaktif dan melibatkan siswa secara aktif dalam proses pembelajaran. Kami menyediakan materi pembelajaran yang disesuaikan dengan kurikulum terbaru dan menggunakan metode yang efektif untuk menjelaskan konsep-konsep yang kompleks dengan cara yang mudah dipahami.</li>
             <li>Kami juga menyediakan latihan-latihan praktis yang dirancang untuk membantu siswa meningkatkan keterampilan pemecahan masalah dan menerapkan konsep-konsep matematika dalam konteks yang nyata. Tutor kami yang berkualifikasi dan berpengalaman siap membantu siswa mengatasi kesulitan dan menjawab pertanyaan mereka dengan sabar dan penuh perhatian.</li>

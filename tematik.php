@@ -41,14 +41,14 @@
         <!-- Navbar End -->
 
         <!-- Matematika Session -->
-            <section id="about" class="about">
+            <section id="about2" class="about2">
             <h2>Tematik</h2>
 
-            <div class="row">
-                <div class="about-img">
+            <div class="row2">
+                <div class="about-img2">
                     <img src="img/tematik.jpg" alt="Tematik">
                 </div>
-                <div class="content">
+                <div class="content2">
                     <ul>
                         <li>Dalam program bimbingan belajar Tematik untuk TK di Bee Smart Course, kami menyediakan pendekatan pembelajaran yang holistik dan terintegrasi. Kami memahami pentingnya pembelajaran tematik dalam mengembangkan pemahaman yang menyeluruh dan keterkaitan antara berbagai konsep.</li>
                         <li>Dalam program kami, anak-anak akan terlibat dalam kegiatan eksplorasi, observasi, percobaan, seni kreatif, cerita, dan permainan terkait dengan tema yang sedang dipelajari. Kami mendorong mereka untuk mengajukan pertanyaan, menyelidiki, berpikir kritis, dan mengungkapkan ide-ide mereka melalui berbagai media. Selain itu, kami juga melibatkan interaksi sosial dan kerjasama antara anak-anak dalam kegiatan kelompok, yang membantu mereka mengembangkan keterampilan sosial dan kemampuan berkomunikasi.</li>
