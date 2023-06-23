@@ -732,14 +732,32 @@ footer .credits a {
   }
   .about .row {
     flex-wrap: wrap;
+    display: flex;
+  }
+  .about .row .about-img {
+    flex: 1 1 45rem;
   }
   .about .row .about-img img {
     height: 24rem;
     object-fit: cover;
     object-position: center;
   }
+  .about .row .about-img .img1 img {
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
   .about .row .content {
-    padding: 0;
+    flex: 1 1 35rem;
+    padding: 0 1rem;
+    text-align: justify;
+  }
+  .about .row .content .img2 img {
+    width: 30%;
+    height: 30%;
   }
 
   .about .row .content h3 {
@@ -1135,4 +1153,189 @@ label {
   color: red;
   -webkit-animation-duration: 0.5s;
   background-color: orange;
+}
+/* Gaya untuk <section> */
+.about1 {
+  padding: 20px;
+  background-color: #f1f1f1;
+}
+
+/* Gaya untuk <h2> */
+.about1 h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Gaya untuk .row1 */
+.row1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Gaya untuk .boxss1 */
+.boxss1 {
+  margin-bottom: 20px;
+}
+
+/* Gaya untuk .about-img11 */
+.about-img11 {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Gaya untuk .img1 img */
+/* Gaya untuk .img1 img */
+/* Gaya untuk .img1 img */
+.img1 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Gaya untuk .img21 img */
+.img21 img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Gaya untuk .containers1 */
+.containers1 {
+  flex-basis: 100%;
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 10px auto;
+}
+
+/* Gaya untuk .content1 */
+.content1 {
+  max-width: 35rem;
+  margin: 0 auto;
+}
+
+/* Gaya untuk .sections1 */
+.sections1 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Gaya untuk .boxs1 */
+.boxs1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media queries untuk perangkat dengan lebar layar <= 768px (handphone) */
+@media (max-width: 768px) {
+  .about-img11 {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .row1 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Gaya untuk .boxss1 pada handphone */
+  .boxs1 {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+
+  /* Gaya untuk .boxs1 pada handphone */
+  .boxs1 {
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
+/* Gaya untuk .boxs1 pada komputer */
+.boxs1 {
+  border-radius: 15px 15px 0 0;
+  background-color: orange;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Media queries untuk perangkat dengan lebar layar <= 480px (Mobile) */
+@media (max-width: 480px) {
+  .img1 img {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .containers1 {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin: 10px auto;
+  }
+
+  .img21 img {
+    width: 60px;
+    height: auto;
+  }
+}
+
+/* Media queries untuk perangkat dengan lebar layar antara 481px dan 768px (Tablet) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .img1 img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .containers1 {
+    flex-basis: 50%;
+    max-width: 50%;
+    margin: 10px auto;
+  }
+
+  .img21 img {
+    width: 80px;
+    height: auto;
+  }
+}
+
+/* /* Media queries untuk perangkat dengan lebar layar lebih dari 768 */
+@media (min-width: 769px) {
+  .containers1 {
+    flex-basis: 25%;
+    max-width: 300px;
+    margin: 10px;
+  }
+}
+
+/* Gaya untuk .boxss1 pada komputer */
+.boxss1 {
+  background-image: radial-gradient(
+    circle at 37.08% 1.78%,
+    #d1ffff 0,
+    #b3f4fe 12.5%,
+    #8fe5f8 25%,
+    #63d4f2 37.5%,
+    #0cc1ed 50%,
+    #00aee9 62.5%,
+    #009ce6 75%,
+    #008be3 87.5%,
+    #007bdf 100%
+  );
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 15px;
 }
