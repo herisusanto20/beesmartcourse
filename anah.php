@@ -55,7 +55,7 @@
                 <div class="content1">
                 
                     <h3>Uswatun Chasanah S. Pd</h3>
-                    <p>"Hallo Sobat BEE SMART, saya Uswatun Chasanah"</p>
+                    <p>"Hallo Sobat BEE SMART, saya Uswatun Chasanah salah satu tutor di BEE SMART COURSE. Belajar bersama BEE SMART COURSE sangat menyenangkan karena memiliki beragam metode pembelajaran yang dapat meningkatkan ilmu adik-adik semua. Mari bergabung bersama BEE SMART COURSE"</p>
                     <section>
                         <div class="sections1">
                            <div class="containers1">

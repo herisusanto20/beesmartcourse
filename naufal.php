@@ -39,30 +39,28 @@
         </nav>
 
         <!-- Navbar End -->
-
-        
-            <section id="about" class="about">
+        <section id="about1" class="about1">
             <h2>Bee Smart Course itu?</h2>
 
-            <div class="row">
-            <div class="boxss">
-                <div class="about-img">
+            <div class="row1">
+            <div class="boxss1">
+                <div class="about-img11">
                     <div class="img1">
                     <img src="img/naufal.jpg" alt="naufal">
                     </div>
                     
                 </div>
-                <div class="content">
+                <div class="content1">
                 
                     <h3>Naufal Ali Zaidan</h3>
                     <p>"Hallo Guys, saya Naufal Ali Zaidan akrab di panggil Nofal✨
 Bee Course Smart ialah Wadah untuk kita mencari Ilmu, tidak hanya  belajar tentang Pelajaran tapi juga belajar mengenai Attitude. Sekilas dari saya, carilah ilmu sebanyak-banyaknya agar kita bisa tahu apa makna dari arti kehidupan.
-Yuk Gabung, Bimbel Bee Course Smart dengan Tutor yang menyenangkan dan kompeten di bidangnya loh✨"</p>
+Yuk Gabung, Bimbel Bee Course Smart dengan Tutor yang menyenangkan dan kompeten di bidangnya loh"</p>
                     <section>
-                        <div class="sections">
-                           <div class="containers">
-                                   <div class="boxs">
-                                     <div class="img2">
+                        <div class="sections1">
+                           <div class="containers1">
+                                   <div class="boxs1">
+                                     <div class="img21">
                                      <img src="img/beesmart1.png" alt="beesmart1">
                                             <img src="img/beesmart.png" alt="beesmart">
                                             <img src="img/beesmart1.png" alt="beesmart1">
@@ -77,7 +75,6 @@ Yuk Gabung, Bimbel Bee Course Smart dengan Tutor yang menyenangkan dan kompeten 
             </div>
             </div>
         </section>
-       
         <script>
             feather.replace()
           </script>
