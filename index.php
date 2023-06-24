@@ -448,7 +448,7 @@
                     <h3 class="course-card-title">Tematik</h3>
                 </a>
                 </div>
-               <a href="kursusall.php"><h3 class="h3kursus">Selengkapnya</h3></a> 
+               <a href="kursusall1.php"><h3 class="h3kursus">Selengkapnya</h3></a> 
             </div>
         </section>
         <!-- Kursus End -->
