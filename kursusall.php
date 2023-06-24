@@ -130,6 +130,7 @@ if (mysqli_num_rows($result) > 0) {
     foreach ($kursus_data as $tabel => $kursus) {
         echo '<div class="container">';
         echo '<h3>Tingkatan : ' . $tabel . '</h3>';
+        
 
         foreach ($kursus as $nama_kursus => $jenis_kursus_data) {
             echo '<div class="sub-container">';
