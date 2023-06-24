@@ -72,25 +72,20 @@
             flex-direction: column;
         }
     }
-    .cta{
-        color: #fffff0;
-  margin: 1rem;
+    .cta {
+        align-items: center;
   display: inline-block;
   padding: 0.75rem 1rem;
   font-size: 1rem;
   background-color: orange;
+  color: #ffffff;
   border-radius: 0.5rem;
   box-shadow: 1px 1px 3px black;
   text-align: center;
-  font-size: 1rem;
-  margin-bottom: 3rem;
-  margin-top: 7rem;
   text-decoration: none;
-  display: block;
-  text-align: center;
   margin: 10px 1rem;
- 
-    }
+}
+
     h1{
         text-align:center;
     }
