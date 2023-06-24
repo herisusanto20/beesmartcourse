@@ -14,7 +14,40 @@
         <link rel="stylesheet" href="css/swiper-bundle.min.css">
        
    <style>
-    /* Navbar */
+    /* Tata letak untuk handphone dengan lebar maksimum 480px */
+@media only screen and (max-width: 480px) {
+  .navbar .navbar-logo {
+    font-size: 1.2rem;
+  }
+
+  .navbar .navbar-nav a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tata letak untuk tablet dengan lebar maksimum 768px */
+@media only screen and (max-width: 768px) {
+  .navbar .navbar-logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar .navbar-nav a {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tata letak untuk komputer dengan lebar minimum 769px */
+@media only screen and (min-width: 769px) {
+  .navbar .navbar-logo {
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav a {
+    font-size: 1.3rem;
+  }
+}
+
+/* Aturan tata letak umum */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -30,8 +63,7 @@
 }
 
 .navbar .navbar-logo {
-    text-decoration: none;
-  font-size: 2rem;
+  text-decoration: none;
   font-weight: 700;
   color: #fffff0;
 }
@@ -41,12 +73,10 @@
 }
 
 .navbar .navbar-nav a {
-    text-decoration: none;
+  text-decoration: none;
   color: white;
   display: inline-block;
-  font-size: 1.3rem;
   margin: 0 1rem;
-
 }
 
 .navbar .navbar-nav span {
@@ -81,13 +111,10 @@
   margin: 0 8rem;
 }
 
-.navbar .navbar-extra a:hover {
-  color: orange;
-}
-
 #hamburger-menu {
   display: none;
 }
+
     body {
     font-family: "Poppins", sans-serif;
     margin: 20px;
