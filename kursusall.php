@@ -7,6 +7,10 @@
     <title>Semua Kursus</title>
     
     <style>
+        
+        body{
+            font-family: "Poppins", sans-serif;
+        }
     .hm {
         /* background-image: url("../img/dataregis.jpg"); */
         background-color: #1E90FF;
@@ -68,11 +72,37 @@
             flex-direction: column;
         }
     }
+    .cta{
+        color: #fffff0;
+  margin: 1rem;
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: orange;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px black;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  margin-top: 7rem;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin: 10px 1rem;
+ 
+    }
+    h1{
+        text-align:center;
+    }
 </style>
 
 </head>
 <body>
-    
+    <h1>Daftar Disini</h1>
+<a href="kuotatk1.php" class="cta">Kelas TK</a>
+                <a href="kuotasd1.php" class="cta">Kelas SD</a>
+                <a href="kuotasmp1.php" class="cta">Kelas SMP</a>
+                <a href="kuotasma1.php" class="cta">Kelas SMA</a>
 </body>
 </html>
 <section class="pilih">
