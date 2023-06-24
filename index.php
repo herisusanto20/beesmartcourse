@@ -124,7 +124,14 @@
   z-index: 9999;
   margin-left: 40px;
 }
-
+.h3kursus {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.h3kursus:hover{
+    color: orange;
+}
         </style>
     </head>
     <body>
@@ -441,7 +448,7 @@
                     <h3 class="course-card-title">Tematik</h3>
                 </a>
                 </div>
-
+               <a href="kursusall.php"><h3 class="h3kursus">Selengkapnya</h3></a> 
             </div>
         </section>
         <!-- Kursus End -->
