@@ -13,5 +13,5 @@ mysqli_query($conn, $query);
 mysqli_close($conn);
 
 // Mengalihkan kembali ke halaman utama
-header('Location: gelombang.php');
+header('Location: tambah_gelombang.php');
 ?>

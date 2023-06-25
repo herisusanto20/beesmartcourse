@@ -46,6 +46,43 @@
         <a href="tambah_Gelombang.php" class="cta1">Tambah Gelombang</a>
                 <a href="edit_gelombang.php" class="cta1">Edit Gelombang</a>
         </section>
+        <section class="pilih">
+        
+    <table>
+        <tr>
+            <th>Nama Gelombang</th>
+            <th>Kuota</th>
+            <th>Periode</th>
+        </tr>
+        <?php
+        // Koneksi ke database
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "registrasi";
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        if (!$conn) {
+            die("Koneksi gagal: " . mysqli_connect_error());
+        }
+
+        // Mendapatkan data gelombang dari database
+        $query = "SELECT * FROM gelombang";
+        $result = mysqli_query($conn, $query);
+
+        // Menampilkan data gelombang dalam tabel
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['nama_gelombang'] . "</td>";
+            echo "<td>" . $row['kuota'] . "</td>";
+            echo "<td>" . $row['periode'] . "</td>";
+            echo "</tr>";
+        }
+
+        mysqli_close($conn);
+        ?>
+    </table>
+        </section>
 
         <!-- Feather -->
  <script>
