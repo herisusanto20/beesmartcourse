@@ -98,6 +98,7 @@
                 <a href="kurang_kuota.php" class="cta1">Hapus Kursus</a>
                 <a href="updatekuota.php" class="cta1">Edit Kursus</a>
                 <a href="formkursus.php" class="cta1">Deskripsi Kursus</a>
+                <a href="gelombang.php" class="cta1">Gelombang</a>
                 
         </section>
         <section class="pilih">
