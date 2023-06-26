@@ -43,8 +43,8 @@
 
         <!-- Navbar End -->
         <section class="pilih">
-        <a href="tambah_Gelombang.php" class="cta1">Tambah Gelombang</a>
-                <a href="edit_gelombang.php" class="cta1">Edit Gelombang</a>
+        <a href="tambah_Gelombang.php" class="cta1">Edit Gelombang</a>
+                <!-- <a href="edit_gelombang.php" class="cta1">Edit Gelombang</a> -->
         </section>
         <section class="pilih">
         

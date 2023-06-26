@@ -14,7 +14,7 @@
     <style>
     .hm {
         /* background-image: url("../img/dataregis.jpg"); */
-        background-color: #1E90FF;
+        background-color: white;
     }
 
     .container {
@@ -64,6 +64,48 @@
             flex-direction: row;
         }
     }
+
+    body {
+    font-family: "Poppins", sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    margin-top: 7rem;
+    text-align: center;
+    color: orange;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.table-container {
+  width: 100%;
+  table-layout: fixed;
+  overflow-x: auto;
+}
+
+.table-container table {
+  width: auto;
+  max-width: 100%;
+}
+
+th{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+ td {
+    background-color: white;
+    padding: 10px;
+    text-align: justify;
+    border: 1px solid black;
+}
+
+.th1 {
+    color: white;
+    background-color: orange;
+    font-weight: bold;
+}
 </style>
 
 </head>
@@ -94,93 +136,70 @@
 
         <!-- Navbar End -->
         <section class="pilih">
-                <a href="tambah_kuota.php" class="cta1">Tambah Kursus</a>
-                <a href="kurang_kuota.php" class="cta1">Hapus Kursus</a>
-                <a href="updatekuota.php" class="cta1">Edit Kursus</a>
-                <a href="deskripsi.php" class="cta1">Deskripsi Kursus</a>
-                <a href="gelombang.php" class="cta1">Gelombang</a>
+                <a href="formkursus.php" class="cta1">Tambah Deskripsi Kursus</a>
+                <a href="edit_deskripsi.php" class="cta1">Edit Deskripsi Kursus</a>
+                <a href="hapus_deskripsi.php" class="cta1">Hapus Deskripsi Kursus</a>
                 
         </section>
-        <section class="pilih">
+        <section>
+        <h1>Data Kursus</h1>
+
 <?php
-// Koneksi ke database (sesuaikan dengan pengaturan server Anda)
-$koneksi = mysqli_connect("localhost", "root", "", "registrasi");
-$query = "SELECT tabel, kursus, jenis_kursus, kuota FROM tb_kuota";
-$result = mysqli_query($koneksi, $query);
+// Menghubungkan ke database (Contoh: MySQL)
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'registrasi';
 
-// Periksa apakah ada data yang ditemukan
-if (mysqli_num_rows($result) > 0) {
-    // Simpan data kursus berdasarkan kolom tabel
-    $kursus_data = array();
-    while ($row = mysqli_fetch_assoc($result)) {
-        $tabel = $row["tabel"];
+$conn = mysqli_connect($host, $username, $password, $database);
 
-        // Ganti nama kolom "tabel" menjadi label yang lebih deskriptif
-        if ($tabel === "tb_tk") {
-            $label_tabel = "TK";
-        } elseif ($tabel === "tb_sd") {
-            $label_tabel = "SD";
-        } elseif ($tabel === "tb_smp") {
-            $label_tabel = "SMP";
-        } elseif ($tabel === "tb_data") {
-            $label_tabel = "SMA";
-        } else {
-            $label_tabel = $tabel;
-        }
-
-        // Tambahkan data kursus ke array
-        if (!isset($kursus_data[$label_tabel])) {
-            $kursus_data[$label_tabel] = array();
-        }
-
-        $kursus = $row["kursus"];
-        $jenis_kursus = $row["jenis_kursus"];
-        $kuota = $row["kuota"];
-
-        // Tambahkan data jenis kursus dan kuota ke array
-        if (!isset($kursus_data[$label_tabel][$kursus])) {
-            $kursus_data[$label_tabel][$kursus] = array();
-        }
-        if (!isset($kursus_data[$label_tabel][$kursus][$jenis_kursus])) {
-            $kursus_data[$label_tabel][$kursus][$jenis_kursus] = $kuota;
-        } else {
-            $kursus_data[$label_tabel][$kursus][$jenis_kursus] += $kuota;
-        }
-    }
-
-    // Urutkan array berdasarkan kolom tabel
-    $urutan_tabel = array('TK', 'SD', 'SMP', 'SMA');
-    $kursus_data = array_replace(array_flip($urutan_tabel), $kursus_data);
-
-    // Tampilkan data dalam kontainer
-    foreach ($kursus_data as $tabel => $kursus) {
-        echo '<div class="container">';
-        echo '<h3>Tingkatan : ' . $tabel . '</h3>';
-
-        foreach ($kursus as $nama_kursus => $jenis_kursus_data) {
-            echo '<div class="sub-container">';
-            echo '<h4>Kursus: ' . $nama_kursus . '</h4>';
-
-            foreach ($jenis_kursus_data as $jenis_kursus => $kuota) {
-                echo '<div class="course-container">';
-                echo '<h5>Jenis Kursus: ' . $jenis_kursus . '</h5>';
-                echo '<p>Sisa Kuota: ' . $kuota . '</p>';
-                echo '</div>';
-            }
-
-            echo '</div>';
-        }
-
-        echo '</div>';
-    }
-} else {
-    echo "Tidak ada data yang ditemukan.";
+// Memeriksa koneksi
+if (!$conn) {
+die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-// Tutup koneksi ke database
-mysqli_close($koneksi);
+// Mengatur urutan tingkatan
+$urutanTingkatan = array('TK', 'SD', 'SMP', 'SMA');
+$urutanTingkatanString = "'" . implode("', '", $urutanTingkatan) . "'";
+
+// Mengambil data dari tabel kursus dengan pengurutan berdasarkan tingkatan
+$query = "SELECT * FROM kursusbeesmart ORDER BY FIELD(tingkatan, $urutanTingkatanString)";
+$result = mysqli_query($conn, $query);
+
+// Memeriksa apakah query berhasil dieksekusi
+if ($result) {
+if (mysqli_num_rows($result) > 0) {
+    // Menampilkan header tabel
+    echo "<table>
+            <tr>
+                <th>Nama Kursus</th>
+                <th>Informasi</th>
+                <th>Tingkatan</th>
+            </tr>";
+
+    // Menampilkan data kursus
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                <td>".$row['nama_kursus']."</td>
+                <td>".$row['penjelasan']."</td>
+                <td>".$row['tingkatan']."</td>
+            </tr>";
+    }
+
+    echo "</table>";
+} else {
+    echo "Tidak ada data kursus yang ditemukan.";
+}
+} else {
+echo "Error: " . mysqli_error($conn);
+}
+
+// Menutup koneksi
+mysqli_close($conn);
 ?>
-</section>
+
+        </section>
+       
  <!-- Feather -->
  <script>
     

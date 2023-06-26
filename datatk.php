@@ -57,7 +57,7 @@
                 <a href="dasboard.php">Home</a>
                 <a href="data-registrasi.php">Data</a>
                 <a href="laporan_dataall.php">Laporan</a>
-                <a href="updatekuota.php">Kuota</a>
+                <!-- <a href="updatekuota.php">Kuota</a> -->
                 <a href="tampildata.php">Kursus</a>
                 <!-- <a href="datagaji.php">Penggajian</a> -->
                 <!-- <a href="register.php">Daftar Akses</a> -->
