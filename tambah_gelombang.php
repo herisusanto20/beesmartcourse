@@ -154,6 +154,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 input[type="text"],
@@ -163,6 +164,7 @@ input[type="number"] {
     border: 1px solid #1e90ff;
     border-radius: 4px;
     font-size: 16px;
+    
 }
 
 input[type="submit"] {
