@@ -30,7 +30,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Gelombang Registrasi</title>
+    <title>Hapus deskripsi</title>
      <!-- Fonts -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

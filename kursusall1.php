@@ -205,7 +205,7 @@ if ($result) {
         // Menampilkan header tabel
         echo "<table>
                 <tr>
-                    <th>Nama Kursus</th>
+                    <th>Kursus</th>
                     <th>Informasi</th>
                     <th>Tingkatan</th>
                 </tr>";
