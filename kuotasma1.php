@@ -22,29 +22,36 @@
     
     .container {
   margin: 10px;
-  margin-top:4rem;
+  margin-top: 4rem;
   max-width: 500px;
   padding: 20px;
   background-color: #ffffff;
   transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
 }
 
 .container:hover {
-  box-shadow: 0 4px 8px #3498db;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.5);
 }
+
 .containers {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  .text-outline
-    color: #fff; /* Warna tulisan */
-    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
-  color: white;
   margin: 10px;
-  margin-top:4rem;
+  margin-top: 4rem;
   max-width: 500px;
   padding: 20px;
   background-color: orange;
   transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.2);
+}
+
+.containers:hover {
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
 }
 
 .containers:hover {

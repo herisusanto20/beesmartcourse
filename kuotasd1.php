@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <!-- Fonts -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
@@ -22,35 +22,42 @@
     
     .container {
   margin: 10px;
-  margin-top:4rem;
+  margin-top: 4rem;
   max-width: 500px;
   padding: 20px;
   background-color: #ffffff;
   transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
 }
 
 .container:hover {
-  box-shadow: 0 4px 8px #3498db;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.5);
 }
+
 .containers {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  .text-outline
-    color: #fff; /* Warna tulisan */
-    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
-  color: white;
   margin: 10px;
-  margin-top:4rem;
+  margin-top: 4rem;
   max-width: 500px;
   padding: 20px;
   background-color: orange;
   transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.2);
+}
+
+.containers:hover {
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
 }
 
 .containers:hover {
   box-shadow: 0 4px 8px red;
-}    
-    
+}  
+
     h3 {
       font-size: 18px;
       margin-bottom: 10px;
@@ -82,14 +89,15 @@
     a[disabled] {
   visibility: hidden;
 }
+
     
     .button.disabled:hover {
       background-color: #cccccc;
     }
                 /* chatbot css tk */
-                .ulchatbot {
+     .ulchatbot {
     cursor: pointer;
-}
+      }
 
 .chat-header {
     border-radius: 10px 10px 0 0;
@@ -202,13 +210,13 @@
                 <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
             </div>
         </nav>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <!-- Navbar End -->
-        <div class="containers">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    <div class="containers">
         <h2>Gelombang Pendaftaran</h2>
         <?php
         // Menghubungkan ke database
@@ -248,6 +256,7 @@
         $conn->close();
         ?>
     </div>
+
   <?php
   // Koneksi ke database (sesuaikan dengan pengaturan server Anda)
   $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
@@ -292,13 +301,14 @@ foreach ($data_kuota as $kursus => $kuota) {
 
   // Periksa kuota Privat, jika 0 maka nonaktifkan tombol "Daftar Privat"
   if ($kuota['Privat'] > 0) {
-    echo '<a href="formsd1.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Private</button></a>';
+    echo '<a href="formsd1.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Privat</button></a>';
   } else {
     echo '<a href="#" disabled>Daftar Privat</a>';
   }
 
   echo '</div>';
 }
+
 
 // Tutup koneksi ke database
 mysqli_close($koneksi);
