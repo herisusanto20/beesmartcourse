@@ -213,46 +213,37 @@ $conn = mysqli_connect("localhost", "root", "", "registrasi");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tabel = $_POST['tabel'];
-    $jenis_kursus = $_POST['jenis_kursus'];
+    $kursus = $_POST['kursus'];
+    $jenis_kursus = isset($_POST['jenis_kursus']) ? $_POST['jenis_kursus'] : array();
+
+    // Definisikan nilai kuota berdasarkan jenis kursus
+    $kuota_values = array(
+        "Reguler" => 5,
+        "Privat" => 2,
+        "Online" => 5
+    );
 
     // Insert atau update data kuota ke tabel tb_kuota
-    $kuota = 0;
-    foreach ($jenis_kursus as $jenis) {
-
-        if ($jenis === 'Reguler') {
-            $kuota = 5;
-        } elseif ($jenis === 'Privat') {
-            $kuota = 2;
-        } elseif ($jenis === 'Online') {
-            $kuota = 5;
+    foreach ($kuota_values as $jenis => $kuota) {
+        $is_checked = in_array($jenis, $jenis_kursus);
+        if (!$is_checked) {
+            $kuota = 0;
         }
-
-        // Ambil nilai kursus berdasarkan kolom "kursus" dari tabel tb_kuota
-        $kursus = $_POST['kursus'];
 
         // Hapus data kuota sebelumnya untuk jenis kursus dan tabel yang dipilih
         $deleteQuery = "DELETE FROM tb_kuota WHERE jenis_kursus = '$jenis' AND tabel = '$tabel' AND kursus = '$kursus'";
         mysqli_query($conn, $deleteQuery);
 
-        // Cek apakah data kuota sudah ada untuk jenis kursus dan tabel yang dipilih
-        $checkQuery = "SELECT * FROM tb_kuota WHERE jenis_kursus = '$jenis' AND tabel = '$tabel' AND kursus = '$kursus'";
-        $result = mysqli_query($conn, $checkQuery);
-
-        if (mysqli_num_rows($result) > 0) {
-            // Jika data kuota sudah ada, lakukan update
-            $updateQuery = "UPDATE tb_kuota SET kuota = $kuota WHERE jenis_kursus = '$jenis' AND tabel = '$tabel' AND kursus = '$kursus'";
-            mysqli_query($conn, $updateQuery);
-        } else {
-            // Jika data kuota belum ada, lakukan insert
-            $insertQuery = "INSERT INTO tb_kuota (jenis_kursus, kursus, kuota, tabel) VALUES ('$jenis', '$kursus', $kuota, '$tabel')";
-            mysqli_query($conn, $insertQuery);
-        }
+        // Insert data kuota baru
+        $insertQuery = "INSERT INTO tb_kuota (jenis_kursus, kursus, kuota, tabel) VALUES ('$jenis', '$kursus', $kuota, '$tabel')";
+        mysqli_query($conn, $insertQuery);
     }
 
     // echo "<meta http-equiv=refresh content=0;URL='kuotatk1.php'>";
 }
 
 ?>
+
 
         </div>
 

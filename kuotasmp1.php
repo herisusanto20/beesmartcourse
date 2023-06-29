@@ -57,7 +57,46 @@
 .containers:hover {
   box-shadow: 0 4px 8px red;
 }  
-    
+    /* Tampilan untuk handphone */
+@media (max-width: 767px) {
+  body {
+    flex-direction: column; /* Mengatur tata letak container-container menjadi satu kolom */
+  }
+
+  .container {
+    flex-basis: 100%; /* Mengatur lebar container menjadi 100% dari container induk (body) */
+    max-width: 100%; /* Mengatur lebar maksimum container menjadi 100% dari container induk (body) */
+  }
+}
+
+/* Tampilan untuk tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    flex-wrap: wrap; /* Mengatur pembungkusan item flex menjadi baris-baris baru */
+  }
+
+  .container {
+    flex-basis: 50%; /* Mengatur lebar container menjadi 50% dari container induk (body) */
+    max-width: 50%; /* Mengatur lebar maksimum container menjadi 50% dari container induk (body) */
+  }
+}
+
+/* Tampilan untuk komputer */
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    flex-basis: calc(100% / 4 - 20px); /* Mengatur lebar container menjadi 1/4 dari container induk dengan pengurangan margin */
+    max-width: calc(100% / 4 - 20px); /* Mengatur lebar maksimum container menjadi 1/4 dari container induk dengan pengurangan margin */
+    margin: 10px;
+    margin-top: 4rem;
+  }
+}
+
+
     h3 {
       font-size: 18px;
       margin-bottom: 10px;
@@ -287,6 +326,7 @@ foreach ($data_kuota as $kursus => $kuota) {
   echo '<h3>Kursus: ' . $kursus . '</h3>';
   echo '<p>Kuota Reguler: ' . ($kuota['Reguler'] > 0 ? $kuota['Reguler'] : 'Tidak Tersedia') . '</p>';
   echo '<p>Kuota Privat: ' . ($kuota['Privat'] > 0 ? $kuota['Privat'] : 'Tidak Tersedia') . '</p>';
+  echo '<p>Kuota Online: ' . ($kuota['Online'] > 0 ? $kuota['Online'] : 'Tidak Tersedia') . '</p>';
 
   // Periksa kuota Reguler, jika 0 maka nonaktifkan tombol "Daftar Reguler"
   if ($kuota['Reguler'] > 0) {
@@ -302,6 +342,13 @@ foreach ($data_kuota as $kursus => $kuota) {
     echo '<a href="formsmp1.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Private</button></a>';
   } else {
     echo '<a href="#" disabled>Daftar Privat</a>';
+  } 
+  echo '<br>';
+  // Periksa kuota Privat, jika 0 maka nonaktifkan tombol "Daftar Privat"
+  if ($kuota['Online'] > 0) {
+    echo '<a href="formsmp2.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Online</button></a>';
+  } else {
+    echo '<a href="#" disabled>Daftar Online</a>';
   }
 
   echo '</div>';

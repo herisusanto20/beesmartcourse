@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <!-- Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
@@ -22,34 +22,81 @@
     
     .container {
   margin: 10px;
-  margin-top:4rem;
+  margin-top: 4rem;
   max-width: 500px;
   padding: 20px;
   background-color: #ffffff;
   transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
 }
 
 .container:hover {
-  box-shadow: 0 4px 8px #3498db;
-}    
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.5);
+}
+
 .containers {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  .text-outline
-    color: #fff; /* Warna tulisan */
-    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
-  color: white;
   margin: 10px;
-  margin-top:4rem;
+  margin-top: 4rem;
   max-width: 500px;
   padding: 20px;
   background-color: orange;
   transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.2);
+}
+
+.containers:hover {
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
 }
 
 .containers:hover {
   box-shadow: 0 4px 8px red;
-}    
+}  
+    /* Tampilan untuk handphone */
+@media (max-width: 767px) {
+  body {
+    flex-direction: column; /* Mengatur tata letak container-container menjadi satu kolom */
+  }
+
+  .container {
+    flex-basis: 100%; /* Mengatur lebar container menjadi 100% dari container induk (body) */
+    max-width: 100%; /* Mengatur lebar maksimum container menjadi 100% dari container induk (body) */
+  }
+}
+
+/* Tampilan untuk tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    flex-wrap: wrap; /* Mengatur pembungkusan item flex menjadi baris-baris baru */
+  }
+
+  .container {
+    flex-basis: 50%; /* Mengatur lebar container menjadi 50% dari container induk (body) */
+    max-width: 50%; /* Mengatur lebar maksimum container menjadi 50% dari container induk (body) */
+  }
+}
+
+/* Tampilan untuk komputer */
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    flex-basis: calc(100% / 4 - 20px); /* Mengatur lebar container menjadi 1/4 dari container induk dengan pengurangan margin */
+    max-width: calc(100% / 4 - 20px); /* Mengatur lebar maksimum container menjadi 1/4 dari container induk dengan pengurangan margin */
+    margin: 10px;
+    margin-top: 4rem;
+  }
+}
+
+
     h3 {
       font-size: 18px;
       margin-bottom: 10px;
@@ -81,15 +128,14 @@
     a[disabled] {
   visibility: hidden;
 }
-
     
     .button.disabled:hover {
       background-color: #cccccc;
     }
                 /* chatbot css tk */
-     .ulchatbot {
+                .ulchatbot {
     cursor: pointer;
-      }
+}
 
 .chat-header {
     border-radius: 10px 10px 0 0;
@@ -202,13 +248,13 @@
                 <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
             </div>
         </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <!-- Navbar End -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    <div class="containers">
+        <div class="containers">
         <h2>Gelombang Pendaftaran</h2>
         <?php
         // Menghubungkan ke database
@@ -248,7 +294,6 @@
         $conn->close();
         ?>
     </div>
-
   <?php
   // Koneksi ke database (sesuaikan dengan pengaturan server Anda)
   $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
@@ -281,6 +326,7 @@ foreach ($data_kuota as $kursus => $kuota) {
   echo '<h3>Kursus: ' . $kursus . '</h3>';
   echo '<p>Kuota Reguler: ' . ($kuota['Reguler'] > 0 ? $kuota['Reguler'] : 'Tidak Tersedia') . '</p>';
   echo '<p>Kuota Privat: ' . ($kuota['Privat'] > 0 ? $kuota['Privat'] : 'Tidak Tersedia') . '</p>';
+  echo '<p>Kuota Online: ' . ($kuota['Online'] > 0 ? $kuota['Online'] : 'Tidak Tersedia') . '</p>';
 
   // Periksa kuota Reguler, jika 0 maka nonaktifkan tombol "Daftar Reguler"
   if ($kuota['Reguler'] > 0) {
@@ -293,14 +339,20 @@ foreach ($data_kuota as $kursus => $kuota) {
 
   // Periksa kuota Privat, jika 0 maka nonaktifkan tombol "Daftar Privat"
   if ($kuota['Privat'] > 0) {
-    echo '<a href="formtk1.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Privat</button></a>';
+    echo '<a href="formtk1.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Private</button></a>';
   } else {
     echo '<a href="#" disabled>Daftar Privat</a>';
+  } 
+  echo '<br>';
+  // Periksa kuota Privat, jika 0 maka nonaktifkan tombol "Daftar Privat"
+  if ($kuota['Online'] > 0) {
+    echo '<a href="formtk2.php?kursus=' . $kursus . '"><button type="button" class="button">Daftar Online</button></a>';
+  } else {
+    echo '<a href="#" disabled>Daftar Online</a>';
   }
 
   echo '</div>';
 }
-
 
 // Tutup koneksi ke database
 mysqli_close($koneksi);
