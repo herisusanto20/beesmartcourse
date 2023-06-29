@@ -255,7 +255,7 @@
         <br>
         <!-- Navbar End -->
         <div class="containers">
-        <h2>Gelombang Pendaftaran</h2>
+        <h2>PROMO Gelombang Pendaftaran</h2>
         <?php
         // Menghubungkan ke database
         $host = 'localhost';
@@ -282,7 +282,7 @@
         ?>
                 <div class="gelombang">
                     <p>Gelombang ke-<?php echo $gelombang; ?></p>
-                    <p>Periode : <?php echo $periode; ?></p>
+                    <p>Promo : <?php echo $periode; ?></p>
                 </div>
         <?php
             }
