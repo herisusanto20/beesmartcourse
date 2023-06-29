@@ -21,6 +21,37 @@
         <!-- My Style CSS -->
         <link rel="stylesheet" href="css/style.css">
         <style>
+            /* Styles for default display */
+.chat-container {
+  /* Add default styles for the chat container here */
+}
+
+/* Styles for smartphones */
+@media only screen and (max-width: 767px) {
+  .chat-container {
+    /* Add styles for smartphones here */
+  }
+}
+
+/* Styles for tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .chat-container {
+    /* Add styles for tablets here */
+  }
+}
+
+/* Styles for computers */
+@media only screen and (min-width: 1024px) {
+  .chat-container {
+    /* Add styles for computers here */
+  }
+}
+
+/* Additional styles for the chat content */
+.ulchatbot {
+  /* Add styles for the list within the chat container here */
+}
+/* hm */
             .container {
                 display: flex;
                 flex-direction: column;
@@ -132,6 +163,7 @@
 .h3kursus:hover{
     color: orange;
 }
+
         </style>
     </head>
     <body>

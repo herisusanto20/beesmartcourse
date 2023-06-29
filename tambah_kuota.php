@@ -8,7 +8,7 @@ $container = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $tabel = $_POST["tabel"];
   $kursus = $_POST["kursus"];
-  $jenis_kursus = $_POST["jenis_kursus"];
+  $jenis_kursus = isset($_POST["jenis_kursus"]) ? $_POST["jenis_kursus"] : array();
 
   // Definisikan nilai kuota berdasarkan jenis kursus
   $kuota_values = array(
@@ -18,8 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   );
 
   // Tambahkan data ke tabel tb_kuota
-  foreach ($jenis_kursus as $jenis) {
-    $kuota_item = $kuota_values[$jenis];
+  foreach ($kuota_values as $jenis => $nilai) {
+    if (in_array($jenis, $jenis_kursus)) {
+      $kuota_item = $nilai;
+    } else {
+      $kuota_item = 0;
+    }
 
     $query = "INSERT INTO tb_kuota (tabel, kursus, jenis_kursus, kuota) VALUES ('$tabel', '$kursus', '$jenis', '$kuota_item')";
     mysqli_query($koneksi, $query);
@@ -97,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $container .= '</div>';
 }
 ?>
+
 
 
 
