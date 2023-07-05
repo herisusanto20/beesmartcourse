@@ -44,6 +44,18 @@ if (isset($_POST['proses'])) {
 // Tutup koneksi ke database
 mysqli_close($koneksi);
 ?>
+<?php
+$kursus = $_GET['kursus'];
+
+$containerOptions = array();
+if ($kursus == 'Calistung') {
+  $containerOptions['Calistung'] = 'Calistung';
+} elseif ($kursus == 'Tematik') {
+  $containerOptions['Tematik'] = 'Tematik';
+} elseif ($kursus == 'Bahasa Inggris') {
+  $containerOptions['Bahasa Inggris'] = 'Bahasa Inggris';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -222,34 +234,7 @@ mysqli_close($koneksi);
 
       <input type="hidden" name="statussma" placeholder="Keterangan" class="input-controll">
       <label for="kursus">Kursus:</label>
-      <select name="kursus" class="input-controll" required>
-        <option value="">-- Kursus --</option>
-        <?php
-        // Koneksi ke database
-        $conn = mysqli_connect("localhost", "root", "", "registrasi");
-
-        // Nilai dari kolom "tabel" yang ingin Anda gunakan
-        $tabel = $_POST['tabel'];
-        $tabel = 'tb_data';
-        $jenis_kursus = 'Online';
-
-        // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
-        $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
-
-        $result = mysqli_query($conn, $sql);
-
-        // Loop untuk menampilkan data kursus pada dropdown
-        while ($row = mysqli_fetch_assoc($result)) {
-          $kursus = $row['kursus'];
-          $kuota = $row['kuota'];
-
-          if ($kuota > 0) {
-            echo "<option value='" . $kursus . "'>" . $kursus . "</option>";
-          }
-        }
-        ?>
-
-      </select>
+    <input type="text" name="kursus" class="input-controll" value="<?php echo $kursus; ?>" readonly>
 
       <select name="jenis_kursus" class="input-controll" required>
         <optgroup label="Jenis Kursus">
@@ -399,21 +384,7 @@ alamatSmaInput.addEventListener('input', function () {
 checkFormValidity();
 
 </script>
-    <div class="sidebar">
-      <h2>Informasi Tambahan</h2>
-      <p>Selamat datang di halaman pendaftaran. Silakan isi formulir di sebelah kiri untuk mendaftar.</p>
-
-      <h2>Tautan Navigasi</h2>
-      <ul>
-        <li><a href="index.php#home">Beranda</a></li>
-        <li><a href="index.php#about">Tentang Kami</a></li>
-        <li><a href="index.php#contact">Kontak</a></li>
-      </ul>
-
-      <h2>Kontak</h2>
-      <p>Email: info@example.com</p>
-      <p>Telepon: 123-456-789</p>
-    </div>
+    
   </div>
 </body>
 </html>
