@@ -242,7 +242,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br>
 <input type="checkbox" name="jenis_kursus[Reguler]" value="Reguler"> Reguler<br>
 <input type="checkbox" name="jenis_kursus[Privat]" value="Privat"> Privat<br>
-<input type="checkbox" name="jenis_kursus[Online]" value="Online"> Online (Khusus SMA)<br>
+<input type="checkbox" name="jenis_kursus[Online]" value="Online"> Online<br>
 <br><br>
 
 

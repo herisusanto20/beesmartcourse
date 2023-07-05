@@ -35,6 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
+<?php
+$namasd = $_GET['namasd'];
+?>
 
 <!DOCTYPE html>
 <html>
@@ -45,10 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Edit Data</h2>
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        Nama: <input type="text" name="namasd"><br><br>
-        Status: <input type="text" name="statussd"><br><br>
-        <input type="submit" name="submit" value="Update">
-    </form>
+    Nama : <input type="text" name="namasd" value="<?php echo $namasd; ?>"><br><br>
+    Keterangan : <input type="text" name="statussd"><br><br>
+    <input type="submit" name="submit" value="Update">
+  </form>
 
 </body>
 </html>
