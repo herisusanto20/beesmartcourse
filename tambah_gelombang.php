@@ -4,6 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_gelombang = $_POST["nama_gelombang"];
     $kuota = $_POST["kuota"];
     $periode = $_POST["periode"];
+    $mulai = $_POST["mulai"];
 
     // Lakukan validasi atau manipulasi data jika diperlukan sebelum menyimpan ke database
 
@@ -11,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Contoh: Menyimpan data ke dalam tabel 'gelombang' di database
     $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
-    $query = "INSERT INTO gelombang (nama_gelombang, kuota, periode) VALUES ('$nama_gelombang', '$kuota', '$periode')";
+    $query = "INSERT INTO gelombang (nama_gelombang, kuota, periode, mulai) VALUES ('$nama_gelombang', '$kuota', '$periode', '$mulai')";
     $hasil = mysqli_query($koneksi, $query);
 
     if ($hasil) {
@@ -242,6 +243,7 @@ table td a:hover {
         <input type="text" name="nama_gelombang" placeholder="Nama Gelombang" required>
         <input type="number" name="kuota" placeholder="Kuota" required>
         <input type="text" name="periode" placeholder="Periode" required>
+        <input type="text" name="mulai" placeholder="Mulai Pembelajaran" required>
         <input type="submit" value="Tambah">
     </form>
 
@@ -251,6 +253,7 @@ table td a:hover {
             <th>Nama Gelombang</th>
             <th>Kuota</th>
             <th>Periode</th>
+            <th>Mulai Pembelajaran</th>
             <th>Aksi</th>
         </tr>
         <?php
@@ -267,6 +270,7 @@ table td a:hover {
             echo "<td>" . $row['nama_gelombang'] . "</td>";
             echo "<td>" . $row['kuota'] . "</td>";
             echo "<td>" . $row['periode'] . "</td>";
+            echo "<td>" . $row['mulai'] . "</td>";
             echo "<td><a href='edit_gelombang.php?nama_gelombang=" . $row['nama_gelombang'] . "'>Edit</a> | <a href='hapus_gelombang.php?nama_gelombang=" . $row['nama_gelombang'] . "'>Hapus</a></td>";
             echo "</tr>";
         }

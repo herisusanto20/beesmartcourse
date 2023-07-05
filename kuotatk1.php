@@ -255,7 +255,7 @@
         <br>
         <!-- Navbar End -->
         <div class="containers">
-        <h2>PROMO Gelombang Pendaftaran</h2>
+        <h2>Gelombang Pendaftaran Yang Tersedia</h2>
         <?php
         // Menghubungkan ke database
         $host = 'localhost';
@@ -271,7 +271,7 @@
         }
 
         // Melakukan query ke tabel gelombang
-        $sql = "SELECT nama_gelombang, periode FROM gelombang";
+        $sql = "SELECT nama_gelombang, periode, mulai FROM gelombang";
         $result = $conn->query($sql);
 
         // Menampilkan isi container
@@ -279,10 +279,12 @@
             while ($row = $result->fetch_assoc()) {
                 $gelombang = $row['nama_gelombang'];
                 $periode = $row['periode'];
+                $mulai = $row['mulai'];
         ?>
                 <div class="gelombang">
                     <p>Gelombang ke-<?php echo $gelombang; ?></p>
-                    <p>Promo : <?php echo $periode; ?></p>
+                    <p>Periode Pendaftaran Dibuka : <?php echo $periode; ?></p>
+                    <p>Mulai Pembelajaran : <?php echo $mulai; ?></p>
                 </div>
         <?php
             }

@@ -283,7 +283,7 @@ input[type="submit"]:hover {
                     <input type='hidden' name='nama_gelombang' value='".$row['nama_gelombang']."'>
                     <label for='kuota'>Kuota:</label>
                     <input type='number' id='kuota' name='kuota' value='".$row['kuota']."' required><br><br>
-                    <label for='periode'>Periode:</label>
+                    <label for='periode'>Periode Pendaftaran: </label>
                     <input type='text' id='periode' name='periode' value='".$row['periode']."' required><br><br>
                     <input type='submit' value='Simpan'>
                 </form>";
