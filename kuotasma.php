@@ -381,7 +381,7 @@ $_SESSION['sisaKuotaIng4'] = $sisaKuotaIng4;
 
             <div class="chat-container" id="chat-container">
             <div class="chat-header">
-                 <h4>Chatbot Bee Smart Course</h4>
+                 <h4>Pertanyaan Bee Smart Course</h4>
              <button class="close-button" onclick="hideChat()">X</button>
              </div>
   <div class="chat-body" id="chat-body">
