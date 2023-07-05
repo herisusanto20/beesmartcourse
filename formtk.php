@@ -263,7 +263,7 @@ if ($kursus == 'Calistung') {
       <span id="alamattk-error" class="error-message"></span>
 
       <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
-      <label for="kursustk">Pilih Kontainer:</label>
+      <label for="kursustk">Kursus:</label>
     <input type="text" name="kursustk" class="input-controll" value="<?php echo $kursus; ?>" readonly>
 
       <select name="jeniskursustk" class="input-controll" required>

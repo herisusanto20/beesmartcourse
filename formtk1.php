@@ -48,7 +48,49 @@ if (isset($_POST['proses'])) {
 mysqli_close($koneksi);
 ?>
 
+<?php
+// Koneksi ke database (sesuaikan dengan konfigurasi database Anda)
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registrasi";
 
+// Membuat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi ke database gagal: " . $conn->connect_error);
+}
+
+// Mengambil nilai berdasarkan jenis_kursus
+$jenisKursus = 'Privat'; // Ganti dengan jenis kursus yang diinginkan (reguler, privat, online)
+
+$sql = "SELECT kursus FROM tb_kuota WHERE jenis_kursus = '$jenisKursus'";
+$result = $conn->query($sql);
+
+$containerOptions = array();
+if ($result->num_rows > 0) {
+    // Memasukkan nilai ke dalam array containerOptions
+    while ($row = $result->fetch_assoc()) {
+        $containerOptions[$row['kursus']] = $row['kursus'];
+    }
+}
+
+$conn->close();
+?>
+<?php
+$kursus = $_GET['kursus'];
+
+$containerOptions = array();
+if ($kursus == 'Calistung') {
+  $containerOptions['Calistung'] = 'Calistung';
+} elseif ($kursus == 'Tematik') {
+  $containerOptions['Tematik'] = 'Tematik';
+} elseif ($kursus == 'Bahasa Inggris') {
+  $containerOptions['Bahasa Inggris'] = 'Bahasa Inggris';
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -209,7 +251,7 @@ mysqli_close($koneksi);
       <p>Tanggal Pendaftaran</p>
       <input type="date" name="tanggaltk" id="tanggaltk" placeholder="Tanggal" class="input-controll" readonly required><br>
 
-      <input type="text" name="namaortutk" placeholder="Nama Orang Tua" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
+      <input type="text" name="namaortutk" placeholder="Nama Orang tua" class="input-controll" required oninput="validateNamaOrtuTk(this)" />
       <span id="namaortutk-error" class="error-message"></span>
 
       <div class="input-wrapper">
@@ -222,34 +264,7 @@ mysqli_close($koneksi);
 
       <input type="hidden" name="statustk" placeholder="Keterangan" class="input-controll">
       <label for="kursustk">Kursus:</label>
-      <select name="kursustk" class="input-controll" required>
-        <option value="">-- Kursus --</option>
-        <?php
-        // Koneksi ke database
-        $koneksi = mysqli_connect("localhost", "root", "", "registrasi");
-
-        // Nilai dari kolom "tabel" yang ingin Anda gunakan
-        $tabel = $_POST['tabel'];
-        $tabel = 'tb_tk';
-        $jenis_kursus = 'Privat';
-
-        // Query untuk mengambil data dari tabel tb_kuota berdasarkan kolom "tabel"
-        $sql = "SELECT * FROM tb_kuota WHERE tabel = '$tabel' AND jenis_kursus = '$jenis_kursus'";
-
-        $result = mysqli_query($koneksi, $sql);
-
-        // Loop untuk menampilkan data kursus pada dropdown
-        while ($row = mysqli_fetch_assoc($result)) {
-          $kursus = $row['kursus'];
-          $kuota = $row['kuota'];
-
-          if ($kuota > 0) {
-            echo "<option value='" . $kursus . "'>" . $kursus . "</option>";
-          }
-        }
-        ?>
-
-      </select>
+    <input type="text" name="kursustk" class="input-controll" value="<?php echo $kursus; ?>" readonly>
 
       <select name="jeniskursustk" class="input-controll" required>
         <optgroup label="Jenis Kursus">
